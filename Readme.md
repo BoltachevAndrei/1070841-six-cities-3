@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов» [![Build status][travis-image]][travis-url]
 
 * Студент: [Андрей Болтачев](https://up.htmlacademy.ru/react/3/user/1070841).
-* Наставник: `Неизвестно`.
+* Наставник: [Сергей Рубец](https://up.htmlacademy.ru/react/3/user/41580).
 
 ---
 
