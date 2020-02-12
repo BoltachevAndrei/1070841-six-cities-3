@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import PlacesList from '../places-list/places-list.jsx';
 
 const Main = (props) => {
-  const {placesCount, placesNames, onLocationsItemClick} = props;
+  const {placesCount, offers, onPlaceCardClick} = props;
   return (
     <React.Fragment>
       <div style={{display: `none`}}>
@@ -99,46 +100,7 @@ const Main = (props) => {
                   </select>
                   --> */}
                 </form>
-                <div className="cities__places-list places__list tabs__content">
-                  {placesNames.map((placesName, index) => {
-                    return (
-                      <article key={index} className="cities__place-card place-card">
-                        <div className="place-card__mark">
-                          <span>Premium</span>
-                        </div>
-                        <div className="cities__image-wrapper place-card__image-wrapper">
-                          <a href="#">
-                            <img className="place-card__image" src="img/apartment-01.jpg" width="260" height="200" alt="Place image" />
-                          </a>
-                        </div>
-                        <div className="place-card__info">
-                          <div className="place-card__price-wrapper">
-                            <div className="place-card__price">
-                              <b className="place-card__price-value">&euro;120</b>
-                              <span className="place-card__price-text">&#47;&nbsp;night</span>
-                            </div>
-                            <button className="place-card__bookmark-button button" type="button">
-                              <svg className="place-card__bookmark-icon" width="18" height="19">
-                                <use xlinkHref="#icon-bookmark"></use>
-                              </svg>
-                              <span className="visually-hidden">To bookmarks</span>
-                            </button>
-                          </div>
-                          <div className="place-card__rating rating">
-                            <div className="place-card__stars rating__stars">
-                              <span style={{width: `80%`}}></span>
-                              <span className="visually-hidden">Rating</span>
-                            </div>
-                          </div>
-                          <h2 className="place-card__name" onClick={onLocationsItemClick}>
-                            <a href="#">{placesName}</a>
-                          </h2>
-                          <p className="place-card__type">Apartment</p>
-                        </div>
-                      </article>
-                    );
-                  })}
-                </div>
+                <PlacesList offers={offers} onPlaceCardClick={onPlaceCardClick}/>
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map"></section>
@@ -153,8 +115,8 @@ const Main = (props) => {
 
 Main.propTypes = {
   placesCount: PropTypes.number.isRequired,
-  placesNames: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onLocationsItemClick: PropTypes.func.isRequired
+  offers: PropTypes.array.isRequired,
+  onPlaceCardClick: PropTypes.func.isRequired
 };
 
 export default Main;
