@@ -2,21 +2,21 @@ import React from 'react';
 import Main from '../main/main.jsx';
 import PropTypes from 'prop-types';
 
-const onLocationsItemClick = () => {};
+const onPlaceCardClick = () => {};
 
 const App = (props) => {
   return (
     <Main
       placesCount={props.placesCount}
-      placesNames={props.placesNames}
-      onLocationsItemClick={onLocationsItemClick}
+      offers={props.offers}
+      onPlaceCardClick={onPlaceCardClick}
     />
   );
 };
 
 App.propTypes = {
   placesCount: PropTypes.number.isRequired,
-  placesNames: PropTypes.arrayOf(PropTypes.string).isRequired,
+  offers: PropTypes.array.isRequired,
 };
 
 export default App;

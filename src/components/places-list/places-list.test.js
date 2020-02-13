@@ -1,8 +1,6 @@
 import React from 'react';
-import Main from './main';
+import PlacesList from './places-list.jsx';
 import renderer from 'react-test-renderer';
-
-const placesCountTest = 111;
 
 const offers = [
   {
@@ -27,10 +25,9 @@ const offers = [
   }
 ];
 
-it(`Main renders correctly`, () => {
+it(`PlacesList renders correctly`, () => {
   const tree = renderer
-    .create(<Main
-      placesCount={placesCountTest}
+    .create(<PlacesList
       offers={offers}
       onPlaceCardClick={() => {}}
     />)

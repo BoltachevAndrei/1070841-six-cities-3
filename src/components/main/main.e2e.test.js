@@ -9,24 +9,41 @@ Enzyme.configure({
 
 const placesCountTest = 111;
 
-const placesNamesTest = [
-  `Small village house`,
-  `Studio apartment`,
-  `2 stage apartment`
+const offers = [
+  {
+    id: 111,
+    isPremium: true,
+    image: `img/amsterdam.jpg`,
+    price: 222,
+    isBookmarked: true,
+    rating: 1,
+    title: `Test title 1`,
+    type: `Test type 1`,
+  },
+  {
+    id: 333,
+    isPremium: false,
+    image: `img/amsterdam@2x.jpg`,
+    price: 444,
+    isBookmarked: false,
+    rating: 5,
+    title: `Test title 2`,
+    type: `Test type 2`,
+  }
 ];
 
 it(`Should locations item be pressed`, () => {
-  const onLocationsItemClick = jest.fn();
+  const onPlaceCardClick = jest.fn();
   const main = shallow(
       <Main
         placesCount={placesCountTest}
-        placesNames={placesNamesTest}
-        onLocationsItemClick={onLocationsItemClick}
+        offers={offers}
+        onPlaceCardClick={onPlaceCardClick}
       />
   );
   const locationsItems = main.find(`.place-card__name`);
   locationsItems.forEach((locationsItem) => {
     locationsItem.props().onClick();
   });
-  expect(onLocationsItemClick.mock.calls.length).toBe(locationsItems.length);
+  expect(onPlaceCardClick.mock.calls.length).toBe(locationsItems.length);
 });
