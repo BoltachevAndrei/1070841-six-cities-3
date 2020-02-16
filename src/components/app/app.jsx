@@ -1,22 +1,52 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Main from '../main/main.jsx';
+import Offer from '../offer/offer.jsx';
 import PropTypes from 'prop-types';
 
-const onPlaceCardClick = () => {};
+export default class App extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      offer: null
+    };
+  }
 
-const App = (props) => {
-  return (
-    <Main
-      placesCount={props.placesCount}
-      offers={props.offers}
-      onPlaceCardClick={onPlaceCardClick}
-    />
-  );
-};
+  _renderApp() {
+    const {offer} = this.state;
+    if (!offer) {
+      return (
+        <Main
+          placesCount={this.props.placesCount}
+          offers={this.props.offers}
+          onPlaceCardClick={(id) => this.setState({offer: id})}
+        />
+      );
+    }
+    return (
+      <Offer
+        offer={this.props.offers.find((element) => element.id === this.state.offer)}
+      />
+    );
+  }
+
+  render() {
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route exact path='/'>
+            {this._renderApp()}
+          </Route>
+          <Route exact path='/offer'>
+            <Offer />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    );
+  }
+}
 
 App.propTypes = {
   placesCount: PropTypes.number.isRequired,
   offers: PropTypes.array.isRequired,
 };
-
-export default App;

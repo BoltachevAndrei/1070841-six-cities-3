@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const PlaceCard = (props) => {
-  const {id, isPremium, image, price, isBookmarked, rating, title, type} = props.offer;
-  const placeImage = image ? <img className="place-card__image" src={image} width="260" height="200" alt="Place image" /> : null;
+  const {id, isPremium, images, price, isBookmarked, rating, title, features} = props.offer;
+  const placeImage = images[0] ? <img className="place-card__image" src={images[0]} width="260" height="200" alt="Place image" /> : null;
   const placeIsPremium = isPremium ?
     (<div className="place-card__mark">
       <span>Premium</span>
@@ -38,10 +38,10 @@ const PlaceCard = (props) => {
             <span className="visually-hidden">{rating}</span>
           </div>
         </div>
-        <h2 className="place-card__name">
+        <h2 className="place-card__name" onClick={() => props.onPlaceCardClick(id)}>
           <a href="#">{title}</a>
         </h2>
-        <p className="place-card__type">{type}</p>
+        <p className="place-card__type">{features.entire}</p>
       </div>
     </article>
   );
@@ -50,15 +50,16 @@ const PlaceCard = (props) => {
 PlaceCard.propTypes = {
   offer: PropTypes.shape({
     id: PropTypes.number.isRequired,
-    isPremium: PropTypes.bool,
-    image: PropTypes.string,
+    isPremium: PropTypes.bool.isRequired,
+    images: PropTypes.arrayOf(PropTypes.string).isRequired,
     price: PropTypes.number.isRequired,
-    isBookmarked: PropTypes.bool,
-    rating: PropTypes.number,
+    isBookmarked: PropTypes.bool.isRequired,
+    rating: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-  }),
-  onPlaceCardMouseOver: PropTypes.func.isRequired
+    features: PropTypes.object.isRequired,
+  }).isRequired,
+  onPlaceCardMouseOver: PropTypes.func.isRequired,
+  onPlaceCardClick: PropTypes.func.isRequired
 };
 
 export default PlaceCard;

@@ -8,22 +8,30 @@ const offers = [
   {
     id: 111,
     isPremium: true,
-    image: `img/amsterdam.jpg`,
+    images: [
+      `img/amsterdam.jpg`
+    ],
     price: 222,
     isBookmarked: true,
     rating: 1,
     title: `Test title 1`,
-    type: `Test type 1`,
+    features: {
+      entire: `Test type 1`
+    }
   },
   {
     id: 333,
     isPremium: false,
-    image: `img/amsterdam@2x.jpg`,
+    images: [
+      `img/amsterdam@2x.jpg`
+    ],
     price: 444,
     isBookmarked: false,
     rating: 5,
     title: `Test title 2`,
-    type: `Test type 2`,
+    features: {
+      entire: `Test type 2`
+    }
   }
 ];
 
