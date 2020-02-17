@@ -5,12 +5,16 @@ import renderer from 'react-test-renderer';
 const offer = {
   id: 111,
   isPremium: true,
-  image: `img/amsterdam.jpg`,
+  images: [
+    `img/amsterdam.jpg`,
+  ],
   price: 222,
   isBookmarked: true,
   rating: 1,
   title: `Test title 1`,
-  type: `Test type 1`,
+  features: {
+    entire: `Test type 1`,
+  }
 };
 
 it(`PlaceCard renders correctly`, () => {
@@ -18,6 +22,7 @@ it(`PlaceCard renders correctly`, () => {
     .create(<PlaceCard
       offer={offer}
       onPlaceCardMouseOver={() => {}}
+      onPlaceCardClick={() => {}}
     />)
     .toJSON();
   expect(tree).toMatchSnapshot();

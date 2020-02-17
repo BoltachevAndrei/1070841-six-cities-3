@@ -10,12 +10,16 @@ Enzyme.configure({
 const offer = {
   id: 111,
   isPremium: true,
-  image: `img/amsterdam.jpg`,
+  images: [
+    `img/amsterdam.jpg`
+  ],
   price: 222,
   isBookmarked: true,
   rating: 1,
   title: `Test title 1`,
-  type: `Test type 1`,
+  features: {
+    entire: `Test type 1`
+  }
 };
 
 it(`Should mouse over card event be registered`, () => {
@@ -24,9 +28,24 @@ it(`Should mouse over card event be registered`, () => {
       <PlaceCard
         offer={offer}
         onPlaceCardMouseOver={onPlaceCardMouseOver}
+        onPlaceCardClick={() => {}}
       />
   );
   const cardItem = placeCard.find(`.place-card`);
   cardItem.simulate(`mouseover`);
   expect(onPlaceCardMouseOver.mock.calls.length).toBe(1);
+});
+
+it(`Should mouse click on place-card header be registered`, () => {
+  const onPlaceCardMouseClick = jest.fn();
+  const placeCard = shallow(
+      <PlaceCard
+        offer={offer}
+        onPlaceCardMouseOver={() => {}}
+        onPlaceCardClick={onPlaceCardMouseClick}
+      />
+  );
+  const cardHeader = placeCard.find(`.place-card__name`);
+  cardHeader.simulate(`click`);
+  expect(onPlaceCardMouseClick.mock.calls.length).toBe(1);
 });
