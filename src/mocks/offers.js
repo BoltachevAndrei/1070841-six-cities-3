@@ -36,7 +36,11 @@ export const OFFERS_MOCK = [
       name: `Angelina`,
       avatar: `img/avatar-angelina.jpg`,
       isSuper: true
-    }
+    },
+    coordinates: [
+      52.3909553943508,
+      4.85309666406198
+    ]
   },
   {
     id: 102,
@@ -68,7 +72,11 @@ export const OFFERS_MOCK = [
       name: `Max`,
       avatar: `img/avatar-max.jpg`,
       isSuper: false
-    }
+    },
+    coordinates: [
+      52.369553943508,
+      4.85309666406198
+    ]
   },
   {
     id: 103,
@@ -102,7 +110,11 @@ export const OFFERS_MOCK = [
       name: `Max`,
       avatar: `img/avatar-max.jpg`,
       isSuper: true
-    }
+    },
+    coordinates: [
+      52.3909553943508,
+      4.929309666406198
+    ]
   },
   {
     id: 104,
@@ -136,6 +148,10 @@ export const OFFERS_MOCK = [
       name: `Angelina`,
       avatar: `img/avatar-angelina.jpg`,
       isSuper: false
-    }
+    },
+    coordinates: [
+      52.3809553943508,
+      4.939309666406198
+    ]
   },
 ];
