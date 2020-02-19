@@ -2,6 +2,8 @@ import React from 'react';
 import App from './app';
 import renderer from 'react-test-renderer';
 
+jest.mock(`../map/map.jsx`);
+
 const placesCountTest = 999;
 
 const offers = [
