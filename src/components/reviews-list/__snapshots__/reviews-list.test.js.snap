@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReviewsList renders correctly 1`] = `
+Array [
+  <h2
+    className="reviews__title"
+  >
+    Reviews · 
+    <span
+      className="reviews__amount"
+    >
+      2
+    </span>
+  </h2>,
+  <ul
+    className="reviews__list"
+  >
+    <li
+      className="reviews__item"
+    >
+      <div
+        className="reviews__user user"
+      >
+        <div
+          className="reviews__avatar-wrapper user__avatar-wrapper"
+        >
+          <img
+            alt="Reviews avatar"
+            className="reviews__avatar user__avatar"
+            height="54"
+            src="img/avatar.jpg"
+            width="54"
+          />
+        </div>
+        <span
+          className="reviews__user-name"
+        >
+          Test review user 1
+        </span>
+      </div>
+      <div
+        className="reviews__info"
+      >
+        <div
+          className="reviews__rating rating"
+        >
+          <div
+            className="reviews__stars rating__stars"
+          >
+            <span
+              style={
+                Object {
+                  "width": "80%",
+                }
+              }
+            />
+            <span
+              className="visually-hidden"
+            >
+              Rating
+            </span>
+          </div>
+        </div>
+        <p
+          className="reviews__text"
+        >
+          Test review text 1
+        </p>
+        <time
+          className="reviews__time"
+          dateTime="2000-04-24"
+        >
+          April 2000
+        </time>
+      </div>
+    </li>
+    <li
+      className="reviews__item"
+    >
+      <div
+        className="reviews__user user"
+      >
+        <div
+          className="reviews__avatar-wrapper user__avatar-wrapper"
+        >
+          <img
+            alt="Reviews avatar"
+            className="reviews__avatar user__avatar"
+            height="54"
+            src="img/avatar.jpg"
+            width="54"
+          />
+        </div>
+        <span
+          className="reviews__user-name"
+        >
+          Test review user 2
+        </span>
+      </div>
+      <div
+        className="reviews__info"
+      >
+        <div
+          className="reviews__rating rating"
+        >
+          <div
+            className="reviews__stars rating__stars"
+          >
+            <span
+              style={
+                Object {
+                  "width": "80%",
+                }
+              }
+            />
+            <span
+              className="visually-hidden"
+            >
+              Rating
+            </span>
+          </div>
+        </div>
+        <p
+          className="reviews__text"
+        >
+          Test review text 2
+        </p>
+        <time
+          className="reviews__time"
+          dateTime="1990-05-24"
+        >
+          May 1990
+        </time>
+      </div>
+    </li>
+  </ul>,
+]
+`;

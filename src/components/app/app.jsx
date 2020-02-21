@@ -26,6 +26,7 @@ export default class App extends PureComponent {
     return (
       <Offer
         offer={this.props.offers.find((element) => element.id === this.state.offer)}
+        offers={this.props.offers}
       />
     );
   }
@@ -38,7 +39,7 @@ export default class App extends PureComponent {
             {this._renderApp()}
           </Route>
           <Route exact path='/offer'>
-            <Offer />
+            <Offer offers={this.props.offers} />
           </Route>
         </Switch>
       </BrowserRouter>

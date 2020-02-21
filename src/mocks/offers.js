@@ -40,6 +40,18 @@ export const OFFERS_MOCK = [
     coordinates: [
       52.3909553943508,
       4.85309666406198
+    ],
+    reviews: [
+      {
+        id: 201,
+        user: {
+          name: `Max`,
+          avatar: `img/avatar-max.jpg`
+        },
+        text: `An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
+        rating: 4,
+        date: new Date(`2019-04-24`)
+      }
     ]
   },
   {
@@ -76,6 +88,18 @@ export const OFFERS_MOCK = [
     coordinates: [
       52.369553943508,
       4.85309666406198
+    ],
+    reviews: [
+      {
+        id: 202,
+        user: {
+          name: `Angelina`,
+          avatar: `img/avatar-angelina.jpg`,
+        },
+        text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+        rating: 4,
+        date: new Date(`2018-05-24`)
+      }
     ]
   },
   {
@@ -114,6 +138,18 @@ export const OFFERS_MOCK = [
     coordinates: [
       52.3909553943508,
       4.929309666406198
+    ],
+    reviews: [
+      {
+        id: 203,
+        user: {
+          name: `Angelina`,
+          avatar: `img/avatar-angelina.jpg`,
+        },
+        text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
+        rating: 4,
+        date: new Date(`2017-06-24`)
+      }
     ]
   },
   {
@@ -152,6 +188,28 @@ export const OFFERS_MOCK = [
     coordinates: [
       52.3809553943508,
       4.939309666406198
+    ],
+    reviews: [
+      {
+        id: 204,
+        user: {
+          name: `Max`,
+          avatar: `img/avatar-max.jpg`
+        },
+        text: `The building is green and from 18th century.`,
+        rating: 4,
+        date: new Date(`2016-07-24`)
+      },
+      {
+        id: 205,
+        user: {
+          name: `Max`,
+          avatar: `img/avatar-max.jpg`
+        },
+        text: `An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
+        rating: 4,
+        date: new Date(`2016-08-24`)
+      }
     ]
   },
 ];

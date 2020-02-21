@@ -2,6 +2,9 @@ import React from 'react';
 import PlaceCard from './place-card.jsx';
 import renderer from 'react-test-renderer';
 
+const cardClass = `cities__place-card place-card`;
+const wrapperClass = `cities__image-wrapper place-card__image-wrapper`;
+
 const offer = {
   id: 111,
   isPremium: true,
@@ -21,6 +24,8 @@ it(`PlaceCard renders correctly`, () => {
   const tree = renderer
     .create(<PlaceCard
       offer={offer}
+      cardClass={cardClass}
+      wrapperClass={wrapperClass}
       onPlaceCardMouseOver={() => {}}
       onPlaceCardClick={() => {}}
     />)
