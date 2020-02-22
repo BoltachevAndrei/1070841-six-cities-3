@@ -18,14 +18,17 @@ export default class PlacesList extends PureComponent {
   }
 
   render() {
-    const {offers, onPlaceCardClick} = this.props;
+    const {offers, listClass, cardClass, wrapperClass, onPlaceCardClick} = this.props;
     return (
-      <div className="cities__places-list places__list tabs__content">
+      <div className={listClass}>
         {offers.map((offer) => {
           return (
             <PlaceCard
               key={offer.id}
               offer={offer}
+              offers={offers}
+              cardClass={cardClass}
+              wrapperClass={wrapperClass}
               onPlaceCardClick={onPlaceCardClick}
               onPlaceCardMouseOver={this.onPlaceCardMouseOver}
             />
@@ -42,5 +45,8 @@ PlacesList.propTypes = {
         id: PropTypes.number.isRequired
       })
   ).isRequired,
+  listClass: PropTypes.string.isRequired,
+  cardClass: PropTypes.string.isRequired,
+  wrapperClass: PropTypes.string.isRequired,
   onPlaceCardClick: PropTypes.func.isRequired
 };

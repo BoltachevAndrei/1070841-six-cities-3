@@ -2,6 +2,10 @@ import React from 'react';
 import PlacesList from './places-list.jsx';
 import renderer from 'react-test-renderer';
 
+const listClass = `cities__places-list places__list tabs__content`;
+const cardClass = `cities__place-card place-card`;
+const wrapperClass = `cities__image-wrapper place-card__image-wrapper`;
+
 const offers = [
   {
     id: 111,
@@ -37,6 +41,9 @@ it(`PlacesList renders correctly`, () => {
   const tree = renderer
     .create(<PlacesList
       offers={offers}
+      listClass={listClass}
+      cardClass={cardClass}
+      wrapperClass={wrapperClass}
       onPlaceCardClick={() => {}}
     />)
     .toJSON();

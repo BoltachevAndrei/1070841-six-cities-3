@@ -102,10 +102,16 @@ const Main = (props) => {
                   </select>
                   --> */}
                 </form>
-                <PlacesList offers={offers} onPlaceCardClick={onPlaceCardClick}/>
+                <PlacesList
+                  offers={offers}
+                  listClass="cities__places-list places__list tabs__content"
+                  cardClass="cities__place-card place-card"
+                  wrapperClass="cities__image-wrapper place-card__image-wrapper"
+                  onPlaceCardClick={onPlaceCardClick}
+                />
               </section>
               <div className="cities__right-section">
-                <section className="cities__map map"><Map offers={offers}/></section>
+                <section className="cities__map map"><Map offers={offers} /></section>
               </div>
             </div>
           </div>

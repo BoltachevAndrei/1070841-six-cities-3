@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 const PlaceCard = (props) => {
   const {id, isPremium, images, price, isBookmarked, rating, title, features} = props.offer;
+  const {cardClass, wrapperClass} = props;
   const placeImage = images[0] ? <img className="place-card__image" src={images[0]} width="260" height="200" alt="Place image" /> : null;
   const placeIsPremium = isPremium ?
     (<div className="place-card__mark">
@@ -12,9 +13,9 @@ const PlaceCard = (props) => {
   const placeIsBookmarkedText = isBookmarked ? `In bookmarks` : `To bookmarks`;
 
   return (
-    <article className="cities__place-card place-card" onMouseOver={() => props.onPlaceCardMouseOver(id)}>
+    <article className={cardClass} onMouseOver={() => props.onPlaceCardMouseOver(id)}>
       {placeIsPremium}
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className={wrapperClass}>
         <a href="#">
           {placeImage}
         </a>
@@ -59,7 +60,9 @@ PlaceCard.propTypes = {
     features: PropTypes.object.isRequired,
   }).isRequired,
   onPlaceCardMouseOver: PropTypes.func.isRequired,
-  onPlaceCardClick: PropTypes.func.isRequired
+  onPlaceCardClick: PropTypes.func.isRequired,
+  cardClass: PropTypes.string.isRequired,
+  wrapperClass: PropTypes.string.isRequired
 };
 
 export default PlaceCard;

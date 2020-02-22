@@ -7,6 +7,9 @@ Enzyme.configure({
   adapter: new Adapter()
 });
 
+const cardClass = `cities__place-card place-card`;
+const wrapperClass = `cities__image-wrapper place-card__image-wrapper`;
+
 const offer = {
   id: 111,
   isPremium: true,
@@ -27,6 +30,8 @@ it(`Should mouse over card event be registered`, () => {
   const placeCard = shallow(
       <PlaceCard
         offer={offer}
+        cardClass={cardClass}
+        wrapperClass={wrapperClass}
         onPlaceCardMouseOver={onPlaceCardMouseOver}
         onPlaceCardClick={() => {}}
       />
@@ -41,6 +46,8 @@ it(`Should mouse click on place-card header be registered`, () => {
   const placeCard = shallow(
       <PlaceCard
         offer={offer}
+        cardClass={cardClass}
+        wrapperClass={wrapperClass}
         onPlaceCardMouseOver={() => {}}
         onPlaceCardClick={onPlaceCardMouseClick}
       />

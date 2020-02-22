@@ -495,7 +495,9 @@ exports[`Offer renders correctly 1`] = `
         >
           <article
             className="near-places__card place-card"
+            onMouseOver={[Function]}
           >
+            
             <div
               className="near-places__image-wrapper place-card__image-wrapper"
             >
@@ -523,7 +525,8 @@ exports[`Offer renders correctly 1`] = `
                   <b
                     className="place-card__price-value"
                   >
-                    €80
+                    €
+                    80
                   </b>
                   <span
                     className="place-card__price-text"
@@ -567,12 +570,13 @@ exports[`Offer renders correctly 1`] = `
                   <span
                     className="visually-hidden"
                   >
-                    Rating
+                    3
                   </span>
                 </div>
               </div>
               <h2
                 className="place-card__name"
+                onClick={[Function]}
               >
                 <a
                   href="#"
@@ -589,7 +593,9 @@ exports[`Offer renders correctly 1`] = `
           </article>
           <article
             className="near-places__card place-card"
+            onMouseOver={[Function]}
           >
+            
             <div
               className="near-places__image-wrapper place-card__image-wrapper"
             >
@@ -617,7 +623,8 @@ exports[`Offer renders correctly 1`] = `
                   <b
                     className="place-card__price-value"
                   >
-                    €132
+                    €
+                    132
                   </b>
                   <span
                     className="place-card__price-text"
@@ -661,12 +668,13 @@ exports[`Offer renders correctly 1`] = `
                   <span
                     className="visually-hidden"
                   >
-                    Rating
+                    3
                   </span>
                 </div>
               </div>
               <h2
                 className="place-card__name"
+                onClick={[Function]}
               >
                 <a
                   href="#"
@@ -683,7 +691,9 @@ exports[`Offer renders correctly 1`] = `
           </article>
           <article
             className="near-places__card place-card"
+            onMouseOver={[Function]}
           >
+            
             <div
               className="near-places__image-wrapper place-card__image-wrapper"
             >
@@ -711,7 +721,8 @@ exports[`Offer renders correctly 1`] = `
                   <b
                     className="place-card__price-value"
                   >
-                    €180
+                    €
+                    180
                   </b>
                   <span
                     className="place-card__price-text"
@@ -748,19 +759,20 @@ exports[`Offer renders correctly 1`] = `
                   <span
                     style={
                       Object {
-                        "width": "100%",
+                        "width": "80%",
                       }
                     }
                   />
                   <span
                     className="visually-hidden"
                   >
-                    Rating
+                    3
                   </span>
                 </div>
               </div>
               <h2
                 className="place-card__name"
+                onClick={[Function]}
               >
                 <a
                   href="#"
