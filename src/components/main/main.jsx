@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PlacesList from '../places-list/places-list.jsx';
+import CitiesList from '../cities-list/cities-list.jsx';
 
 import Map from '../map/map.jsx';
+import {getOffersByCity} from '../../utils.js';
 
 const Main = (props) => {
-  const {placesCount, offers, onPlaceCardClick} = props;
+  const {placesCount, offers, activeCity, onPlaceCardClick} = props;
+  const offersByCity = getOffersByCity(offers, activeCity);
   return (
     <React.Fragment>
       <div style={{display: `none`}}>
@@ -40,38 +43,10 @@ const Main = (props) => {
           <h1 className="visually-hidden">Cities</h1>
           <div className="tabs">
             <section className="locations container">
-              <ul className="locations__list tabs__list">
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item" href="#">
-                    <span>Paris</span>
-                  </a>
-                </li>
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item" href="#">
-                    <span>Cologne</span>
-                  </a>
-                </li>
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item" href="#">
-                    <span>Brussels</span>
-                  </a>
-                </li>
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item tabs__item--active">
-                    <span>Amsterdam</span>
-                  </a>
-                </li>
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item" href="#">
-                    <span>Hamburg</span>
-                  </a>
-                </li>
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item" href="#">
-                    <span>Dusseldorf</span>
-                  </a>
-                </li>
-              </ul>
+              <CitiesList
+                offers={offers}
+                activeCity={activeCity}
+              />
             </section>
           </div>
           <div className="cities">
@@ -103,7 +78,7 @@ const Main = (props) => {
                   --> */}
                 </form>
                 <PlacesList
-                  offers={offers}
+                  offers={offersByCity}
                   listClass="cities__places-list places__list tabs__content"
                   cardClass="cities__place-card place-card"
                   wrapperClass="cities__image-wrapper place-card__image-wrapper"
@@ -111,7 +86,7 @@ const Main = (props) => {
                 />
               </section>
               <div className="cities__right-section">
-                <section className="cities__map map"><Map offers={offers} /></section>
+                <section className="cities__map map"><Map offers={offersByCity} /></section>
               </div>
             </div>
           </div>
@@ -124,6 +99,7 @@ const Main = (props) => {
 Main.propTypes = {
   placesCount: PropTypes.number.isRequired,
   offers: PropTypes.array.isRequired,
+  activeCity: PropTypes.string.isRequired,
   onPlaceCardClick: PropTypes.func.isRequired
 };
 

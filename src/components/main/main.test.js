@@ -6,6 +6,8 @@ jest.mock(`../map/map.jsx`);
 
 const placesCountTest = 111;
 
+const activeCity = `Amsterdam`;
+
 const offers = [
   {
     id: 111,
@@ -42,6 +44,7 @@ it(`Main renders correctly`, () => {
     .create(<Main
       placesCount={placesCountTest}
       offers={offers}
+      activeCity={activeCity}
       onPlaceCardClick={() => {}}
     />)
     .toJSON();

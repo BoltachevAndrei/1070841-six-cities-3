@@ -19,6 +19,7 @@ export default class App extends PureComponent {
         <Main
           placesCount={this.props.placesCount}
           offers={this.props.offers}
+          activeCity={this.props.activeCity}
           onPlaceCardClick={(id) => this.setState({offer: id})}
         />
       );
@@ -50,4 +51,5 @@ export default class App extends PureComponent {
 App.propTypes = {
   placesCount: PropTypes.number.isRequired,
   offers: PropTypes.array.isRequired,
+  activeCity: PropTypes.string.isRequired,
 };

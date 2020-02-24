@@ -1,14 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
+import {reducer} from './reducer.js';
 import App from './components/app/app.jsx';
-import {OFFERS_MOCK} from './mocks/offers.js';
 
-const NUMBER_OF_PLACES_TO_STAY = 777;
+const store = createStore(reducer);
+
+const numberOfPlacesToStay = (store.getState().offers).filter((element) => element.city === store.getState().city).length;
+
+const offers = store.getState().offers;
+
+const activeCity = store.getState().city;
 
 ReactDOM.render(
-    <App
-      placesCount={NUMBER_OF_PLACES_TO_STAY}
-      offers={OFFERS_MOCK}
-    />,
+    <Provider store={store}>
+      <App
+        placesCount={numberOfPlacesToStay}
+        activeCity={activeCity}
+        offers={offers}
+      />
+    </Provider>,
     document.getElementById(`root`)
 );
