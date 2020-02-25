@@ -9,6 +9,8 @@ Enzyme.configure({
 
 const placesCountTest = 111;
 
+const activeCity = `Amsterdam`;
+
 const offers = [
   {
     id: 111,
@@ -38,6 +40,7 @@ it(`Should locations item be pressed`, () => {
       <Main
         placesCount={placesCountTest}
         offers={offers}
+        activeCity={activeCity}
         onPlaceCardClick={onPlaceCardClick}
       />
   );

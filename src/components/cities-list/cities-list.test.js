@@ -1,16 +1,11 @@
 import React from 'react';
-import App from './app';
 import renderer from 'react-test-renderer';
-
-jest.mock(`../map/map.jsx`);
-
-const placesCountTest = 999;
-
-const activeCity = `Amsterdam`;
+import CitiesList from './cities-list.jsx';
 
 const offers = [
   {
     id: 111,
+    city: `Test city`,
     isPremium: true,
     images: [
       `img/amsterdam.jpg`
@@ -20,11 +15,12 @@ const offers = [
     rating: 1,
     title: `Test title 1`,
     features: {
-      entire: `Test type 1`
+      entire: `Test type 1`,
     }
   },
   {
     id: 333,
+    city: `Test city`,
     isPremium: false,
     images: [
       `img/amsterdam@2x.jpg`
@@ -34,18 +30,18 @@ const offers = [
     rating: 5,
     title: `Test title 2`,
     features: {
-      entire: `Test type 2`
+      entire: `Test type 2`,
     }
   }
 ];
 
-it(`App renders correctly`, () => {
+const activeCity = `Test city`;
+
+it(`CitiesList renders correctly`, () => {
   const tree = renderer
-    .create(<App
-      placesCount={placesCountTest}
+    .create(<CitiesList
       offers={offers}
       activeCity={activeCity}
-      onPlaceCardClick={() => {}}
     />)
     .toJSON();
   expect(tree).toMatchSnapshot();

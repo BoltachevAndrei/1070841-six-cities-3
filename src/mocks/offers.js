@@ -1,6 +1,16 @@
+export const City = {
+  PARIS: `Paris`,
+  COLOGNE: `Cologne`,
+  BRUSSELS: `Brussels`,
+  AMSTERDAM: `Amsterdam`,
+  HAMBURG: `Hamburg`,
+  DUSSELDORF: `Dusseldorf`
+};
+
 export const OFFERS_MOCK = [
   {
     id: 101,
+    city: City.AMSTERDAM,
     isPremium: true,
     images: [
       `img/apartment-01.jpg`,
@@ -56,6 +66,7 @@ export const OFFERS_MOCK = [
   },
   {
     id: 102,
+    city: City.AMSTERDAM,
     isPremium: false,
     images: [
       `img/room.jpg`,
@@ -104,6 +115,7 @@ export const OFFERS_MOCK = [
   },
   {
     id: 103,
+    city: City.AMSTERDAM,
     isPremium: true,
     images: [
       `img/apartment-03.jpg`,
@@ -154,6 +166,7 @@ export const OFFERS_MOCK = [
   },
   {
     id: 104,
+    city: City.AMSTERDAM,
     isPremium: false,
     images: [
       `img/apartment-02.jpg`,
@@ -212,4 +225,284 @@ export const OFFERS_MOCK = [
       }
     ]
   },
+  {
+    id: 201,
+    city: City.BRUSSELS,
+    isPremium: true,
+    images: [
+      `img/apartment-01.jpg`,
+      `img/room.jpg`,
+      `img/apartment-02.jpg`,
+      `img/apartment-03.jpg`,
+      `img/studio-01.jpg`,
+      `img/apartment-01.jpg`
+    ],
+    price: 120,
+    isBookmarked: false,
+    rating: 4,
+    title: `Beautiful & luxurious apartment at great location`,
+    description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century. An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
+    features: {
+      entire: `House`,
+      bedrooms: `6 Bedrooms`,
+      adults: `Max 7 adults`
+    },
+    inside: [
+      `Wi-Fi`,
+      `Washing machine`,
+      `Towels`,
+      `Heating`,
+      `Coffee machine`,
+      `Baby seat`,
+      `Kitchen`,
+      `Dishwasher`,
+      `Cabel TV`,
+      `Fridge`
+    ],
+    user: {
+      name: `Angelina`,
+      avatar: `img/avatar-angelina.jpg`,
+      isSuper: true
+    },
+    coordinates: [
+      52.3909553943508,
+      4.85309666406198
+    ],
+    reviews: [
+      {
+        id: 201,
+        user: {
+          name: `Max`,
+          avatar: `img/avatar-max.jpg`
+        },
+        text: `An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
+        rating: 4,
+        date: new Date(`2019-04-24`)
+      }
+    ]
+  },
+  {
+    id: 301,
+    city: City.COLOGNE,
+    isPremium: true,
+    images: [
+      `img/apartment-01.jpg`,
+      `img/room.jpg`,
+      `img/apartment-02.jpg`,
+      `img/apartment-03.jpg`,
+      `img/studio-01.jpg`,
+      `img/apartment-01.jpg`
+    ],
+    price: 120,
+    isBookmarked: false,
+    rating: 4,
+    title: `Beautiful & luxurious apartment at great location`,
+    description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century. An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
+    features: {
+      entire: `House`,
+      bedrooms: `6 Bedrooms`,
+      adults: `Max 7 adults`
+    },
+    inside: [
+      `Wi-Fi`,
+      `Washing machine`,
+      `Towels`,
+      `Heating`,
+      `Coffee machine`,
+      `Baby seat`,
+      `Kitchen`,
+      `Dishwasher`,
+      `Cabel TV`,
+      `Fridge`
+    ],
+    user: {
+      name: `Angelina`,
+      avatar: `img/avatar-angelina.jpg`,
+      isSuper: true
+    },
+    coordinates: [
+      52.3909553943508,
+      4.85309666406198
+    ],
+    reviews: [
+      {
+        id: 201,
+        user: {
+          name: `Max`,
+          avatar: `img/avatar-max.jpg`
+        },
+        text: `An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
+        rating: 4,
+        date: new Date(`2019-04-24`)
+      }
+    ]
+  },
+  {
+    id: 401,
+    city: City.DUSSELDORF,
+    isPremium: true,
+    images: [
+      `img/apartment-01.jpg`,
+      `img/room.jpg`,
+      `img/apartment-02.jpg`,
+      `img/apartment-03.jpg`,
+      `img/studio-01.jpg`,
+      `img/apartment-01.jpg`
+    ],
+    price: 120,
+    isBookmarked: false,
+    rating: 4,
+    title: `Beautiful & luxurious apartment at great location`,
+    description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century. An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
+    features: {
+      entire: `House`,
+      bedrooms: `6 Bedrooms`,
+      adults: `Max 7 adults`
+    },
+    inside: [
+      `Wi-Fi`,
+      `Washing machine`,
+      `Towels`,
+      `Heating`,
+      `Coffee machine`,
+      `Baby seat`,
+      `Kitchen`,
+      `Dishwasher`,
+      `Cabel TV`,
+      `Fridge`
+    ],
+    user: {
+      name: `Angelina`,
+      avatar: `img/avatar-angelina.jpg`,
+      isSuper: true
+    },
+    coordinates: [
+      52.3909553943508,
+      4.85309666406198
+    ],
+    reviews: [
+      {
+        id: 201,
+        user: {
+          name: `Max`,
+          avatar: `img/avatar-max.jpg`
+        },
+        text: `An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
+        rating: 4,
+        date: new Date(`2019-04-24`)
+      }
+    ]
+  },
+  {
+    id: 501,
+    city: City.HAMBURG,
+    isPremium: true,
+    images: [
+      `img/apartment-01.jpg`,
+      `img/room.jpg`,
+      `img/apartment-02.jpg`,
+      `img/apartment-03.jpg`,
+      `img/studio-01.jpg`,
+      `img/apartment-01.jpg`
+    ],
+    price: 120,
+    isBookmarked: false,
+    rating: 4,
+    title: `Beautiful & luxurious apartment at great location`,
+    description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century. An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
+    features: {
+      entire: `House`,
+      bedrooms: `6 Bedrooms`,
+      adults: `Max 7 adults`
+    },
+    inside: [
+      `Wi-Fi`,
+      `Washing machine`,
+      `Towels`,
+      `Heating`,
+      `Coffee machine`,
+      `Baby seat`,
+      `Kitchen`,
+      `Dishwasher`,
+      `Cabel TV`,
+      `Fridge`
+    ],
+    user: {
+      name: `Angelina`,
+      avatar: `img/avatar-angelina.jpg`,
+      isSuper: true
+    },
+    coordinates: [
+      52.3909553943508,
+      4.85309666406198
+    ],
+    reviews: [
+      {
+        id: 201,
+        user: {
+          name: `Max`,
+          avatar: `img/avatar-max.jpg`
+        },
+        text: `An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
+        rating: 4,
+        date: new Date(`2019-04-24`)
+      }
+    ]
+  },
+  {
+    id: 601,
+    city: City.PARIS,
+    isPremium: true,
+    images: [
+      `img/apartment-01.jpg`,
+      `img/room.jpg`,
+      `img/apartment-02.jpg`,
+      `img/apartment-03.jpg`,
+      `img/studio-01.jpg`,
+      `img/apartment-01.jpg`
+    ],
+    price: 120,
+    isBookmarked: false,
+    rating: 4,
+    title: `Beautiful & luxurious apartment at great location`,
+    description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century. An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
+    features: {
+      entire: `House`,
+      bedrooms: `6 Bedrooms`,
+      adults: `Max 7 adults`
+    },
+    inside: [
+      `Wi-Fi`,
+      `Washing machine`,
+      `Towels`,
+      `Heating`,
+      `Coffee machine`,
+      `Baby seat`,
+      `Kitchen`,
+      `Dishwasher`,
+      `Cabel TV`,
+      `Fridge`
+    ],
+    user: {
+      name: `Angelina`,
+      avatar: `img/avatar-angelina.jpg`,
+      isSuper: true
+    },
+    coordinates: [
+      52.3909553943508,
+      4.85309666406198
+    ],
+    reviews: [
+      {
+        id: 201,
+        user: {
+          name: `Max`,
+          avatar: `img/avatar-max.jpg`
+        },
+        text: `An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
+        rating: 4,
+        date: new Date(`2019-04-24`)
+      }
+    ]
+  }
 ];
