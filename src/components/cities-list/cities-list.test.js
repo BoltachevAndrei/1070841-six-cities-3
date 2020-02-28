@@ -42,6 +42,7 @@ it(`CitiesList renders correctly`, () => {
     .create(<CitiesList
       offers={offers}
       activeCity={activeCity}
+      onCityClick={() => {}}
     />)
     .toJSON();
   expect(tree).toMatchSnapshot();

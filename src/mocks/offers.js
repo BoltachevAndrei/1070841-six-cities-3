@@ -75,7 +75,7 @@ export const OFFERS_MOCK = [
     ],
     price: 80,
     isBookmarked: true,
-    rating: 4,
+    rating: 3,
     title: `Wood and stone place`,
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century. An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
     features: {
@@ -126,7 +126,7 @@ export const OFFERS_MOCK = [
     ],
     price: 180,
     isBookmarked: false,
-    rating: 5,
+    rating: 3.5,
     title: `Nice, cozy, warm big bed apartment`,
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century. An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
     features: {
@@ -175,9 +175,9 @@ export const OFFERS_MOCK = [
       `img/apartment-03.jpg`,
       `img/apartment-01.jpg`
     ],
-    price: 80,
+    price: 90,
     isBookmarked: false,
-    rating: 4,
+    rating: 4.5,
     title: `Canal View Prinsengracht`,
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century. An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
     features: {
@@ -237,7 +237,7 @@ export const OFFERS_MOCK = [
       `img/studio-01.jpg`,
       `img/apartment-01.jpg`
     ],
-    price: 120,
+    price: 200,
     isBookmarked: false,
     rating: 4,
     title: `Beautiful & luxurious apartment at great location`,
@@ -293,7 +293,7 @@ export const OFFERS_MOCK = [
       `img/studio-01.jpg`,
       `img/apartment-01.jpg`
     ],
-    price: 120,
+    price: 300,
     isBookmarked: false,
     rating: 4,
     title: `Beautiful & luxurious apartment at great location`,
@@ -349,7 +349,7 @@ export const OFFERS_MOCK = [
       `img/studio-01.jpg`,
       `img/apartment-01.jpg`
     ],
-    price: 120,
+    price: 400,
     isBookmarked: false,
     rating: 4,
     title: `Beautiful & luxurious apartment at great location`,
@@ -405,7 +405,7 @@ export const OFFERS_MOCK = [
       `img/studio-01.jpg`,
       `img/apartment-01.jpg`
     ],
-    price: 120,
+    price: 500,
     isBookmarked: false,
     rating: 4,
     title: `Beautiful & luxurious apartment at great location`,
@@ -461,7 +461,7 @@ export const OFFERS_MOCK = [
       `img/studio-01.jpg`,
       `img/apartment-01.jpg`
     ],
-    price: 120,
+    price: 600,
     isBookmarked: false,
     rating: 4,
     title: `Beautiful & luxurious apartment at great location`,

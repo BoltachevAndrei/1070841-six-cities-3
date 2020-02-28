@@ -26,7 +26,6 @@ it(`PlaceCard renders correctly`, () => {
       offer={offer}
       cardClass={cardClass}
       wrapperClass={wrapperClass}
-      onPlaceCardMouseOver={() => {}}
       onPlaceCardClick={() => {}}
     />)
     .toJSON();

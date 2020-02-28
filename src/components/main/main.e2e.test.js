@@ -11,6 +11,10 @@ const placesCountTest = 111;
 
 const activeCity = `Amsterdam`;
 
+const sortType = `Popular`;
+
+const card = 0;
+
 const offers = [
   {
     id: 111,
@@ -41,7 +45,10 @@ it(`Should locations item be pressed`, () => {
         placesCount={placesCountTest}
         offers={offers}
         activeCity={activeCity}
+        sortType={sortType}
+        card={card}
         onPlaceCardClick={onPlaceCardClick}
+        onCityClick={() => {}}
       />
   );
   const locationsItems = main.find(`.place-card__name`);

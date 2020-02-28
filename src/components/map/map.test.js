@@ -7,12 +7,15 @@ const offers = [
   {coordinates: [52.3709553943508, 4.90309666406198]},
 ];
 
+const card = 0;
+
 it(`Map renders correctly`, () => {
   document.body.innerHTML =
     `<div id="map"></div>`;
   const tree = renderer
     .create(<Map
       offers={offers}
+      card={card}
     />)
   .toJSON();
   expect(tree).toMatchSnapshot();

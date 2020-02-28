@@ -116,6 +116,7 @@ Array [
           >
             <li
               className="locations__item"
+              onClick={[Function]}
             >
               <a
                 className="locations__item-link tabs__item"
@@ -145,7 +146,8 @@ Array [
               className="places__found"
             >
               111
-               places to stay in Amsterdam
+               places to stay in 
+              Amsterdam
             </b>
             <form
               action="#"
@@ -159,6 +161,7 @@ Array [
               </span>
               <span
                 className="places__sorting-type"
+                onClick={[Function]}
                 tabIndex="0"
               >
                 Popular
@@ -173,28 +176,32 @@ Array [
                 </svg>
               </span>
               <ul
-                className="places__options places__options--custom places__options--opened"
+                className="places__options places__options--custom "
               >
                 <li
                   className="places__option places__option--active"
+                  onClick={[Function]}
                   tabIndex="0"
                 >
                   Popular
                 </li>
                 <li
                   className="places__option"
+                  onClick={[Function]}
                   tabIndex="0"
                 >
                   Price: low to high
                 </li>
                 <li
                   className="places__option"
+                  onClick={[Function]}
                   tabIndex="0"
                 >
                   Price: high to low
                 </li>
                 <li
                   className="places__option"
+                  onClick={[Function]}
                   tabIndex="0"
                 >
                   Top rated first
@@ -216,5 +223,6 @@ Array [
       </div>
     </main>
   </div>,
+  ")",
 ]
 `;

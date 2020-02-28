@@ -1,43 +1,29 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import PlaceCard from '../place-card/place-card.jsx';
 
-export default class PlacesList extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.onPlaceCardMouseOver = this.onPlaceCardMouseOver.bind(this);
-    this.state = {
-      activeCard: null
-    };
-  }
+const PlacesList = (props) => {
+  const {offers, listClass, cardClass, wrapperClass, onPlaceCardClick, onPlaceCardMouseOver, onPlaceCardMouseLeave} = props;
 
-  onPlaceCardMouseOver(id) {
-    this.setState({
-      activeCard: id
-    });
-  }
-
-  render() {
-    const {offers, listClass, cardClass, wrapperClass, onPlaceCardClick} = this.props;
-    return (
-      <div className={listClass}>
-        {offers.map((offer) => {
-          return (
-            <PlaceCard
-              key={offer.id}
-              offer={offer}
-              offers={offers}
-              cardClass={cardClass}
-              wrapperClass={wrapperClass}
-              onPlaceCardClick={onPlaceCardClick}
-              onPlaceCardMouseOver={this.onPlaceCardMouseOver}
-            />
-          );
-        })}
-      </div>
-    );
-  }
-}
+  return (
+    <div className={listClass}>
+      {offers.map((offer) => {
+        return (
+          <PlaceCard
+            key={offer.id}
+            offer={offer}
+            offers={offers}
+            cardClass={cardClass}
+            wrapperClass={wrapperClass}
+            onPlaceCardClick={onPlaceCardClick}
+            onPlaceCardMouseOver={onPlaceCardMouseOver}
+            onPlaceCardMouseLeave={onPlaceCardMouseLeave}
+          />
+        );
+      })}
+    </div>
+  );
+};
 
 PlacesList.propTypes = {
   offers: PropTypes.arrayOf(
@@ -48,5 +34,9 @@ PlacesList.propTypes = {
   listClass: PropTypes.string.isRequired,
   cardClass: PropTypes.string.isRequired,
   wrapperClass: PropTypes.string.isRequired,
-  onPlaceCardClick: PropTypes.func.isRequired
+  onPlaceCardClick: PropTypes.func.isRequired,
+  onPlaceCardMouseOver: PropTypes.func,
+  onPlaceCardMouseLeave: PropTypes.func
 };
+
+export default PlacesList;

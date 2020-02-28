@@ -33,6 +33,7 @@ it(`Should mouse over card event be registered`, () => {
         cardClass={cardClass}
         wrapperClass={wrapperClass}
         onPlaceCardMouseOver={onPlaceCardMouseOver}
+        onPlaceCardMouseLeave={() => {}}
         onPlaceCardClick={() => {}}
       />
   );
@@ -49,6 +50,7 @@ it(`Should mouse click on place-card header be registered`, () => {
         cardClass={cardClass}
         wrapperClass={wrapperClass}
         onPlaceCardMouseOver={() => {}}
+        onPlaceCardMouseLeave={() => {}}
         onPlaceCardClick={onPlaceCardMouseClick}
       />
   );
