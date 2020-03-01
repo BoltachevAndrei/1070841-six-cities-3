@@ -13,7 +13,11 @@ const PlaceCard = (props) => {
   const placeIsBookmarkedText = isBookmarked ? `In bookmarks` : `To bookmarks`;
 
   return (
-    <article className={cardClass} onMouseOver={() => props.onPlaceCardMouseOver(id)}>
+    <article
+      className={cardClass}
+      onMouseOver={() => props.onPlaceCardMouseOver(id)}
+      onMouseLeave={props.onPlaceCardMouseLeave}
+    >
       {placeIsPremium}
       <div className={wrapperClass}>
         <a href="#">
@@ -59,7 +63,8 @@ PlaceCard.propTypes = {
     title: PropTypes.string.isRequired,
     features: PropTypes.object.isRequired,
   }).isRequired,
-  onPlaceCardMouseOver: PropTypes.func.isRequired,
+  onPlaceCardMouseOver: PropTypes.func,
+  onPlaceCardMouseLeave: PropTypes.func,
   onPlaceCardClick: PropTypes.func.isRequired,
   cardClass: PropTypes.string.isRequired,
   wrapperClass: PropTypes.string.isRequired

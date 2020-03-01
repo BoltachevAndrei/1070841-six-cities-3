@@ -2,11 +2,19 @@ import React from 'react';
 import Main from './main';
 import renderer from 'react-test-renderer';
 
+import {Provider} from 'react-redux';
+import configureStore from 'redux-mock-store';
+const mockStore = configureStore([]);
+
 jest.mock(`../map/map.jsx`);
 
 const placesCountTest = 111;
 
 const activeCity = `Amsterdam`;
+
+const sortType = `Popular`;
+
+const card = 0;
 
 const offers = [
   {
@@ -40,13 +48,28 @@ const offers = [
 ];
 
 it(`Main renders correctly`, () => {
+  const store = mockStore({
+    sortType,
+    isSortListOpened: false
+  });
+
   const tree = renderer
-    .create(<Main
-      placesCount={placesCountTest}
-      offers={offers}
-      activeCity={activeCity}
-      onPlaceCardClick={() => {}}
-    />)
+    .create(
+        <Provider store={store}>
+          <Main
+            placesCount={placesCountTest}
+            offers={offers}
+            activeCity={activeCity}
+            sortType={sortType}
+            card={card}
+            onPlaceCardClick={() => { }}
+            onCityClick={() => { }}
+          />)
+        </Provider>, {
+          createNodeMock: () => {
+            return {};
+          }
+        })
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

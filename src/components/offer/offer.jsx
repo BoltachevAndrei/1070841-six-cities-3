@@ -5,7 +5,7 @@ import Map from '../map/map.jsx';
 import PlacesList from '../places-list/places-list.jsx';
 
 const Offer = (props) => {
-  const {id, isPremium, images, price, isBookmarked, rating, title, description, features, inside, user, reviews} = props.offer;
+  const {id, city, isPremium, images, price, isBookmarked, rating, title, description, features, inside, user, reviews} = props.offer;
   const placeIsPremium = isPremium ?
     (<div className="property__mark">
       <span>Premium</span>
@@ -166,14 +166,14 @@ const Offer = (props) => {
             </div>
           </div>
           <section className="property__map map">
-            <Map offers={props.offers.filter((offer) => offer.id !== id)} />
+            <Map offers={props.offers.filter((offer) => offer.id !== id).filter((offer) => offer.city === city)} />
           </section>
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <PlacesList
-              offers={props.offers.filter((offer) => offer.id !== id)}
+              offers={props.offers.filter((offer) => offer.id !== id).filter((offer) => offer.city === city)}
               listClass="near-places__list places__list"
               cardClass="near-places__card place-card"
               wrapperClass="near-places__image-wrapper place-card__image-wrapper"
@@ -189,6 +189,7 @@ const Offer = (props) => {
 Offer.propTypes = {
   offer: PropTypes.shape({
     id: PropTypes.number.isRequired,
+    city: PropTypes.string.isRequired,
     isPremium: PropTypes.bool.isRequired,
     images: PropTypes.arrayOf(PropTypes.string).isRequired,
     price: PropTypes.number.isRequired,

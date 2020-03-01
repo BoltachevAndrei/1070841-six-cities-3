@@ -9,6 +9,7 @@ const cardClass = `near-places__card place-card`;
 
 const offer = {
   id: 777,
+  city: `Test city 1`,
   isPremium: true,
   images: [
     `img/amsterdam.jpg`
@@ -48,6 +49,7 @@ const offer = {
 const offers = [
   {
     id: 778,
+    city: `Test city 2`,
     isPremium: false,
     images: [
       `img/room.jpg`
@@ -85,6 +87,7 @@ const offers = [
   },
   {
     id: 779,
+    city: `Test city 3`,
     isPremium: false,
     images: [
       `img/apartment-02.jpg`
@@ -122,6 +125,7 @@ const offers = [
   },
   {
     id: 780,
+    city: `Test city 4`,
     isPremium: false,
     images: [
       `img/apartment-03.jpg`

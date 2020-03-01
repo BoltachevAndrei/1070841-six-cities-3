@@ -5,21 +5,14 @@ import {Provider} from 'react-redux';
 import {reducer} from './reducer.js';
 import App from './components/app/app.jsx';
 
-const store = createStore(reducer);
-
-const numberOfPlacesToStay = (store.getState().offers).filter((element) => element.city === store.getState().city).length;
-
-const offers = store.getState().offers;
-
-const activeCity = store.getState().city;
+const store = createStore(
+    reducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
+);
 
 ReactDOM.render(
     <Provider store={store}>
-      <App
-        placesCount={numberOfPlacesToStay}
-        activeCity={activeCity}
-        offers={offers}
-      />
+      <App />
     </Provider>,
     document.getElementById(`root`)
 );

@@ -1,52 +1,188 @@
 import React from 'react';
-import App from './app';
 import renderer from 'react-test-renderer';
+import {Provider} from 'react-redux';
+import configureStore from 'redux-mock-store';
+import {App} from './app.jsx';
 
 jest.mock(`../map/map.jsx`);
 
-const placesCountTest = 999;
+const mockStore = configureStore([]);
 
 const activeCity = `Amsterdam`;
 
+const sortType = `Popular`;
+
+const card = 0;
+
 const offers = [
   {
-    id: 111,
-    isPremium: true,
-    images: [
-      `img/amsterdam.jpg`
-    ],
-    price: 222,
-    isBookmarked: true,
-    rating: 1,
-    title: `Test title 1`,
-    features: {
-      entire: `Test type 1`
-    }
-  },
-  {
-    id: 333,
+    id: 778,
+    city: `Test city 2`,
     isPremium: false,
     images: [
-      `img/amsterdam@2x.jpg`
+      `img/room.jpg`
     ],
-    price: 444,
-    isBookmarked: false,
-    rating: 5,
-    title: `Test title 2`,
+    price: 80,
+    isBookmarked: true,
+    rating: 3,
+    title: `Wood and stone place`,
+    description: `Test description`,
     features: {
-      entire: `Test type 2`
-    }
-  }
+      entire: `Private room`,
+      bedrooms: `33 Bedrooms`,
+      adults: `Max 55 adults`
+    },
+    inside: [
+      `MiniBar`
+    ],
+    user: {
+      name: `Ivan`,
+      avatar: `img/avatar.svg`,
+      isSuper: true
+    },
+    reviews: [
+      {
+        id: 201,
+        user: {
+          name: `Max`,
+          avatar: `img/avatar-max.jpg`,
+        },
+        text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+        rating: 3,
+        date: new Date(`2019-04-24`)
+      }
+    ]
+  },
+  {
+    id: 779,
+    city: `Test city 3`,
+    isPremium: false,
+    images: [
+      `img/apartment-02.jpg`
+    ],
+    price: 132,
+    isBookmarked: false,
+    rating: 3,
+    title: `Canal View Prinsengracht`,
+    description: `Test description`,
+    features: {
+      entire: `Apartment`,
+      bedrooms: `33 Bedrooms`,
+      adults: `Max 55 adults`
+    },
+    inside: [
+      `MiniBar`
+    ],
+    user: {
+      name: `Ivan`,
+      avatar: `img/avatar.svg`,
+      isSuper: true
+    },
+    reviews: [
+      {
+        id: 201,
+        user: {
+          name: `Max`,
+          avatar: `img/avatar-max.jpg`,
+        },
+        text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+        rating: 3,
+        date: new Date(`2019-04-24`)
+      }
+    ]
+  },
+  {
+    id: 780,
+    city: `Test city 4`,
+    isPremium: false,
+    images: [
+      `img/apartment-03.jpg`
+    ],
+    price: 180,
+    isBookmarked: false,
+    rating: 3,
+    title: `Nice, cozy, warm big bed apartment`,
+    description: `Test description`,
+    features: {
+      entire: `Apartment`,
+      bedrooms: `33 Bedrooms`,
+      adults: `Max 55 adults`
+    },
+    inside: [
+      `MiniBar`
+    ],
+    user: {
+      name: `Ivan`,
+      avatar: `img/avatar.svg`,
+      isSuper: true
+    },
+    reviews: [
+      {
+        id: 201,
+        user: {
+          name: `Max`,
+          avatar: `img/avatar-max.jpg`,
+        },
+        text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+        rating: 3,
+        date: new Date(`2019-04-24`)
+      }
+    ]
+  },
 ];
 
-it(`App renders correctly`, () => {
-  const tree = renderer
-    .create(<App
-      placesCount={placesCountTest}
-      offers={offers}
-      activeCity={activeCity}
-      onPlaceCardClick={() => {}}
-    />)
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+describe(`App renders correctly`, () => {
+  it(`Main renders correctly`, () => {
+    const store = mockStore({
+      sortType,
+      isSortListOpened: false
+    });
+
+    const tree = renderer
+      .create(
+          <Provider store={store}>
+            <App
+              offers={offers}
+              offer={offers[0].id}
+              city={activeCity}
+              card={card}
+              sortType={sortType}
+              onPlaceCardClick={() => {}}
+              onCityClick={() => {}}
+            />
+          </Provider>, {
+            createNodeMock: () => {
+              return {};
+            }
+          })
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`Offer renders correctly`, () => {
+    const store = mockStore({
+      sortType,
+      isSortListOpened: false
+    });
+
+    const tree = renderer
+      .create(
+          <Provider store={store}>
+            <App
+              offers={offers}
+              offer={0}
+              city={activeCity}
+              card={card}
+              sortType={sortType}
+              onPlaceCardClick={() => {}}
+              onCityClick={() => {}}
+            />
+          </Provider>, {
+            createNodeMock: () => {
+              return {};
+            }
+          })
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
