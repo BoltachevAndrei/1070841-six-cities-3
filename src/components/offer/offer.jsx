@@ -6,6 +6,7 @@ import PlacesList from '../places-list/places-list.jsx';
 
 const Offer = (props) => {
   const {id, city, isPremium, images, price, isBookmarked, rating, title, description, features, inside, user, reviews} = props.offer;
+  const {card, sortType, offers} = props;
   const placeIsPremium = isPremium ?
     (<div className="property__mark">
       <span>Premium</span>
@@ -166,18 +167,25 @@ const Offer = (props) => {
             </div>
           </div>
           <section className="property__map map">
-            <Map offers={props.offers.filter((offer) => offer.id !== id).filter((offer) => offer.city === city)} />
+            <Map
+              offers={offers.filter((offer) => offer.city === city)}
+              card={card}
+            />
           </section>
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <PlacesList
-              offers={props.offers.filter((offer) => offer.id !== id).filter((offer) => offer.city === city)}
+              offers={offers.filter((offer) => offer.id !== id).filter((offer) => offer.city === city)}
+              activeCity={city}
+              sortType={sortType}
               listClass="near-places__list places__list"
               cardClass="near-places__card place-card"
               wrapperClass="near-places__image-wrapper place-card__image-wrapper"
               onPlaceCardClick={() => {}}
+              onPlaceCardMouseOver={() => {}}
+              onPlaceCardMouseLeave={() => {}}
             />
           </section>
         </div>
@@ -210,6 +218,8 @@ Offer.propTypes = {
     }).isRequired,
     reviews: PropTypes.array.isRequired
   }),
+  card: PropTypes.number.isRequired,
+  sortType: PropTypes.string.isRequired,
   offers: PropTypes.array.isRequired,
 };
 

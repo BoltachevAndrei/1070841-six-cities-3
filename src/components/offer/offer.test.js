@@ -7,6 +7,10 @@ jest.mock(`../map/map.jsx`);
 const listClass = `near-places__list places__list`;
 const cardClass = `near-places__card place-card`;
 
+const card = 101;
+
+const sortType = `Popular`;
+
 const offer = {
   id: 777,
   city: `Test city 1`,
@@ -168,6 +172,8 @@ it(`Offer renders correctly`, () => {
     .create(<Offer
       offer={offer}
       offers={offers}
+      card={card}
+      sortType={sortType}
       listClass={listClass}
       cardClass={cardClass}
       wrapperClass="near-places__image-wrapper place-card__image-wrapper"

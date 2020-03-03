@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import {getCities} from '../../utils.js';
 
-const CitiesList = (props) => {
+const CitiesList = memo(function CitiesList(props) {
   const {offers, activeCity, onCityClick} = props;
   const cities = getCities(offers);
   return (
@@ -18,7 +18,7 @@ const CitiesList = (props) => {
       })}
     </ul>
   );
-};
+});
 
 CitiesList.propTypes = {
   offers: PropTypes.array.isRequired,
@@ -27,3 +27,4 @@ CitiesList.propTypes = {
 };
 
 export default CitiesList;
+

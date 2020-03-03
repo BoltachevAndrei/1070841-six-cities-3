@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 const PlaceCard = (props) => {
   const {id, isPremium, images, price, isBookmarked, rating, title, features} = props.offer;
+  const {onPlaceCardMouseOver, onPlaceCardMouseLeave, onPlaceCardClick} = props;
   const {cardClass, wrapperClass} = props;
   const placeImage = images[0] ? <img className="place-card__image" src={images[0]} width="260" height="200" alt="Place image" /> : null;
   const placeIsPremium = isPremium ?
@@ -15,8 +16,8 @@ const PlaceCard = (props) => {
   return (
     <article
       className={cardClass}
-      onMouseOver={() => props.onPlaceCardMouseOver(id)}
-      onMouseLeave={props.onPlaceCardMouseLeave}
+      onMouseOver={() => onPlaceCardMouseOver(id)}
+      onMouseLeave={onPlaceCardMouseLeave}
     >
       {placeIsPremium}
       <div className={wrapperClass}>
@@ -43,7 +44,7 @@ const PlaceCard = (props) => {
             <span className="visually-hidden">{rating}</span>
           </div>
         </div>
-        <h2 className="place-card__name" onClick={() => props.onPlaceCardClick(id)}>
+        <h2 className="place-card__name" onClick={() => onPlaceCardClick(id)}>
           <a href="#">{title}</a>
         </h2>
         <p className="place-card__type">{features.entire}</p>
@@ -63,8 +64,8 @@ PlaceCard.propTypes = {
     title: PropTypes.string.isRequired,
     features: PropTypes.object.isRequired,
   }).isRequired,
-  onPlaceCardMouseOver: PropTypes.func,
-  onPlaceCardMouseLeave: PropTypes.func,
+  onPlaceCardMouseOver: PropTypes.func.isRequired,
+  onPlaceCardMouseLeave: PropTypes.func.isRequired,
   onPlaceCardClick: PropTypes.func.isRequired,
   cardClass: PropTypes.string.isRequired,
   wrapperClass: PropTypes.string.isRequired

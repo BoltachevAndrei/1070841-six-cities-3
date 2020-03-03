@@ -30,12 +30,14 @@ class App extends PureComponent {
       <Offer
         offer={offers.find((element) => element.id === offer)}
         offers={offers}
+        card={card}
+        sortType={sortType}
       />
     );
   }
 
   render() {
-    const {offers} = this.props;
+    const {offers, card, sortType} = this.props;
     return (
       <BrowserRouter>
         <Switch>
@@ -43,7 +45,7 @@ class App extends PureComponent {
             {this._renderApp()}
           </Route>
           <Route exact path='/offer'>
-            <Offer offers={offers} />
+            <Offer offers={offers} card={card} sortType={sortType}/>
           </Route>
         </Switch>
       </BrowserRouter>

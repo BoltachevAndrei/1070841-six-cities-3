@@ -27,6 +27,8 @@ it(`PlaceCard renders correctly`, () => {
       cardClass={cardClass}
       wrapperClass={wrapperClass}
       onPlaceCardClick={() => {}}
+      onPlaceCardMouseOver={() => {}}
+      onPlaceCardMouseLeave={() => {}}
     />)
     .toJSON();
   expect(tree).toMatchSnapshot();
