@@ -1,18 +1,11 @@
-import {extend, getCities} from './utils.js';
+import {extend, getCities, SortTypeList} from './utils.js';
 import {OFFERS_MOCK} from './mocks/offers.js';
-
-export const SortTypeList = {
-  POPULAR: `Popular`,
-  LOW_TO_HIGH: `Price: low to high`,
-  HIGH_TO_LOW: `Price: high to low`,
-  TOP_RATED_FIRST: `Top rated first`
-};
 
 const initialState = {
   city: getCities(OFFERS_MOCK)[0],
   offers: OFFERS_MOCK,
   offer: 0,
-  card: 101,
+  card: 0,
   isSortListOpened: false,
   sortType: SortTypeList.POPULAR
 };

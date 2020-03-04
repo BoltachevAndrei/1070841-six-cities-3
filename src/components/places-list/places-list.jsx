@@ -1,18 +1,23 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import PlaceCard from '../place-card/place-card.jsx';
 
-const PlacesList = (props) => {
-  const {offers, listClass, cardClass, wrapperClass, onPlaceCardClick, onPlaceCardMouseOver, onPlaceCardMouseLeave} = props;
+import {getOffersByCity, sortOffers} from '../../utils.js';
+
+const PlacesList = memo(function PlacesList(props) {
+  const {offers, activeCity, sortType, listClass, cardClass, wrapperClass, onPlaceCardClick, onPlaceCardMouseOver, onPlaceCardMouseLeave} = props;
+
+  const sortedOffers = sortOffers(offers, sortType);
+  const offersByCity = getOffersByCity(sortedOffers, activeCity);
 
   return (
     <div className={listClass}>
-      {offers.map((offer) => {
+      {offersByCity.map((offer) => {
         return (
           <PlaceCard
             key={offer.id}
             offer={offer}
-            offers={offers}
+            offers={offersByCity}
             cardClass={cardClass}
             wrapperClass={wrapperClass}
             onPlaceCardClick={onPlaceCardClick}
@@ -23,7 +28,7 @@ const PlacesList = (props) => {
       })}
     </div>
   );
-};
+});
 
 PlacesList.propTypes = {
   offers: PropTypes.arrayOf(
@@ -31,6 +36,8 @@ PlacesList.propTypes = {
         id: PropTypes.number.isRequired
       })
   ).isRequired,
+  activeCity: PropTypes.string.isRequired,
+  sortType: PropTypes.string.isRequired,
   listClass: PropTypes.string.isRequired,
   cardClass: PropTypes.string.isRequired,
   wrapperClass: PropTypes.string.isRequired,

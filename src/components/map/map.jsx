@@ -31,7 +31,7 @@ export default class Map extends PureComponent {
   componentDidUpdate() {
     const {offers, card} = this.props;
 
-    this._removeIcons();
+    this._removeMarkers();
     this._markers = this._createMarkers(offers, card);
   }
 
@@ -71,7 +71,7 @@ export default class Map extends PureComponent {
     );
   }
 
-  _removeIcons() {
+  _removeMarkers() {
     this._markers.forEach((marker) => marker.remove());
   }
 

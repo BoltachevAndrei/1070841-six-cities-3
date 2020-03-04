@@ -2,7 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
-import {ActionCreator, SortTypeList} from '../../reducer.js';
+import {ActionCreator} from '../../reducer.js';
+import {SortTypeList} from '../../utils.js';
 
 const PlacesSorting = (props) => {
   const {isSortListOpened, sortType, toggleSortList, changeSortType} = props;

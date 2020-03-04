@@ -2,29 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PlacesList from '../places-list/places-list.jsx';
 import CitiesList from '../cities-list/cities-list.jsx';
-
 import Map from '../map/map.jsx';
-import {getOffersByCity} from '../../utils.js';
 import PlacesSorting from '../places-sorting/places-sorting.jsx';
-
-import {SortTypeList} from '../../reducer.js';
-
-const sortOffers = (offers, sortType) => {
-  switch (sortType) {
-    case SortTypeList.HIGH_TO_LOW:
-      return offers.sort((prev, next) => next.price - prev.price);
-    case SortTypeList.LOW_TO_HIGH:
-      return offers.sort((prev, next) => prev.price - next.price);
-    case SortTypeList.TOP_RATED_FIRST:
-      return offers.sort((prev, next) => next.rating - prev.rating);
-  }
-  return offers;
-};
 
 const Main = (props) => {
   const {placesCount, offers, activeCity, card, onPlaceCardClick, onCityClick, onPlaceCardMouseOver, onPlaceCardMouseLeave, sortType} = props;
-  const sortedOffers = sortOffers(offers, sortType);
-  const offersByCity = getOffersByCity(sortedOffers, activeCity);
   return (
     <React.Fragment>
       <div style={{display: `none`}}>
@@ -62,6 +44,7 @@ const Main = (props) => {
               <CitiesList
                 offers={offers}
                 activeCity={activeCity}
+                sortType={sortType}
                 onCityClick={onCityClick}
               />
             </section>
@@ -73,8 +56,9 @@ const Main = (props) => {
                 <b className="places__found">{placesCount} places to stay in {activeCity}</b>
                 <PlacesSorting />
                 <PlacesList
-                  offers={offersByCity}
-                  card={card}
+                  offers={offers}
+                  activeCity={activeCity}
+                  sortType={sortType}
                   listClass="cities__places-list places__list tabs__content"
                   cardClass="cities__place-card place-card"
                   wrapperClass="cities__image-wrapper place-card__image-wrapper"
@@ -86,7 +70,7 @@ const Main = (props) => {
               <div className="cities__right-section">
                 <section className="cities__map map">
                   <Map
-                    offers={offersByCity}
+                    offers={offers.filter((offer) => offer.city === activeCity)}
                     card={card}
                   />
                 </section>
