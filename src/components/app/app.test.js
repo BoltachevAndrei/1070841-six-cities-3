@@ -8,7 +8,7 @@ jest.mock(`../map/map.jsx`);
 
 const mockStore = configureStore([]);
 
-const activeCity = `Amsterdam`;
+const activeCity = `Test city 2`;
 
 const sortType = `Popular`;
 
@@ -149,6 +149,8 @@ describe(`App renders correctly`, () => {
               sortType={sortType}
               onPlaceCardClick={() => {}}
               onCityClick={() => {}}
+              onPlaceCardMouseOver={() => {}}
+              onPlaceCardMouseLeave={() => {}}
             />
           </Provider>, {
             createNodeMock: () => {
@@ -176,6 +178,8 @@ describe(`App renders correctly`, () => {
               sortType={sortType}
               onPlaceCardClick={() => {}}
               onCityClick={() => {}}
+              onPlaceCardMouseOver={() => {}}
+              onPlaceCardMouseLeave={() => {}}
             />
           </Provider>, {
             createNodeMock: () => {
