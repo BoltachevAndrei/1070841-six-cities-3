@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PlacesList from '../places-list/places-list.jsx';
 import CitiesList from '../cities-list/cities-list.jsx';
-import Map from '../map/map.jsx';
-import PlacesSorting from '../places-sorting/places-sorting.jsx';
+import CitiesPlaces from '../cities-places/cities-places.jsx';
+import CitiesNoPlaces from '../cities-no-places/cities-no-places.jsx';
 
 const Main = (props) => {
   const {placesCount, offers, activeCity, card, onPlaceCardClick, onCityClick, onPlaceCardMouseOver, onPlaceCardMouseLeave, sortType} = props;
@@ -37,7 +36,7 @@ const Main = (props) => {
           </div>
         </header>
 
-        <main className="page__main page__main--index">
+        <main className={`page__main page__main--index${placesCount > 0 ? `` : ` page__main--index-empty`}`}>
           <h1 className="visually-hidden">Cities</h1>
           <div className="tabs">
             <section className="locations container">
@@ -50,7 +49,25 @@ const Main = (props) => {
             </section>
           </div>
           <div className="cities">
-            <div className="cities__places-container container">
+            {!!placesCount &&
+              <CitiesPlaces
+                offers={offers}
+                activeCity={activeCity}
+                placesCount={placesCount}
+                card={card}
+                sortType={sortType}
+                onPlaceCardClick={onPlaceCardClick}
+                onPlaceCardMouseOver={onPlaceCardMouseOver}
+                onPlaceCardMouseLeave={onPlaceCardMouseLeave}
+              />
+            }
+            {!!placesCount ||
+              <CitiesNoPlaces
+                activeCity={activeCity}
+              />
+            }
+
+            {/* <div className="cities__places-container container">
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
                 <b className="places__found">{placesCount} places to stay in {activeCity}</b>
@@ -75,7 +92,7 @@ const Main = (props) => {
                   />
                 </section>
               </div>
-            </div>
+            </div> */}
           </div>
         </main>
       </div>
