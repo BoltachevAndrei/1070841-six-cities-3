@@ -25,8 +25,8 @@ const offer = {
   description: `Test description`,
   features: {
     entire: `Palace`,
-    bedrooms: `33 Bedrooms`,
-    adults: `Max 55 adults`
+    bedrooms: `33`,
+    adults: `55`
   },
   inside: [
     `MiniBar`
@@ -65,8 +65,8 @@ const offers = [
     description: `Test description`,
     features: {
       entire: `Private room`,
-      bedrooms: `33 Bedrooms`,
-      adults: `Max 55 adults`
+      bedrooms: `33`,
+      adults: `55`
     },
     inside: [
       `MiniBar`
@@ -103,8 +103,8 @@ const offers = [
     description: `Test description`,
     features: {
       entire: `Apartment`,
-      bedrooms: `33 Bedrooms`,
-      adults: `Max 55 adults`
+      bedrooms: `33`,
+      adults: `55`
     },
     inside: [
       `MiniBar`
@@ -141,8 +141,8 @@ const offers = [
     description: `Test description`,
     features: {
       entire: `Apartment`,
-      bedrooms: `33 Bedrooms`,
-      adults: `Max 55 adults`
+      bedrooms: `33`,
+      adults: `55`
     },
     inside: [
       `MiniBar`

@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
-import {ActionCreator} from '../../reducer.js';
+import {ActionCreator} from '../../reducer/app-state/app-state.js';
 import {SortTypeList} from '../../utils.js';
 
 const PlacesSorting = (props) => {
@@ -38,8 +38,8 @@ const PlacesSorting = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  isSortListOpened: state.isSortListOpened,
-  sortType: state.sortType
+  isSortListOpened: state.APP_STATE.isSortListOpened,
+  sortType: state.APP_STATE.sortType
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -15,6 +15,8 @@ const sortType = `Popular`;
 
 const card = 0;
 
+const citiesList = [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`];
+
 const offers = [
   {
     id: 111,
@@ -45,6 +47,7 @@ it(`Should locations item be pressed`, () => {
         placesCount={placesCountTest}
         offers={offers}
         activeCity={activeCity}
+        citiesList={citiesList}
         sortType={sortType}
         card={card}
         onPlaceCardClick={onPlaceCardClick}

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ReviewsList from '../reviews-list/reviews-list.jsx';
 import Map from '../map/map.jsx';
 import PlacesList from '../places-list/places-list.jsx';
+import {capitalizeString} from '../../utils.js';
 
 const Offer = (props) => {
   const {id, city, isPremium, images, price, isBookmarked, rating, title, description, features, inside, user, reviews} = props.offer;
@@ -74,13 +75,13 @@ const Offer = (props) => {
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
-                  {features.entire}
+                  {capitalizeString(features.entire)}
                 </li>
                 <li className="property__feature property__feature--bedrooms">
-                  {features.bedrooms}
+                  {`${features.bedrooms} Bedrooms`}
                 </li>
                 <li className="property__feature property__feature--adults">
-                  {features.adults}
+                  {`Max ${features.adults} adults`}
                 </li>
               </ul>
               <div className="property__price">

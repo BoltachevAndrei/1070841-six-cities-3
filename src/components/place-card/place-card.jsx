@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {capitalizeString} from '../../utils.js';
 
 const PlaceCard = (props) => {
   const {id, isPremium, images, price, isBookmarked, rating, title, features} = props.offer;
@@ -47,7 +48,7 @@ const PlaceCard = (props) => {
         <h2 className="place-card__name" onClick={() => onPlaceCardClick(id)}>
           <a href="#">{title}</a>
         </h2>
-        <p className="place-card__type">{features.entire}</p>
+        <p className="place-card__type">{capitalizeString(features.entire)}</p>
       </div>
     </article>
   );

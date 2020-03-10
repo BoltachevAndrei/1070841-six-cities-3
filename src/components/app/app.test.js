@@ -14,6 +14,8 @@ const sortType = `Popular`;
 
 const card = 0;
 
+const citiesList = [`Test city 1`, `Test city 2`, `Test city 3`, `Test city 4`];
+
 const offers = [
   {
     id: 778,
@@ -29,8 +31,8 @@ const offers = [
     description: `Test description`,
     features: {
       entire: `Private room`,
-      bedrooms: `33 Bedrooms`,
-      adults: `Max 55 adults`
+      bedrooms: `33`,
+      adults: `55`
     },
     inside: [
       `MiniBar`
@@ -67,8 +69,8 @@ const offers = [
     description: `Test description`,
     features: {
       entire: `Apartment`,
-      bedrooms: `33 Bedrooms`,
-      adults: `Max 55 adults`
+      bedrooms: `33`,
+      adults: `55`
     },
     inside: [
       `MiniBar`
@@ -105,8 +107,8 @@ const offers = [
     description: `Test description`,
     features: {
       entire: `Apartment`,
-      bedrooms: `33 Bedrooms`,
-      adults: `Max 55 adults`
+      bedrooms: `33`,
+      adults: `55`
     },
     inside: [
       `MiniBar`
@@ -134,8 +136,10 @@ const offers = [
 describe(`App renders correctly`, () => {
   it(`Main renders correctly`, () => {
     const store = mockStore({
-      sortType,
-      isSortListOpened: false
+      APP_STATE: {
+        sortType,
+        isSortListOpened: false
+      }
     });
 
     const tree = renderer
@@ -145,6 +149,7 @@ describe(`App renders correctly`, () => {
               offers={offers}
               offer={offers[0].id}
               city={activeCity}
+              citiesList={citiesList}
               card={card}
               sortType={sortType}
               onPlaceCardClick={() => {}}
@@ -163,8 +168,10 @@ describe(`App renders correctly`, () => {
 
   it(`Offer renders correctly`, () => {
     const store = mockStore({
-      sortType,
-      isSortListOpened: false
+      APP_STATE: {
+        sortType,
+        isSortListOpened: false
+      }
     });
 
     const tree = renderer
@@ -174,6 +181,7 @@ describe(`App renders correctly`, () => {
               offers={offers}
               offer={0}
               city={activeCity}
+              citiesList={citiesList}
               card={card}
               sortType={sortType}
               onPlaceCardClick={() => {}}
