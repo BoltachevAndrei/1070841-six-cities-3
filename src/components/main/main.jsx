@@ -5,7 +5,7 @@ import CitiesPlaces from '../cities-places/cities-places.jsx';
 import CitiesNoPlaces from '../cities-no-places/cities-no-places.jsx';
 
 const Main = (props) => {
-  const {placesCount, offers, activeCity, card, onPlaceCardClick, onCityClick, onPlaceCardMouseOver, onPlaceCardMouseLeave, sortType} = props;
+  const {placesCount, offers, activeCity, citiesList, card, onPlaceCardClick, onCityClick, onPlaceCardMouseOver, onPlaceCardMouseLeave, sortType} = props;
   return (
     <React.Fragment>
       <div style={{display: `none`}}>
@@ -41,9 +41,8 @@ const Main = (props) => {
           <div className="tabs">
             <section className="locations container">
               <CitiesList
-                offers={offers}
+                citiesList={citiesList}
                 activeCity={activeCity}
-                sortType={sortType}
                 onCityClick={onCityClick}
               />
             </section>
@@ -104,6 +103,7 @@ Main.propTypes = {
   placesCount: PropTypes.number.isRequired,
   offers: PropTypes.array.isRequired,
   activeCity: PropTypes.string.isRequired,
+  citiesList: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   card: PropTypes.number.isRequired,
   sortType: PropTypes.string.isRequired,
   onPlaceCardClick: PropTypes.func.isRequired,

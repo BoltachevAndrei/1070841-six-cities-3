@@ -1,15 +1,17 @@
 import React, {PureComponent} from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducer.js';
+import {ActionCreator} from '../../reducer/app-state/app-state.js';
 import Main from '../main/main.jsx';
 import Offer from '../offer/offer.jsx';
 import PropTypes from 'prop-types';
 
+import {getOffersByCity, getCitiesList} from '../../reducer/data/selectors.js';
+
 class App extends PureComponent {
 
   _renderApp() {
-    const {offers, offer, city, card, sortType, onPlaceCardClick, onCityClick, onPlaceCardMouseOver, onPlaceCardMouseLeave} = this.props;
+    const {offers, offer, city, citiesList, card, sortType, onPlaceCardClick, onCityClick, onPlaceCardMouseOver, onPlaceCardMouseLeave} = this.props;
     const numberOfPlacesToStay = offers.filter((element) => element.city === city).length;
     if (!offer) {
       return (
@@ -17,6 +19,7 @@ class App extends PureComponent {
           placesCount={numberOfPlacesToStay}
           offers={offers}
           activeCity={city}
+          citiesList={citiesList}
           card={card}
           sortType={sortType}
           onPlaceCardClick={onPlaceCardClick}
@@ -57,6 +60,7 @@ App.propTypes = {
   offers: PropTypes.array.isRequired,
   offer: PropTypes.number.isRequired,
   city: PropTypes.string.isRequired,
+  citiesList: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   card: PropTypes.number.isRequired,
   sortType: PropTypes.string.isRequired,
   onPlaceCardClick: PropTypes.func.isRequired,
@@ -66,11 +70,12 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  offers: state.offers,
-  offer: state.offer,
-  city: state.city,
-  card: state.card,
-  sortType: state.sortType
+  offers: getOffersByCity(state),
+  offer: state.APP_STATE.offer,
+  city: state.APP_STATE.city,
+  citiesList: getCitiesList(state),
+  card: state.APP_STATE.card,
+  sortType: state.APP_STATE.sortType
 });
 
 const mapDispatchToProps = (dispatch) => ({

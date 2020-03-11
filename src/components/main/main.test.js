@@ -16,6 +16,8 @@ const sortType = `Popular`;
 
 const card = 0;
 
+const citiesList = [`Test city 1`, `Test city 2`];
+
 const offers = [
   {
     id: 111,
@@ -49,8 +51,10 @@ const offers = [
 
 it(`Main renders correctly`, () => {
   const store = mockStore({
-    sortType,
-    isSortListOpened: false
+    APP_STATE: {
+      sortType,
+      isSortListOpened: false
+    }
   });
 
   const tree = renderer
@@ -60,10 +64,13 @@ it(`Main renders correctly`, () => {
             placesCount={placesCountTest}
             offers={offers}
             activeCity={activeCity}
+            citiesList={citiesList}
             sortType={sortType}
             card={card}
             onPlaceCardClick={() => { }}
             onCityClick={() => { }}
+            onPlaceCardMouseOver={() => {}}
+            onPlaceCardMouseLeave={() => {}}
           />)
         </Provider>, {
           createNodeMock: () => {

@@ -12,8 +12,10 @@ const sortType = `Popular`;
 
 it(`PlacesSorting renders correctly`, () => {
   const store = mockStore({
-    isSortListOpened,
-    sortType
+    APP_STATE: {
+      isSortListOpened,
+      sortType
+    }
   });
 
   const tree = renderer

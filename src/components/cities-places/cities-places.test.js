@@ -50,8 +50,10 @@ const sortType = `Popular`;
 
 it(`CitiesPlaces renders correctly`, () => {
   const store = mockStore({
-    isSortListOpened: false,
-    sortType
+    APP_STATE: {
+      sortType,
+      isSortListOpened: false
+    }
   });
   const tree = renderer
     .create(

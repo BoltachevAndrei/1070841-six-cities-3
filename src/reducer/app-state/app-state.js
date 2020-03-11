@@ -1,32 +1,25 @@
-import {extend, getCities, SortTypeList} from './utils.js';
-import {OFFERS_MOCK} from './mocks/offers.js';
+import {extend, SortTypeList} from '../../utils.js';
 
 const initialState = {
-  city: getCities(OFFERS_MOCK)[0],
-  offers: OFFERS_MOCK,
+  city: ``,
   offer: 0,
   card: 0,
   isSortListOpened: false,
   sortType: SortTypeList.POPULAR
 };
 
-export const ActionType = {
+const ActionType = {
   CHANGE_CITY: `CHANGE_CITY`,
-  GET_OFFERS: `GET_OFFERS`,
   CHANGE_OFFER: `CHANGE_OFFER`,
   CHANGE_CARD: `CHANGE_CARD`,
   TOGGLE_SORT_LIST: `TOGGLE_SORT_LIST`,
   CHANGE_SORT_TYPE: `CHANGE_SORT_TYPE`
 };
 
-export const ActionCreator = {
+const ActionCreator = {
   changeCity: (city) => ({
     type: ActionType.CHANGE_CITY,
     payload: city
-  }),
-  getOffers: () => ({
-    type: ActionType.GET_OFFERS,
-    payload: OFFERS_MOCK
   }),
   changeOffer: (id) => ({
     type: ActionType.CHANGE_OFFER,
@@ -46,12 +39,10 @@ export const ActionCreator = {
   })
 };
 
-export const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.CHANGE_CITY:
       return extend(state, {city: action.payload});
-    case ActionType.GET_OFFERS:
-      return extend(state, {offers: action.payload});
     case ActionType.CHANGE_OFFER:
       return extend(state, {offer: action.payload});
     case ActionType.TOGGLE_SORT_LIST:
@@ -63,3 +54,5 @@ export const reducer = (state = initialState, action) => {
   }
   return state;
 };
+
+export {reducer, ActionType, ActionCreator};

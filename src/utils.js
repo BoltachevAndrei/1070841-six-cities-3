@@ -5,9 +5,11 @@ export const SortTypeList = {
   TOP_RATED_FIRST: `Top rated first`
 };
 
+export const capitalizeString = (str) => str[0].toUpperCase() + str.slice(1);
+
 export const extend = (object1, object2) => Object.assign({}, object1, object2);
 
-export const getCities = (data) => Array.from(new Set(data.map((element) => element.city)).values()).sort();
+export const getCities = (data) => Array.from(new Set(data.map((element) => element.city)).values());
 
 export const getOffersByCity = (offers, city) => offers.filter((offer) => offer.city === city);
 

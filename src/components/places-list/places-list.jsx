@@ -2,22 +2,21 @@ import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import PlaceCard from '../place-card/place-card.jsx';
 
-import {getOffersByCity, sortOffers} from '../../utils.js';
+import {sortOffers} from '../../utils.js';
 
 const PlacesList = memo(function PlacesList(props) {
-  const {offers, activeCity, sortType, listClass, cardClass, wrapperClass, onPlaceCardClick, onPlaceCardMouseOver, onPlaceCardMouseLeave} = props;
+  const {offers, sortType, listClass, cardClass, wrapperClass, onPlaceCardClick, onPlaceCardMouseOver, onPlaceCardMouseLeave} = props;
 
   const sortedOffers = sortOffers(offers, sortType);
-  const offersByCity = getOffersByCity(sortedOffers, activeCity);
 
   return (
     <div className={listClass}>
-      {offersByCity.map((offer) => {
+      {sortedOffers.map((offer) => {
         return (
           <PlaceCard
             key={offer.id}
             offer={offer}
-            offers={offersByCity}
+            offers={sortedOffers}
             cardClass={cardClass}
             wrapperClass={wrapperClass}
             onPlaceCardClick={onPlaceCardClick}
@@ -36,7 +35,6 @@ PlacesList.propTypes = {
         id: PropTypes.number.isRequired
       })
   ).isRequired,
-  activeCity: PropTypes.string.isRequired,
   sortType: PropTypes.string.isRequired,
   listClass: PropTypes.string.isRequired,
   cardClass: PropTypes.string.isRequired,
