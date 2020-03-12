@@ -4,14 +4,14 @@ import {connect} from 'react-redux';
 import {ActionCreator} from '../../reducer/app-state/app-state.js';
 import Main from '../main/main.jsx';
 import Offer from '../offer/offer.jsx';
+import SignIn from '../sign-in/sign-in.jsx';
 import PropTypes from 'prop-types';
 
 import {getOffersByCity, getCitiesList} from '../../reducer/data/selectors.js';
 
 class App extends PureComponent {
-
   _renderApp() {
-    const {offers, offer, city, citiesList, card, sortType, onPlaceCardClick, onCityClick, onPlaceCardMouseOver, onPlaceCardMouseLeave} = this.props;
+    const {offers, offer, city, citiesList, card, sortType, user, onPlaceCardClick, onCityClick, onPlaceCardMouseOver, onPlaceCardMouseLeave} = this.props;
     const numberOfPlacesToStay = offers.filter((element) => element.city === city).length;
     if (!offer) {
       return (
@@ -22,6 +22,7 @@ class App extends PureComponent {
           citiesList={citiesList}
           card={card}
           sortType={sortType}
+          user={user}
           onPlaceCardClick={onPlaceCardClick}
           onCityClick={onCityClick}
           onPlaceCardMouseOver={onPlaceCardMouseOver}
@@ -50,6 +51,9 @@ class App extends PureComponent {
           <Route exact path='/offer'>
             <Offer offers={offers} card={card} sortType={sortType}/>
           </Route>
+          <Route exact path='/login'>
+            <SignIn onSubmit={() => {}} />
+          </Route>
         </Switch>
       </BrowserRouter>
     );
@@ -63,6 +67,13 @@ App.propTypes = {
   citiesList: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   card: PropTypes.number.isRequired,
   sortType: PropTypes.string.isRequired,
+  user: PropTypes.shape({
+    'avatar_url': PropTypes.string.isRequired,
+    'email': PropTypes.string.isRequired,
+    'id': PropTypes.number.isRequired,
+    'is_pro': PropTypes.bool.isRequired,
+    'name': PropTypes.string.isRequired
+  }),
   onPlaceCardClick: PropTypes.func.isRequired,
   onCityClick: PropTypes.func.isRequired,
   onPlaceCardMouseOver: PropTypes.func,
@@ -75,7 +86,8 @@ const mapStateToProps = (state) => ({
   city: state.APP_STATE.city,
   citiesList: getCitiesList(state),
   card: state.APP_STATE.card,
-  sortType: state.APP_STATE.sortType
+  sortType: state.APP_STATE.sortType,
+  user: state.USER.user
 });
 
 const mapDispatchToProps = (dispatch) => ({

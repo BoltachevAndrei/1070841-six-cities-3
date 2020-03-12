@@ -5,7 +5,7 @@ import CitiesPlaces from '../cities-places/cities-places.jsx';
 import CitiesNoPlaces from '../cities-no-places/cities-no-places.jsx';
 
 const Main = (props) => {
-  const {placesCount, offers, activeCity, citiesList, card, onPlaceCardClick, onCityClick, onPlaceCardMouseOver, onPlaceCardMouseLeave, sortType} = props;
+  const {placesCount, offers, activeCity, citiesList, card, sortType, user, onPlaceCardClick, onCityClick, onPlaceCardMouseOver, onPlaceCardMouseLeave} = props;
   return (
     <React.Fragment>
       <div style={{display: `none`}}>
@@ -27,7 +27,7 @@ const Main = (props) => {
                     <a className="header__nav-link header__nav-link--profile" href="#">
                       <div className="header__avatar-wrapper user__avatar-wrapper">
                       </div>
-                      <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
+                      <span className="header__user-name user__name">{user ? user.email : `Sign In`}</span>
                     </a>
                   </li>
                 </ul>
@@ -106,6 +106,13 @@ Main.propTypes = {
   citiesList: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   card: PropTypes.number.isRequired,
   sortType: PropTypes.string.isRequired,
+  user: PropTypes.shape({
+    'avatar_url': PropTypes.string.isRequired,
+    'email': PropTypes.string.isRequired,
+    'id': PropTypes.number.isRequired,
+    'is_pro': PropTypes.bool.isRequired,
+    'name': PropTypes.string.isRequired
+  }),
   onPlaceCardClick: PropTypes.func.isRequired,
   onCityClick: PropTypes.func.isRequired,
   onPlaceCardMouseOver: PropTypes.func,

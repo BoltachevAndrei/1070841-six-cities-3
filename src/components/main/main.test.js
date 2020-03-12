@@ -18,6 +18,14 @@ const card = 0;
 
 const citiesList = [`Test city 1`, `Test city 2`];
 
+const user = {
+  'avatar_url': `img/1.png`,
+  'email': `Oliver.conner@gmail.com`,
+  'id': 1,
+  'is_pro': false,
+  'name': `Oliver.conner`
+};
+
 const offers = [
   {
     id: 111,
@@ -67,6 +75,7 @@ it(`Main renders correctly`, () => {
             citiesList={citiesList}
             sortType={sortType}
             card={card}
+            user={user}
             onPlaceCardClick={() => { }}
             onCityClick={() => { }}
             onPlaceCardMouseOver={() => {}}
