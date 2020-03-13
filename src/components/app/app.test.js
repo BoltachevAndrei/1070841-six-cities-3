@@ -16,6 +16,14 @@ const card = 0;
 
 const citiesList = [`Test city 1`, `Test city 2`, `Test city 3`, `Test city 4`];
 
+const user = {
+  'avatar_url': `img/1.png`,
+  'email': `Oliver.conner@gmail.com`,
+  'id': 1,
+  'is_pro': false,
+  'name': `Oliver.conner`
+};
+
 const offers = [
   {
     id: 778,
@@ -152,6 +160,7 @@ describe(`App renders correctly`, () => {
               citiesList={citiesList}
               card={card}
               sortType={sortType}
+              user={user}
               onPlaceCardClick={() => {}}
               onCityClick={() => {}}
               onPlaceCardMouseOver={() => {}}
@@ -184,6 +193,7 @@ describe(`App renders correctly`, () => {
               citiesList={citiesList}
               card={card}
               sortType={sortType}
+              user={user}
               onPlaceCardClick={() => {}}
               onCityClick={() => {}}
               onPlaceCardMouseOver={() => {}}
