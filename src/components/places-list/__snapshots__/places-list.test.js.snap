@@ -81,7 +81,7 @@ exports[`PlacesList renders correctly 1`] = `
           <span
             style={
               Object {
-                "width": "80%",
+                "width": "20%",
               }
             }
           />
@@ -180,7 +180,7 @@ exports[`PlacesList renders correctly 1`] = `
           <span
             style={
               Object {
-                "width": "80%",
+                "width": "100%",
               }
             }
           />

@@ -22,10 +22,11 @@ const store = createStore(
     )
 );
 
-store.dispatch(DataOperation.loadOffers()).then(() => store.dispatch(ActionCreator.changeCity(store.getState().DATA.offers[0].city)));
-store.dispatch(UserOperation.checkAuth());
-
-// store.dispatch(UserOperation.login({login: `Oliver.conner@gmail.com`, password: 2}));
+store.dispatch(DataOperation.loadOffers())
+  .then(() => store.dispatch(ActionCreator.changeCity(store.getState().DATA.offers[0].city)))
+  .then(() => store.dispatch(UserOperation.login({email: `Oliver.conner@gmail.com`, password: 2}))
+  .then(() => store.dispatch(UserOperation.checkAuth()))
+  .then(() => store.dispatch(DataOperation.loadFavorites())));
 
 ReactDOM.render(
     <Provider store={store}>

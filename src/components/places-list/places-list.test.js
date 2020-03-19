@@ -22,7 +22,8 @@ const offers = [
     title: `Test title 1`,
     features: {
       entire: `Test type 1`
-    }
+    },
+    previewImage: `img/amsterdam.jpg`
   },
   {
     id: 333,
@@ -37,7 +38,8 @@ const offers = [
     title: `Test title 2`,
     features: {
       entire: `Test type 2`
-    }
+    },
+    previewImage: `img/amsterdam@2x.jpg`
   }
 ];
 

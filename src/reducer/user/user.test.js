@@ -4,14 +4,6 @@ import {reducer, ActionType, AuthorizationStatus, Operation} from './user.js';
 
 const api = createAPI(() => {});
 
-const user = {
-  'avatar_url': `img/1.png`,
-  'email': `Oliver.conner@gmail.com`,
-  'id': 1,
-  'is_pro': false,
-  'name': `Oliver.conner`
-};
-
 it(`Reducer should change authentification status`, () => {
   expect(reducer({
     authorizationStatus: AuthorizationStatus.NO_AUTH
@@ -19,8 +11,34 @@ it(`Reducer should change authentification status`, () => {
   {
     type: ActionType.CHANGE_AUTHORIZATION_STATUS,
     payload: AuthorizationStatus.AUTH
-  })).toEqual({
+  }))
+  .toEqual({
     authorizationStatus: AuthorizationStatus.AUTH
+  });
+});
+
+it(`Reducer should change user data`, () => {
+  expect(reducer({
+    user: null
+  },
+  {
+    type: ActionType.CHANGE_USER_DATA,
+    payload: {
+      'avatar_url': `img/1.png`,
+      'email': `Oliver.conner@gmail.com`,
+      'id': 1,
+      'is_pro': false,
+      'name': `Oliver.conner`
+    }
+  }))
+  .toEqual({
+    user: {
+      'avatar_url': `img/1.png`,
+      'email': `Oliver.conner@gmail.com`,
+      'id': 1,
+      'is_pro': false,
+      'name': `Oliver.conner`
+    }
   });
 });
 
@@ -31,12 +49,28 @@ it(`Operation.checkAuth work correctly`, () => {
 
   apiMock
     .onGet(`/login`)
-    .reply(200, user);
+    .reply(200, {
+      'avatar_url': `img/1.png`,
+      'email': `Oliver.conner@gmail.com`,
+      'id': 1,
+      'is_pro': false,
+      'name': `Oliver.conner`
+    });
 
   return checkAuth(dispatch, () => {}, api)
     .then(() => {
-      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenCalledTimes(2);
       expect(dispatch).toHaveBeenNthCalledWith(1, {
+        type: ActionType.CHANGE_USER_DATA,
+        payload: {
+          'avatar_url': `img/1.png`,
+          'email': `Oliver.conner@gmail.com`,
+          'id': 1,
+          'is_pro': false,
+          'name': `Oliver.conner`
+        }
+      });
+      expect(dispatch).toHaveBeenNthCalledWith(2, {
         type: ActionType.CHANGE_AUTHORIZATION_STATUS,
         payload: AuthorizationStatus.AUTH
       });

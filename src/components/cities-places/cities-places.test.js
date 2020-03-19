@@ -12,6 +12,9 @@ jest.mock(`../map/map.jsx`);
 const offers = [
   {
     id: 111,
+    city: {
+      name: `Amsterdam`
+    },
     isPremium: true,
     images: [
       `img/amsterdam.jpg`
@@ -22,10 +25,14 @@ const offers = [
     title: `Test title 1`,
     features: {
       entire: `Test type 1`,
-    }
+    },
+    previewImage: `img/amsterdam.jpg`
   },
   {
     id: 333,
+    city: {
+      name: `Amsterdam`
+    },
     isPremium: false,
     images: [
       `img/amsterdam@2x.jpg`
@@ -36,11 +43,14 @@ const offers = [
     title: `Test title 2`,
     features: {
       entire: `Test type 2`,
-    }
+    },
+    previewImage: `img/amsterdam@2x.jpg`
   }
 ];
 
-const activeCity = `Amsterdam`;
+const activeCity = {
+  name: `Amsterdam`
+};
 
 const placesCount = 111;
 

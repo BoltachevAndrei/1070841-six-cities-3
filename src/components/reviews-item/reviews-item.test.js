@@ -5,8 +5,10 @@ import ReviewsItem from './reviews-item.jsx';
 const review = {
   id: 203,
   user: {
+    id: 1,
     name: `Test User`,
     avatar: `img/avatar.svg`,
+    isPro: true
   },
   text: `Test review text`,
   rating: 4,

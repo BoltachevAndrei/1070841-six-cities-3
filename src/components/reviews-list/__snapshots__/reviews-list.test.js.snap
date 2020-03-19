@@ -57,7 +57,7 @@ Array [
             <span
               className="visually-hidden"
             >
-              Rating
+              4
             </span>
           </div>
         </div>
@@ -116,7 +116,7 @@ Array [
             <span
               className="visually-hidden"
             >
-              Rating
+              4
             </span>
           </div>
         </div>

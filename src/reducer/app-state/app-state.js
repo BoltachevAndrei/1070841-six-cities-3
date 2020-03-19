@@ -1,7 +1,7 @@
 import {extend, SortTypeList} from '../../utils.js';
 
 const initialState = {
-  city: ``,
+  city: {},
   offer: 0,
   card: 0,
   isSortListOpened: false,
