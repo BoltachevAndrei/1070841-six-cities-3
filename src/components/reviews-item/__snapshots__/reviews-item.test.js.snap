@@ -43,7 +43,7 @@ exports[`ReviewsItem renders correctly 1`] = `
         <span
           className="visually-hidden"
         >
-          Rating
+          4
         </span>
       </div>
     </div>

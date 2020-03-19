@@ -5,32 +5,23 @@ import leaflet from 'leaflet';
 export default class Map extends PureComponent {
   constructor(props) {
     super(props);
-    this._map = null;
+    this._city = props.activeCity;
     this._markers = [];
   }
 
   componentDidMount() {
     const {offers, card} = this.props;
-
-    const city = [52.38333, 4.9];
-    const zoom = 12;
-
-    this._map = leaflet.map(`map`, {
-      center: city,
-      zoom,
-      zoomControl: false,
-      marker: true
-    });
-    this._map.setView(city, zoom);
-    leaflet
-      .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`})
-      .addTo(this._map);
+    this._createMap(this._city);
     this._markers = this._createMarkers(offers, card);
   }
 
   componentDidUpdate() {
-    const {offers, card} = this.props;
-
+    const {offers, card, activeCity} = this.props;
+    if (this._city.name !== activeCity.name) {
+      this._city = activeCity;
+      this._removeMap();
+      this._createMap(this._city);
+    }
     this._removeMarkers();
     this._markers = this._createMarkers(offers, card);
   }
@@ -44,6 +35,9 @@ export default class Map extends PureComponent {
   }
 
   _createMarkers(offers, card) {
+    if (offers.length === 0 && Array.isArray(offers)) {
+      return null;
+    }
     const icon = leaflet.icon({
       iconUrl: `img/pin.svg`,
       iconSize: [30, 30]
@@ -71,8 +65,26 @@ export default class Map extends PureComponent {
     );
   }
 
+  _createMap(city) {
+    const location = [city.location.latitude, city.location.longitude];
+    const zoom = city.location.zoom;
+
+    this._map = leaflet.map(`map`, {
+      center: location,
+      zoom,
+      zoomControl: false,
+      marker: true
+    });
+    this._map.setView(location, zoom);
+    leaflet
+      .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`})
+      .addTo(this._map);
+  }
+
   _removeMarkers() {
-    this._markers.forEach((marker) => marker.remove());
+    if (this._markers !== null) {
+      this._markers.forEach((marker) => marker.remove());
+    }
   }
 
   _removeMap() {
@@ -83,5 +95,6 @@ export default class Map extends PureComponent {
 
 Map.propTypes = {
   offers: PropTypes.array.isRequired,
-  card: PropTypes.number.isRequired
+  card: PropTypes.number.isRequired,
+  activeCity: PropTypes.object.isRequired
 };

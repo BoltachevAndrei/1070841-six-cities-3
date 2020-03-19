@@ -17,7 +17,8 @@ const offer = {
   title: `Test title 1`,
   features: {
     entire: `Test type 1`,
-  }
+  },
+  previewImage: `img/amsterdam.jpg`
 };
 
 it(`PlaceCard renders correctly`, () => {

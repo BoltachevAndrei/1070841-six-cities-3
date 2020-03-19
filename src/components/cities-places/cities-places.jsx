@@ -10,7 +10,7 @@ const CitiesPlaces = memo(function CitiesPlaces(props) {
     <div className="cities__places-container container">
       <section className="cities__places places">
         <h2 className="visually-hidden">Places</h2>
-        <b className="places__found">{placesCount} places to stay in {activeCity}</b>
+        <b className="places__found">{placesCount} places to stay in {activeCity.name}</b>
         <PlacesSorting />
         <PlacesList
           offers={offers}
@@ -27,8 +27,9 @@ const CitiesPlaces = memo(function CitiesPlaces(props) {
       <div className="cities__right-section">
         <section className="cities__map map">
           <Map
-            offers={offers.filter((offer) => offer.city === activeCity)}
+            offers={offers.filter((offer) => offer.city.name === activeCity.name)}
             card={card}
+            activeCity={activeCity}
           />
         </section>
       </div>
@@ -38,7 +39,7 @@ const CitiesPlaces = memo(function CitiesPlaces(props) {
 
 CitiesPlaces.propTypes = {
   offers: PropTypes.array.isRequired,
-  activeCity: PropTypes.string.isRequired,
+  activeCity: PropTypes.object.isRequired,
   placesCount: PropTypes.number.isRequired,
   card: PropTypes.number.isRequired,
   sortType: PropTypes.string.isRequired,

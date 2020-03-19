@@ -11,9 +11,24 @@ const card = 101;
 
 const sortType = `Popular`;
 
+const user = {
+  'avatar_url': `img/1.png`,
+  'email': `Oliver.conner@gmail.com`,
+  'id': 1,
+  'is_pro': false,
+  'name': `Oliver.conner`
+};
+
 const offer = {
   id: 777,
-  city: `Test city 1`,
+  city: {
+    name: `Test city 1`,
+    location: {
+      latitude: 52.370216,
+      longitude: 4.895168,
+      zoom: 10
+    }
+  },
   isPremium: true,
   images: [
     `img/amsterdam.jpg`
@@ -31,23 +46,15 @@ const offer = {
   inside: [
     `MiniBar`
   ],
-  user: {
+  host: {
+    id: 1,
     name: `Ivan`,
     avatar: `img/avatar.svg`,
     isSuper: true
   },
-  reviews: [
-    {
-      id: 201,
-      user: {
-        name: `Max`,
-        avatar: `img/avatar-max.jpg`,
-      },
-      text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
-      rating: 3,
-      date: new Date(`2019-04-24`)
-    }
-  ]
+  previewImage: `img/amsterdam.jpg`,
+  coordinates: [52.370216, 4.895168],
+  zoom: 12
 };
 
 const offers = [
@@ -71,23 +78,15 @@ const offers = [
     inside: [
       `MiniBar`
     ],
-    user: {
+    host: {
+      id: 1,
       name: `Ivan`,
       avatar: `img/avatar.svg`,
       isSuper: true
     },
-    reviews: [
-      {
-        id: 201,
-        user: {
-          name: `Max`,
-          avatar: `img/avatar-max.jpg`,
-        },
-        text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
-        rating: 3,
-        date: new Date(`2019-04-24`)
-      }
-    ]
+    previewImage: `img/room.jpg`,
+    coordinates: [52.370216, 4.895168],
+    zoom: 12
   },
   {
     id: 779,
@@ -109,23 +108,15 @@ const offers = [
     inside: [
       `MiniBar`
     ],
-    user: {
+    host: {
+      id: 1,
       name: `Ivan`,
       avatar: `img/avatar.svg`,
       isSuper: true
     },
-    reviews: [
-      {
-        id: 201,
-        user: {
-          name: `Max`,
-          avatar: `img/avatar-max.jpg`,
-        },
-        text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
-        rating: 3,
-        date: new Date(`2019-04-24`)
-      }
-    ]
+    previewImage: `img/apartment-02.jpg`,
+    coordinates: [52.370216, 4.895168],
+    zoom: 12
   },
   {
     id: 780,
@@ -147,36 +138,46 @@ const offers = [
     inside: [
       `MiniBar`
     ],
-    user: {
+    host: {
+      id: 1,
       name: `Ivan`,
       avatar: `img/avatar.svg`,
       isSuper: true
     },
-    reviews: [
-      {
-        id: 201,
-        user: {
-          name: `Max`,
-          avatar: `img/avatar-max.jpg`,
-        },
-        text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
-        rating: 3,
-        date: new Date(`2019-04-24`)
-      }
-    ]
+    previewImage: `img/apartment-03.jpg`,
+    coordinates: [52.370216, 4.895168],
+    zoom: 12
   },
+];
+
+const comments = [
+  {
+    text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`,
+    date: new Date(`2019-05-08T14:13:56.569Z`),
+    id: 1,
+    rating: 4,
+    user: {
+      avatar: `img/1.png`,
+      id: 4,
+      isPro: false,
+      name: `Max`
+    }
+  }
 ];
 
 it(`Offer renders correctly`, () => {
   const tree = renderer
     .create(<Offer
       offer={offer}
-      offers={offers}
+      offersNearby={offers}
       card={card}
       sortType={sortType}
+      user={user}
       listClass={listClass}
       cardClass={cardClass}
       wrapperClass="near-places__image-wrapper place-card__image-wrapper"
+      isPostingComment={true}
+      comments={comments}
     />)
     .toJSON();
   expect(tree).toMatchSnapshot();

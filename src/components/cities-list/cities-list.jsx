@@ -7,9 +7,9 @@ const CitiesList = memo(function CitiesList(props) {
     <ul className="locations__list tabs__list">
       {citiesList.map((city, index) => {
         return (
-          <li key={`${city}-${index}`} className="locations__item" onClick={() => onCityClick(city)}>
-            <a className={`locations__item-link tabs__item${activeCity === city ? ` tabs__item--active` : ``}`} href="#">
-              <span>{city}</span>
+          <li key={`${city.name}-${index}`} className="locations__item" onClick={() => onCityClick(city)}>
+            <a className={`locations__item-link tabs__item${activeCity.name === city.name ? ` tabs__item--active` : ``}`} href="#">
+              <span>{city.name}</span>
             </a>
           </li>
         );
@@ -19,8 +19,8 @@ const CitiesList = memo(function CitiesList(props) {
 });
 
 CitiesList.propTypes = {
-  citiesList: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  activeCity: PropTypes.string.isRequired,
+  citiesList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  activeCity: PropTypes.object.isRequired,
   onCityClick: PropTypes.func.isRequired
 };
 

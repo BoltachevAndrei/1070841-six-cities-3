@@ -8,13 +8,28 @@ jest.mock(`../map/map.jsx`);
 
 const mockStore = configureStore([]);
 
-const activeCity = `Test city 2`;
+const activeCity = {
+  name: `Test city 2`
+};
 
 const sortType = `Popular`;
 
 const card = 0;
 
-const citiesList = [`Test city 1`, `Test city 2`, `Test city 3`, `Test city 4`];
+const citiesList = [
+  {
+    name: `Test city 1`
+  },
+  {
+    name: `Test city 2`
+  },
+  {
+    name: `Test city 3`
+  },
+  {
+    name: `Test city 4`
+  }
+];
 
 const user = {
   'avatar_url': `img/1.png`,
@@ -27,7 +42,14 @@ const user = {
 const offers = [
   {
     id: 778,
-    city: `Test city 2`,
+    city: {
+      name: `Test city 2`,
+      location: {
+        latitude: 52.370216,
+        longitude: 4.895168,
+        zoom: 10
+      }
+    },
     isPremium: false,
     images: [
       `img/room.jpg`
@@ -45,27 +67,29 @@ const offers = [
     inside: [
       `MiniBar`
     ],
-    user: {
+    host: {
+      id: 1,
       name: `Ivan`,
       avatar: `img/avatar.svg`,
       isSuper: true
     },
-    reviews: [
-      {
-        id: 201,
-        user: {
-          name: `Max`,
-          avatar: `img/avatar-max.jpg`,
-        },
-        text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
-        rating: 3,
-        date: new Date(`2019-04-24`)
-      }
-    ]
+    previewImage: `img/room.jpg`,
+    coordinates: [
+      52.370216,
+      4.895168
+    ],
+    zoom: 12
   },
   {
     id: 779,
-    city: `Test city 3`,
+    city: {
+      name: `Test city 3`,
+      location: {
+        latitude: 52.370216,
+        longitude: 4.895168,
+        zoom: 10
+      }
+    },
     isPremium: false,
     images: [
       `img/apartment-02.jpg`
@@ -83,27 +107,29 @@ const offers = [
     inside: [
       `MiniBar`
     ],
-    user: {
+    host: {
+      id: 1,
       name: `Ivan`,
       avatar: `img/avatar.svg`,
       isSuper: true
     },
-    reviews: [
-      {
-        id: 201,
-        user: {
-          name: `Max`,
-          avatar: `img/avatar-max.jpg`,
-        },
-        text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
-        rating: 3,
-        date: new Date(`2019-04-24`)
-      }
-    ]
+    previewImage: `img/apartment-02.jpg`,
+    coordinates: [
+      52.370216,
+      4.895168
+    ],
+    zoom: 12
   },
   {
     id: 780,
-    city: `Test city 4`,
+    city: {
+      name: `Test city 4`,
+      location: {
+        latitude: 52.370216,
+        longitude: 4.895168,
+        zoom: 10
+      }
+    },
     isPremium: false,
     images: [
       `img/apartment-03.jpg`
@@ -121,24 +147,139 @@ const offers = [
     inside: [
       `MiniBar`
     ],
-    user: {
+    host: {
+      id: 1,
       name: `Ivan`,
       avatar: `img/avatar.svg`,
       isSuper: true
     },
-    reviews: [
-      {
-        id: 201,
-        user: {
-          name: `Max`,
-          avatar: `img/avatar-max.jpg`,
-        },
-        text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
-        rating: 3,
-        date: new Date(`2019-04-24`)
-      }
-    ]
+    previewImage: `img/apartment-03.jpg`,
+    coordinates: [
+      52.370216,
+      4.895168
+    ],
+    zoom: 12
   },
+];
+
+const offersNearby = [
+  {
+    id: 779,
+    city: {
+      name: `Test city 3`,
+      location: {
+        latitude: 52.370216,
+        longitude: 4.895168,
+        zoom: 10
+      }
+    },
+    isPremium: false,
+    images: [
+      `img/apartment-02.jpg`
+    ],
+    price: 132,
+    isBookmarked: false,
+    rating: 3,
+    title: `Canal View Prinsengracht`,
+    description: `Test description`,
+    features: {
+      entire: `Apartment`,
+      bedrooms: `33`,
+      adults: `55`
+    },
+    inside: [
+      `MiniBar`
+    ],
+    host: {
+      name: `Ivan`,
+      avatar: `img/avatar.svg`,
+      isSuper: true
+    },
+    previewImage: `img/apartment-02.jpg`,
+    coordinates: [
+      52.370216,
+      4.895168
+    ],
+    zoom: 12
+  },
+  {
+    id: 780,
+    city: {
+      name: `Test city 4`,
+      location: {
+        latitude: 52.370216,
+        longitude: 4.895168,
+        zoom: 10
+      }
+    },
+    isPremium: false,
+    images: [
+      `img/apartment-03.jpg`
+    ],
+    price: 180,
+    isBookmarked: false,
+    rating: 3,
+    title: `Nice, cozy, warm big bed apartment`,
+    description: `Test description`,
+    features: {
+      entire: `Apartment`,
+      bedrooms: `33`,
+      adults: `55`
+    },
+    inside: [
+      `MiniBar`
+    ],
+    host: {
+      name: `Ivan`,
+      avatar: `img/avatar.svg`,
+      isSuper: true
+    },
+    previewImage: `img/apartment-03.jpg`,
+    coordinates: [
+      52.370216,
+      4.895168
+    ],
+    zoom: 12
+  }
+];
+
+const comments = [
+  {
+    id: 201,
+    user: {
+      id: 1,
+      name: `Max`,
+      avatar: `img/avatar-max.jpg`,
+      isPro: true
+    },
+    text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+    rating: 3,
+    date: new Date(`2019-04-24`)
+  },
+  {
+    id: 202,
+    user: {
+      id: 1,
+      name: `Max`,
+      avatar: `img/avatar-max.jpg`,
+      isPro: true
+    },
+    text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+    rating: 3,
+    date: new Date(`2019-04-24`)
+  },
+  {
+    id: 203,
+    user: {
+      id: 1,
+      name: `Max`,
+      avatar: `img/avatar-max.jpg`,
+      isPro: true
+    },
+    text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+    rating: 3,
+    date: new Date(`2019-04-24`)
+  }
 ];
 
 describe(`App renders correctly`, () => {
@@ -165,6 +306,9 @@ describe(`App renders correctly`, () => {
               onCityClick={() => {}}
               onPlaceCardMouseOver={() => {}}
               onPlaceCardMouseLeave={() => {}}
+              comments={comments}
+              offersNearby={offersNearby}
+              isPostingComment={false}
             />
           </Provider>, {
             createNodeMock: () => {
@@ -198,6 +342,9 @@ describe(`App renders correctly`, () => {
               onCityClick={() => {}}
               onPlaceCardMouseOver={() => {}}
               onPlaceCardMouseLeave={() => {}}
+              comments={comments}
+              offersNearby={offersNearby}
+              isPostingComment={false}
             />
           </Provider>, {
             createNodeMock: () => {

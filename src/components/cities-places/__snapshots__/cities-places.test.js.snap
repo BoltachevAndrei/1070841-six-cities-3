@@ -158,7 +158,7 @@ exports[`CitiesPlaces renders correctly 1`] = `
               <span
                 style={
                   Object {
-                    "width": "80%",
+                    "width": "20%",
                   }
                 }
               />
@@ -257,7 +257,7 @@ exports[`CitiesPlaces renders correctly 1`] = `
               <span
                 style={
                   Object {
-                    "width": "80%",
+                    "width": "100%",
                   }
                 }
               />

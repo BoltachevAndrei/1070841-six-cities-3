@@ -65,33 +65,6 @@ const Main = (props) => {
                 activeCity={activeCity}
               />
             }
-
-            {/* <div className="cities__places-container container">
-              <section className="cities__places places">
-                <h2 className="visually-hidden">Places</h2>
-                <b className="places__found">{placesCount} places to stay in {activeCity}</b>
-                <PlacesSorting />
-                <PlacesList
-                  offers={offers}
-                  activeCity={activeCity}
-                  sortType={sortType}
-                  listClass="cities__places-list places__list tabs__content"
-                  cardClass="cities__place-card place-card"
-                  wrapperClass="cities__image-wrapper place-card__image-wrapper"
-                  onPlaceCardClick={onPlaceCardClick}
-                  onPlaceCardMouseOver={onPlaceCardMouseOver}
-                  onPlaceCardMouseLeave={onPlaceCardMouseLeave}
-                />
-              </section>
-              <div className="cities__right-section">
-                <section className="cities__map map">
-                  <Map
-                    offers={offers.filter((offer) => offer.city === activeCity)}
-                    card={card}
-                  />
-                </section>
-              </div>
-            </div> */}
           </div>
         </main>
       </div>
@@ -102,8 +75,8 @@ const Main = (props) => {
 Main.propTypes = {
   placesCount: PropTypes.number.isRequired,
   offers: PropTypes.array.isRequired,
-  activeCity: PropTypes.string.isRequired,
-  citiesList: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  activeCity: PropTypes.object.isRequired,
+  citiesList: PropTypes.arrayOf(PropTypes.object).isRequired,
   card: PropTypes.number.isRequired,
   sortType: PropTypes.string.isRequired,
   user: PropTypes.shape({

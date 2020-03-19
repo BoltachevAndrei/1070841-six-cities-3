@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Rating from '../rating/rating.jsx';
 
 const MONTHES = [
   `January`,
@@ -28,12 +29,10 @@ const ReviewsItem = ({review}) => {
         </span>
       </div>
       <div className="reviews__info">
-        <div className="reviews__rating rating">
-          <div className="reviews__stars rating__stars">
-            <span style={{width: `80%`}}></span>
-            <span className="visually-hidden">Rating</span>
-          </div>
-        </div>
+        <Rating
+          type="reviews"
+          rating={review.rating}
+        />
         <p className="reviews__text">
           {review.text}
         </p>
@@ -48,7 +47,9 @@ ReviewsItem.propTypes = {
     id: PropTypes.number.isRequired,
     user: PropTypes.shape({
       avatar: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired
+      name: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+      isPro: PropTypes.bool.isRequired
     }).isRequired,
     text: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,

@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {capitalizeString} from '../../utils.js';
+import Rating from '../rating/rating.jsx';
 
 const PlaceCard = (props) => {
-  const {id, isPremium, images, price, isBookmarked, rating, title, features} = props.offer;
+  const {id, isPremium, price, isBookmarked, rating, title, features, previewImage} = props.offer;
   const {onPlaceCardMouseOver, onPlaceCardMouseLeave, onPlaceCardClick} = props;
   const {cardClass, wrapperClass} = props;
-  const placeImage = images[0] ? <img className="place-card__image" src={images[0]} width="260" height="200" alt="Place image" /> : null;
+  const placeImage = previewImage ? <img className="place-card__image" src={previewImage} width="260" height="200" alt="Place image" /> : null;
   const placeIsPremium = isPremium ?
     (<div className="place-card__mark">
       <span>Premium</span>
@@ -39,12 +40,10 @@ const PlaceCard = (props) => {
             <span className="visually-hidden">{placeIsBookmarkedText}</span>
           </button>
         </div>
-        <div className="place-card__rating rating">
-          <div className="place-card__stars rating__stars">
-            <span style={{width: `80%`}}></span>
-            <span className="visually-hidden">{rating}</span>
-          </div>
-        </div>
+        <Rating
+          rating={rating}
+          type="place-card"
+        />
         <h2 className="place-card__name" onClick={() => onPlaceCardClick(id)}>
           <a href="#">{title}</a>
         </h2>
@@ -58,12 +57,12 @@ PlaceCard.propTypes = {
   offer: PropTypes.shape({
     id: PropTypes.number.isRequired,
     isPremium: PropTypes.bool.isRequired,
-    images: PropTypes.arrayOf(PropTypes.string).isRequired,
     price: PropTypes.number.isRequired,
     isBookmarked: PropTypes.bool.isRequired,
     rating: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     features: PropTypes.object.isRequired,
+    previewImage: PropTypes.string.isRequired
   }).isRequired,
   onPlaceCardMouseOver: PropTypes.func.isRequired,
   onPlaceCardMouseLeave: PropTypes.func.isRequired,

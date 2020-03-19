@@ -2,9 +2,15 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import CitiesList from './cities-list.jsx';
 
-const citiesList = [`Test city`];
+const citiesList = [
+  {
+    name: `Test city`
+  }
+];
 
-const activeCity = `Test city`;
+const activeCity = {
+  name: `Test city`
+};
 
 it(`CitiesList renders correctly`, () => {
   const tree = renderer

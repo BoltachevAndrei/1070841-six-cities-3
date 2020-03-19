@@ -6,8 +6,10 @@ const reviews = [
   {
     id: 201,
     user: {
+      id: 1,
       name: `Test review user 1`,
-      avatar: `img/avatar.jpg`
+      avatar: `img/avatar.jpg`,
+      isPro: true
     },
     text: `Test review text 1`,
     rating: 4,
@@ -16,8 +18,10 @@ const reviews = [
   {
     id: 202,
     user: {
+      id: 2,
       name: `Test review user 2`,
       avatar: `img/avatar.jpg`,
+      isPro: true
     },
     text: `Test review text 2`,
     rating: 4,

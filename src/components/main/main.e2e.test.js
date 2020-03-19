@@ -9,13 +9,34 @@ Enzyme.configure({
 
 const placesCountTest = 111;
 
-const activeCity = `Amsterdam`;
+const activeCity = {
+  name: `Amsterdam`
+};
 
 const sortType = `Popular`;
 
 const card = 0;
 
-const citiesList = [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`];
+const citiesList = [
+  {
+    name: `Paris`
+  },
+  {
+    name: `Cologne`
+  },
+  {
+    name: `Brussels`
+  },
+  {
+    name: `Amsterdam`
+  },
+  {
+    name: `Hamburg`
+  },
+  {
+    name: `Dusseldorf`
+  }
+];
 
 const offers = [
   {

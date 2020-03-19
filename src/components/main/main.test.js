@@ -10,13 +10,22 @@ jest.mock(`../map/map.jsx`);
 
 const placesCountTest = 111;
 
-const activeCity = `Amsterdam`;
+const activeCity = {
+  name: `Amsterdam`
+};
 
 const sortType = `Popular`;
 
 const card = 0;
 
-const citiesList = [`Test city 1`, `Test city 2`];
+const citiesList = [
+  {
+    name: `Test city 1`
+  },
+  {
+    name: `Test city 2`
+  }
+];
 
 const user = {
   'avatar_url': `img/1.png`,
@@ -29,6 +38,9 @@ const user = {
 const offers = [
   {
     id: 111,
+    city: {
+      name: `Test city 1`
+    },
     isPremium: true,
     images: [
       `img/amsterdam.jpg`
@@ -39,10 +51,14 @@ const offers = [
     title: `Test title 1`,
     features: {
       entire: `Test type 1`,
-    }
+    },
+    previewImage: `img/amsterdam.jpg`
   },
   {
     id: 333,
+    city: {
+      name: `Test city 2`
+    },
     isPremium: false,
     images: [
       `img/amsterdam@2x.jpg`
@@ -53,7 +69,8 @@ const offers = [
     title: `Test title 2`,
     features: {
       entire: `Test type 2`,
-    }
+    },
+    previewImage: `img/amsterdam@2x.jpg`
   }
 ];
 

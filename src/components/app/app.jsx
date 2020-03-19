@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../reducer/app-state/app-state.js';
+import {Operation} from '../../reducer/data/data.js';
 import Main from '../main/main.jsx';
 import Offer from '../offer/offer.jsx';
 import SignIn from '../sign-in/sign-in.jsx';
@@ -11,8 +12,8 @@ import {getOffersByCity, getCitiesList} from '../../reducer/data/selectors.js';
 
 class App extends PureComponent {
   _renderApp() {
-    const {offers, offer, city, citiesList, card, sortType, user, onPlaceCardClick, onCityClick, onPlaceCardMouseOver, onPlaceCardMouseLeave} = this.props;
-    const numberOfPlacesToStay = offers.filter((element) => element.city === city).length;
+    const {offers, offer, city, citiesList, card, sortType, user, offersNearby, comments, isPostingComment, onPlaceCardClick, onCityClick, onPlaceCardMouseOver, onPlaceCardMouseLeave, onCommentSubmit, toggleIsBookmarked} = this.props;
+    const numberOfPlacesToStay = offers.filter((element) => element.city.name === city.name).length;
     if (!offer) {
       return (
         <Main
@@ -36,12 +37,18 @@ class App extends PureComponent {
         offers={offers}
         card={card}
         sortType={sortType}
+        user={user}
+        offersNearby={offersNearby}
+        comments={comments}
+        onCommentSubmit={onCommentSubmit}
+        isPostingComment={isPostingComment}
+        toggleIsBookmarked={toggleIsBookmarked}
       />
     );
   }
 
   render() {
-    const {offers, card, sortType} = this.props;
+    const {offers, card, sortType, user, offersNearby, comments, isPostingComment, onCommentSubmit} = this.props;
     return (
       <BrowserRouter>
         <Switch>
@@ -49,7 +56,16 @@ class App extends PureComponent {
             {this._renderApp()}
           </Route>
           <Route exact path='/offer'>
-            <Offer offers={offers} card={card} sortType={sortType}/>
+            <Offer
+              offers={offers}
+              card={card}
+              sortType={sortType}
+              user={user}
+              offersNearby={offersNearby}
+              comments={comments}
+              onCommentSubmit={onCommentSubmit}
+              isPostingComment={isPostingComment}
+            />
           </Route>
           <Route exact path='/login'>
             <SignIn onSubmit={() => {}} />
@@ -63,8 +79,8 @@ class App extends PureComponent {
 App.propTypes = {
   offers: PropTypes.array.isRequired,
   offer: PropTypes.number.isRequired,
-  city: PropTypes.string.isRequired,
-  citiesList: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  city: PropTypes.object.isRequired,
+  citiesList: PropTypes.arrayOf(PropTypes.object).isRequired,
   card: PropTypes.number.isRequired,
   sortType: PropTypes.string.isRequired,
   user: PropTypes.shape({
@@ -74,10 +90,15 @@ App.propTypes = {
     'is_pro': PropTypes.bool.isRequired,
     'name': PropTypes.string.isRequired
   }),
+  offersNearby: PropTypes.array.isRequired,
+  comments: PropTypes.array.isRequired,
+  isPostingComment: PropTypes.bool.isRequired,
   onPlaceCardClick: PropTypes.func.isRequired,
   onCityClick: PropTypes.func.isRequired,
   onPlaceCardMouseOver: PropTypes.func,
-  onPlaceCardMouseLeave: PropTypes.func
+  onPlaceCardMouseLeave: PropTypes.func,
+  onCommentSubmit: PropTypes.func,
+  toggleIsBookmarked: PropTypes.func
 };
 
 const mapStateToProps = (state) => ({
@@ -87,11 +108,16 @@ const mapStateToProps = (state) => ({
   citiesList: getCitiesList(state),
   card: state.APP_STATE.card,
   sortType: state.APP_STATE.sortType,
-  user: state.USER.user
+  user: state.USER.user,
+  offersNearby: state.DATA.offersNearby,
+  comments: state.DATA.comments,
+  isPostingComment: state.DATA.isPostingComment
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onPlaceCardClick(id) {
+    dispatch(Operation.loadOffersNearby(id));
+    dispatch(Operation.loadComments(id));
     dispatch(ActionCreator.changeOffer(id));
   },
   onCityClick(city) {
@@ -102,6 +128,12 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onPlaceCardMouseLeave() {
     dispatch(ActionCreator.changeCard(0));
+  },
+  onCommentSubmit(id, comment) {
+    dispatch(Operation.postComment(id, comment));
+  },
+  toggleIsBookmarked(id, isBookmarked) {
+    dispatch(Operation.changeFavoriteStatus({id, isBookmarked: Number(!isBookmarked)}));
   }
 });
 
