@@ -1,14 +1,17 @@
 import React, {PureComponent} from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../reducer/app-state/app-state.js';
 import {Operation} from '../../reducer/data/data.js';
 import Main from '../main/main.jsx';
 import Offer from '../offer/offer.jsx';
 import SignIn from '../sign-in/sign-in.jsx';
+import Favorites from '../favorites/favorites.jsx';
 import PropTypes from 'prop-types';
 
 import {getOffersByCity, getCitiesList} from '../../reducer/data/selectors.js';
+import {getUserInfo} from '../../reducer/user/selectors.js';
+import {AppRoute} from '../../const.js';
 
 class App extends PureComponent {
   _renderApp() {
@@ -48,30 +51,35 @@ class App extends PureComponent {
   }
 
   render() {
-    const {offers, card, sortType, user, offersNearby, comments, isPostingComment, onCommentSubmit} = this.props;
+    const {user} = this.props;
     return (
-      <BrowserRouter>
-        <Switch>
-          <Route exact path='/'>
-            {this._renderApp()}
-          </Route>
-          <Route exact path='/offer'>
-            <Offer
-              offers={offers}
-              card={card}
-              sortType={sortType}
-              user={user}
-              offersNearby={offersNearby}
-              comments={comments}
-              onCommentSubmit={onCommentSubmit}
-              isPostingComment={isPostingComment}
-            />
-          </Route>
-          <Route exact path='/login'>
-            <SignIn onSubmit={() => {}} />
-          </Route>
-        </Switch>
-      </BrowserRouter>
+      <Switch>
+        <Route exact path={AppRoute.MAIN}>
+          {this._renderApp()}
+        </Route>
+        <Route
+          exact
+          path={AppRoute.FAVORITES}
+          render={() => {
+            return (
+              <Favorites
+                user={user}
+              />
+            );
+          }}
+        />
+        <Route
+          exact
+          path={AppRoute.SIGN_IN}
+          render={() => {
+            return (
+              <SignIn
+                onSubmit={() => {}}
+              />
+            );
+          }}
+        />
+      </Switch>
     );
   }
 }
@@ -108,7 +116,7 @@ const mapStateToProps = (state) => ({
   citiesList: getCitiesList(state),
   card: state.APP_STATE.card,
   sortType: state.APP_STATE.sortType,
-  user: state.USER.user,
+  user: getUserInfo(state),
   offersNearby: state.DATA.offersNearby,
   comments: state.DATA.comments,
   isPostingComment: state.DATA.isPostingComment

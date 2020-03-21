@@ -1,6 +1,8 @@
 import React from 'react';
 import Offer from './offer.jsx';
 import renderer from 'react-test-renderer';
+import {Router} from 'react-router-dom';
+import history from '../../history.js';
 
 jest.mock(`../map/map.jsx`);
 
@@ -167,18 +169,22 @@ const comments = [
 
 it(`Offer renders correctly`, () => {
   const tree = renderer
-    .create(<Offer
-      offer={offer}
-      offersNearby={offers}
-      card={card}
-      sortType={sortType}
-      user={user}
-      listClass={listClass}
-      cardClass={cardClass}
-      wrapperClass="near-places__image-wrapper place-card__image-wrapper"
-      isPostingComment={true}
-      comments={comments}
-    />)
+    .create(
+        <Router history={history}>
+          <Offer
+            offer={offer}
+            offersNearby={offers}
+            card={card}
+            sortType={sortType}
+            user={user}
+            listClass={listClass}
+            cardClass={cardClass}
+            wrapperClass="near-places__image-wrapper place-card__image-wrapper"
+            isPostingComment={true}
+            comments={comments}
+          />
+        </Router>
+    )
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

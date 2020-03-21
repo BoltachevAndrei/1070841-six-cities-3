@@ -1,9 +1,10 @@
 import React from 'react';
 import Main from './main';
 import renderer from 'react-test-renderer';
-
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
+import {Router} from 'react-router-dom';
+import history from '../../history.js';
 const mockStore = configureStore([]);
 
 jest.mock(`../map/map.jsx`);
@@ -85,19 +86,21 @@ it(`Main renders correctly`, () => {
   const tree = renderer
     .create(
         <Provider store={store}>
-          <Main
-            placesCount={placesCountTest}
-            offers={offers}
-            activeCity={activeCity}
-            citiesList={citiesList}
-            sortType={sortType}
-            card={card}
-            user={user}
-            onPlaceCardClick={() => { }}
-            onCityClick={() => { }}
-            onPlaceCardMouseOver={() => {}}
-            onPlaceCardMouseLeave={() => {}}
-          />)
+          <Router history={history}>
+            <Main
+              placesCount={placesCountTest}
+              offers={offers}
+              activeCity={activeCity}
+              citiesList={citiesList}
+              sortType={sortType}
+              card={card}
+              user={user}
+              onPlaceCardClick={() => { }}
+              onCityClick={() => { }}
+              onPlaceCardMouseOver={() => {}}
+              onPlaceCardMouseLeave={() => {}}
+            />)
+          </Router>
         </Provider>, {
           createNodeMock: () => {
             return {};

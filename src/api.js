@@ -1,10 +1,11 @@
 import axios from 'axios';
+import {AppRoute} from './const.js';
 
 const Error = {
   UNAUTHORIZED: 401
 };
 
-export const createAPI = (dispatch) => {
+export const createAPI = (dispatch, history) => {
   const api = axios.create({
     baseURL: `https://htmlacademy-react-3.appspot.com/six-cities`,
     timeout: 5000,
@@ -15,8 +16,9 @@ export const createAPI = (dispatch) => {
 
   const onFail = (err) => {
     const {response} = err;
-    if (response === Error.UNAUTHORIZED) {
+    if (response.status === Error.UNAUTHORIZED) {
       dispatch();
+      history.push(AppRoute.SIGN_IN);
       throw err;
     }
     throw err;
