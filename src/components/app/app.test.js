@@ -3,6 +3,8 @@ import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {App} from './app.jsx';
+import {Router} from 'react-router-dom';
+import history from '../../history.js';
 
 jest.mock(`../map/map.jsx`);
 
@@ -294,22 +296,24 @@ describe(`App renders correctly`, () => {
     const tree = renderer
       .create(
           <Provider store={store}>
-            <App
-              offers={offers}
-              offer={offers[0].id}
-              city={activeCity}
-              citiesList={citiesList}
-              card={card}
-              sortType={sortType}
-              user={user}
-              onPlaceCardClick={() => {}}
-              onCityClick={() => {}}
-              onPlaceCardMouseOver={() => {}}
-              onPlaceCardMouseLeave={() => {}}
-              comments={comments}
-              offersNearby={offersNearby}
-              isPostingComment={false}
-            />
+            <Router history={history}>
+              <App
+                offers={offers}
+                offer={offers[0].id}
+                city={activeCity}
+                citiesList={citiesList}
+                card={card}
+                sortType={sortType}
+                user={user}
+                onPlaceCardClick={() => {}}
+                onCityClick={() => {}}
+                onPlaceCardMouseOver={() => {}}
+                onPlaceCardMouseLeave={() => {}}
+                comments={comments}
+                offersNearby={offersNearby}
+                isPostingComment={false}
+              />
+            </Router>
           </Provider>, {
             createNodeMock: () => {
               return {};
@@ -330,22 +334,24 @@ describe(`App renders correctly`, () => {
     const tree = renderer
       .create(
           <Provider store={store}>
-            <App
-              offers={offers}
-              offer={0}
-              city={activeCity}
-              citiesList={citiesList}
-              card={card}
-              sortType={sortType}
-              user={user}
-              onPlaceCardClick={() => {}}
-              onCityClick={() => {}}
-              onPlaceCardMouseOver={() => {}}
-              onPlaceCardMouseLeave={() => {}}
-              comments={comments}
-              offersNearby={offersNearby}
-              isPostingComment={false}
-            />
+            <Router history={history}>
+              <App
+                offers={offers}
+                offer={0}
+                city={activeCity}
+                citiesList={citiesList}
+                card={card}
+                sortType={sortType}
+                user={user}
+                onPlaceCardClick={() => {}}
+                onCityClick={() => {}}
+                onPlaceCardMouseOver={() => {}}
+                onPlaceCardMouseLeave={() => {}}
+                comments={comments}
+                offersNearby={offersNearby}
+                isPostingComment={false}
+              />
+            </Router>
           </Provider>, {
             createNodeMock: () => {
               return {};

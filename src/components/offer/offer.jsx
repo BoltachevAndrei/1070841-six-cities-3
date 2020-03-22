@@ -7,6 +7,8 @@ import ReviewsForm from '../reviews-form/reviews-form.jsx';
 import Rating from '../rating/rating.jsx';
 import {capitalizeString} from '../../utils.js';
 import withSubmitForm from '../../hocs/with-submit-form/with-submit-form.js';
+import ProfileLink from '../profile-link/profile-link.jsx';
+import HomeLink from '../home-link/home-link.jsx';
 
 const Offer = (props) => {
   const ReviewsFormWrapped = withSubmitForm(ReviewsForm);
@@ -24,18 +26,14 @@ const Offer = (props) => {
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
-              <a className="header__logo-link" href="main.html">
-                <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41" />
-              </a>
+              <HomeLink />
             </div>
             <nav className="header__nav">
               <ul className="header__nav-list">
                 <li className="header__nav-item user">
-                  <a className="header__nav-link header__nav-link--profile" href="#">
-                    <div className="header__avatar-wrapper user__avatar-wrapper">
-                    </div>
-                    <span className="header__user-name user__name">{user ? user.email : `Sign In`}</span>
-                  </a>
+                  <ProfileLink
+                    user={user}
+                  />
                 </li>
               </ul>
             </nav>

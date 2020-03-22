@@ -12,7 +12,6 @@ export const getCity = (state) => {
 export const getCitiesList = createSelector(
     getOffers,
     (offers) => {
-      // return Array.from(new Set(offers.map((element) => element.city.name)).values());
       const citiesNames = Array.from(new Set(offers.map((element) => element.city.name)).values());
       const citiesData = Array.from(offers.values()).map((offer) => offer.city);
       const result = citiesNames.map((name) => citiesData.filter((city) => city.name === name)[0]);
