@@ -1,92 +1,145 @@
-import React, {PureComponent} from 'react';
-import {Route, Switch} from 'react-router-dom';
+import React from 'react';
+import {Route, Switch, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../reducer/app-state/app-state.js';
-import {Operation} from '../../reducer/data/data.js';
+import {Operation as DataOperation} from '../../reducer/data/data.js';
+import {Operation as UserOperation, AuthorizationStatus} from '../../reducer/user/user.js';
 import Main from '../main/main.jsx';
 import Offer from '../offer/offer.jsx';
 import SignIn from '../sign-in/sign-in.jsx';
 import Favorites from '../favorites/favorites.jsx';
+import NoFavorites from '../no-favorites/no-favorites.jsx';
+import Error from '../error/error.jsx';
+import PrivateRoute from '../private-route/private-route.jsx';
+import {AppRoute} from '../../const.js';
+import {getCard, getSortType, getRequestStatus} from '../../reducer/app-state/selectors.js';
+import {getOffers, getOffersByCity, getCitiesList, getCity, getOffersNearby, getComments, getPostingCommentStatus} from '../../reducer/data/selectors.js';
+import {getAuthorizationStatus, getUser} from '../../reducer/user/selectors.js';
 import PropTypes from 'prop-types';
 
-import {getOffersByCity, getCitiesList} from '../../reducer/data/selectors.js';
-import {getUserInfo} from '../../reducer/user/selectors.js';
-import {AppRoute} from '../../const.js';
 
-class App extends PureComponent {
-  _renderApp() {
-    const {offers, offer, city, citiesList, card, sortType, user, offersNearby, comments, isPostingComment, onPlaceCardClick, onCityClick, onPlaceCardMouseOver, onPlaceCardMouseLeave, onCommentSubmit, toggleIsBookmarked} = this.props;
-    const numberOfPlacesToStay = offers.filter((element) => element.city.name === city.name).length;
-    if (!offer) {
-      return (
-        <Main
-          placesCount={numberOfPlacesToStay}
-          offers={offers}
-          activeCity={city}
-          citiesList={citiesList}
-          card={card}
-          sortType={sortType}
-          user={user}
-          onPlaceCardClick={onPlaceCardClick}
-          onCityClick={onCityClick}
-          onPlaceCardMouseOver={onPlaceCardMouseOver}
-          onPlaceCardMouseLeave={onPlaceCardMouseLeave}
-        />
-      );
-    }
-    return (
-      <Offer
-        offer={offers.find((element) => element.id === offer)}
-        offers={offers}
-        card={card}
-        sortType={sortType}
-        user={user}
-        offersNearby={offersNearby}
-        comments={comments}
-        onCommentSubmit={onCommentSubmit}
-        isPostingComment={isPostingComment}
-        toggleIsBookmarked={toggleIsBookmarked}
-      />
-    );
-  }
+const App = (props) => {
+  const {
+    offers,
+    offersByCity,
+    city,
+    citiesList,
+    card,
+    sortType,
+    user,
+    offersNearby,
+    comments,
+    isPostingComment,
+    onPlaceCardClick,
+    onCityClick,
+    onPlaceCardMouseOver,
+    onPlaceCardMouseLeave,
+    onCommentSubmit,
+    onLoginSubmit,
+    toggleIsBookmarked,
+    authorizationStatus,
+    isRequestSuccess
+  } = props;
 
-  render() {
-    const {user} = this.props;
-    return (
-      <Switch>
-        <Route exact path={AppRoute.MAIN}>
-          {this._renderApp()}
-        </Route>
-        <Route
-          exact
-          path={AppRoute.FAVORITES}
-          render={() => {
+  const numberOfPlacesToStay = offers.filter((element) => element.city.name === city.name).length;
+  const favorites = offers.filter((element) => element.isBookmarked);
+
+  return (
+    <Switch>
+      <Route
+        exact
+        path={AppRoute.MAIN}
+        render={() => {
+          if (isRequestSuccess) {
             return (
-              <Favorites
+              <Main
+                placesCount={numberOfPlacesToStay}
+                offers={offersByCity}
+                activeCity={city}
+                citiesList={citiesList}
+                card={card}
+                sortType={sortType}
+                user={user}
+                onPlaceCardClick={onPlaceCardClick}
+                onCityClick={onCityClick}
+                onPlaceCardMouseOver={onPlaceCardMouseOver}
+                onPlaceCardMouseLeave={onPlaceCardMouseLeave}
+              />
+            );
+          } else {
+            return (
+              <Error />
+            );
+          }
+        }}
+      />
+      <Route
+        exact
+        path={`${AppRoute.ROOM}/:id`}
+        render={(routeProps) => {
+          const {id} = routeProps.match.params;
+          return (
+            <Offer
+              id={Number.parseInt(id, 10)}
+              offer={offers.find((element) => element.id === Number.parseInt(id, 10))}
+              card={card}
+              sortType={sortType}
+              user={user}
+              offersNearby={offersNearby}
+              comments={comments}
+              onCommentSubmit={onCommentSubmit}
+              isPostingComment={isPostingComment}
+              toggleIsBookmarked={toggleIsBookmarked}
+              onPlaceCardClick={onPlaceCardClick}
+            />
+          );
+        }}
+      />
+      <PrivateRoute
+        exact
+        path={AppRoute.FAVORITES}
+        render={() => {
+          if (favorites.length === 0 && Array.isArray(favorites)) {
+            return (
+              <NoFavorites
                 user={user}
               />
             );
-          }}
-        />
-        <Route
-          exact
-          path={AppRoute.SIGN_IN}
-          render={() => {
+          } else {
             return (
-              <SignIn
-                onSubmit={() => {}}
+              <Favorites
+                user={user}
+                favorites={favorites}
+                onPlaceCardClick={onPlaceCardClick}
               />
             );
-          }}
-        />
-      </Switch>
-    );
-  }
-}
+          }
+        }}
+      />
+      <Route
+        exact
+        path={AppRoute.SIGN_IN}
+        render={() => {
+          if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
+            return (
+              <SignIn
+                onSubmit={onLoginSubmit}
+              />
+            );
+          } else {
+            return (
+              <Redirect to={AppRoute.FAVORITES} />
+            );
+          }
+        }}
+      />
+    </Switch>
+  );
+};
 
 App.propTypes = {
   offers: PropTypes.array.isRequired,
-  offer: PropTypes.number.isRequired,
+  offersByCity: PropTypes.array.isRequired,
   city: PropTypes.object.isRequired,
   citiesList: PropTypes.arrayOf(PropTypes.object).isRequired,
   card: PropTypes.number.isRequired,
@@ -106,27 +159,32 @@ App.propTypes = {
   onPlaceCardMouseOver: PropTypes.func,
   onPlaceCardMouseLeave: PropTypes.func,
   onCommentSubmit: PropTypes.func,
-  toggleIsBookmarked: PropTypes.func
+  onLoginSubmit: PropTypes.func,
+  toggleIsBookmarked: PropTypes.func,
+  authorizationStatus: PropTypes.string.isRequired,
+  isRequestSuccess: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  offers: getOffersByCity(state),
-  offer: state.APP_STATE.offer,
-  city: state.APP_STATE.city,
+  offers: getOffers(state),
+  offersByCity: getOffersByCity(state),
+  city: getCity(state),
   citiesList: getCitiesList(state),
-  card: state.APP_STATE.card,
-  sortType: state.APP_STATE.sortType,
-  user: getUserInfo(state),
-  offersNearby: state.DATA.offersNearby,
-  comments: state.DATA.comments,
-  isPostingComment: state.DATA.isPostingComment
+  card: getCard(state),
+  sortType: getSortType(state),
+  user: getUser(state),
+  offersNearby: getOffersNearby(state),
+  comments: getComments(state),
+  isPostingComment: getPostingCommentStatus(state),
+  authorizationStatus: getAuthorizationStatus(state),
+  isRequestSuccess: getRequestStatus(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onPlaceCardClick(id) {
-    dispatch(Operation.loadOffersNearby(id));
-    dispatch(Operation.loadComments(id));
-    dispatch(ActionCreator.changeOffer(id));
+    dispatch(DataOperation.loadOffersNearby(id))
+    .then(() => dispatch(DataOperation.loadComments(id)))
+    .then(() => dispatch(ActionCreator.changeRequestStatus(true)));
   },
   onCityClick(city) {
     dispatch(ActionCreator.changeCity(city));
@@ -138,10 +196,20 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreator.changeCard(0));
   },
   onCommentSubmit(id, comment) {
-    dispatch(Operation.postComment(id, comment));
+    dispatch(DataOperation.postComment(id, comment))
+    .then(() => dispatch(ActionCreator.changeRequestStatus(true)));
   },
   toggleIsBookmarked(id, isBookmarked) {
-    dispatch(Operation.changeFavoriteStatus({id, isBookmarked: Number(!isBookmarked)}));
+    dispatch(DataOperation.changeFavoriteStatus({id, isBookmarked: Number(!isBookmarked)}))
+    .then(() => dispatch(ActionCreator.changeRequestStatus(true)));
+  },
+  onLoginSubmit(authData) {
+    dispatch(UserOperation.login({
+      email: authData.email,
+      password: authData.password
+    }))
+    .then(() => dispatch(DataOperation.loadFavorites()))
+    .then(() => dispatch(ActionCreator.changeRequestStatus(true)));
   }
 });
 

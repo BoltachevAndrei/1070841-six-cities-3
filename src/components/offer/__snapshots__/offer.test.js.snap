@@ -25,7 +25,7 @@ exports[`Offer renders correctly 1`] = `
               alt="6 cities logo"
               className="header__logo"
               height="41"
-              src="img/logo.svg"
+              src="/img/logo.svg"
               width="81"
             />
           </a>
@@ -219,7 +219,7 @@ exports[`Offer renders correctly 1`] = `
                   alt="Host avatar"
                   className="property__avatar user__avatar"
                   height="74"
-                  src="img/avatar.svg"
+                  src="/img/avatar.svg"
                   width="74"
                 />
               </div>
@@ -530,9 +530,9 @@ exports[`Offer renders correctly 1`] = `
                 <img
                   alt="Place image"
                   className="place-card__image"
-                  height="200"
+                  height={200}
                   src="img/room.jpg"
-                  width="260"
+                  width={260}
                 />
               </a>
             </div>
@@ -602,7 +602,8 @@ exports[`Offer renders correctly 1`] = `
                 onClick={[Function]}
               >
                 <a
-                  href="#"
+                  href="/offer/778"
+                  onClick={[Function]}
                 >
                   Wood and stone place
                 </a>
@@ -629,9 +630,9 @@ exports[`Offer renders correctly 1`] = `
                 <img
                   alt="Place image"
                   className="place-card__image"
-                  height="200"
+                  height={200}
                   src="img/apartment-02.jpg"
-                  width="260"
+                  width={260}
                 />
               </a>
             </div>
@@ -701,7 +702,8 @@ exports[`Offer renders correctly 1`] = `
                 onClick={[Function]}
               >
                 <a
-                  href="#"
+                  href="/offer/779"
+                  onClick={[Function]}
                 >
                   Canal View Prinsengracht
                 </a>
@@ -728,9 +730,9 @@ exports[`Offer renders correctly 1`] = `
                 <img
                   alt="Place image"
                   className="place-card__image"
-                  height="200"
+                  height={200}
                   src="img/apartment-03.jpg"
-                  width="260"
+                  width={260}
                 />
               </a>
             </div>
@@ -800,7 +802,8 @@ exports[`Offer renders correctly 1`] = `
                 onClick={[Function]}
               >
                 <a
-                  href="#"
+                  href="/offer/780"
+                  onClick={[Function]}
                 >
                   Nice, cozy, warm big bed apartment
                 </a>

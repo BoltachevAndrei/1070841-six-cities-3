@@ -2,8 +2,6 @@ import {reducer, ActionType} from './app-state.js';
 
 const initialCity = `Test city`;
 
-const initialOffer = 111;
-
 const initialSortType = `All`;
 
 const initialCard = 555;
@@ -27,26 +25,6 @@ it(`Reducer should set city by given value`, () => {
     payload: `Tokyo`
   })).toEqual({
     city: `Tokyo`
-  });
-});
-
-it(`Reducer should set offer by given value`, () => {
-  expect(reducer({
-    offer: initialOffer
-  }, {
-    type: ActionType.CHANGE_OFFER,
-    payload: `222`
-  })).toEqual({
-    offer: `222`
-  });
-
-  expect(reducer({
-    offer: initialOffer
-  }, {
-    type: ActionType.CHANGE_OFFER,
-    payload: `333`
-  })).toEqual({
-    offer: `333`
   });
 });
 
@@ -98,5 +76,16 @@ it(`Reducer should toggle sort list by given value`, () => {
     payload: initialToggle
   })).toEqual({
     isSortListOpened: !initialToggle
+  });
+});
+
+it(`Reducer should change request status by given value`, () => {
+  expect(reducer({
+    isRequestSuccess: false
+  }, {
+    type: ActionType.CHANGE_REQUEST_STATUS,
+    payload: true
+  })).toEqual({
+    isRequestSuccess: true
   });
 });

@@ -102,9 +102,9 @@ exports[`CitiesPlaces renders correctly 1`] = `
             <img
               alt="Place image"
               className="place-card__image"
-              height="200"
+              height={200}
               src="img/amsterdam.jpg"
-              width="260"
+              width={260}
             />
           </a>
         </div>
@@ -174,7 +174,8 @@ exports[`CitiesPlaces renders correctly 1`] = `
             onClick={[Function]}
           >
             <a
-              href="#"
+              href="/offer/111"
+              onClick={[Function]}
             >
               Test title 1
             </a>
@@ -201,9 +202,9 @@ exports[`CitiesPlaces renders correctly 1`] = `
             <img
               alt="Place image"
               className="place-card__image"
-              height="200"
+              height={200}
               src="img/amsterdam@2x.jpg"
-              width="260"
+              width={260}
             />
           </a>
         </div>
@@ -273,7 +274,8 @@ exports[`CitiesPlaces renders correctly 1`] = `
             onClick={[Function]}
           >
             <a
-              href="#"
+              href="/offer/333"
+              onClick={[Function]}
             >
               Test title 2
             </a>

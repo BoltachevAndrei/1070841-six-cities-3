@@ -1,10 +1,19 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
-import {Rating} from '../../utils.js';
+import {Rating} from '../../const.js';
 
 const ReviewsForm = (props) => {
+  const {
+    isFormdataValid,
+    isPostingComment,
+    rating,
+    review,
+    onChange,
+    onSubmit
+  } = props;
+
   const ratingKeys = Object.keys(Rating).sort((prev, next) => next - prev);
-  const {isFormdataValid, isPostingComment, rating, review, onChange, onSubmit} = props;
+
   return (
     <form
       className="reviews__form form"

@@ -5,7 +5,20 @@ import PlacesList from '../places-list/places-list.jsx';
 import Map from '../map/map.jsx';
 
 const CitiesPlaces = memo(function CitiesPlaces(props) {
-  const {offers, activeCity, sortType, placesCount, card, onPlaceCardClick, onPlaceCardMouseOver, onPlaceCardMouseLeave} = props;
+  const {
+    offers,
+    activeCity,
+    sortType,
+    placesCount,
+    card,
+    onPlaceCardClick,
+    onPlaceCardMouseOver,
+    onPlaceCardMouseLeave
+  } = props;
+
+  const imageSizeHeight = 200;
+  const imageSizeWidth = 260;
+
   return (
     <div className="cities__places-container container">
       <section className="cities__places places">
@@ -19,6 +32,8 @@ const CitiesPlaces = memo(function CitiesPlaces(props) {
           listClass="cities__places-list places__list tabs__content"
           cardClass="cities__place-card place-card"
           wrapperClass="cities__image-wrapper place-card__image-wrapper"
+          imageSizeHeight={imageSizeHeight}
+          imageSizeWidth={imageSizeWidth}
           onPlaceCardClick={onPlaceCardClick}
           onPlaceCardMouseOver={onPlaceCardMouseOver}
           onPlaceCardMouseLeave={onPlaceCardMouseLeave}

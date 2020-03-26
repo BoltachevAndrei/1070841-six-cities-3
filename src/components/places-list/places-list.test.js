@@ -1,6 +1,8 @@
 import React from 'react';
-import PlacesList from './places-list.jsx';
 import renderer from 'react-test-renderer';
+import {Router} from 'react-router-dom';
+import history from '../../history.js';
+import PlacesList from './places-list.jsx';
 
 const listClass = `cities__places-list places__list tabs__content`;
 const cardClass = `cities__place-card place-card`;
@@ -43,19 +45,30 @@ const offers = [
   }
 ];
 
+const imageSizeHeight = 200;
+const imageSizeWidth = 260;
+
 it(`PlacesList renders correctly`, () => {
   const tree = renderer
-    .create(<PlacesList
-      offers={offers}
-      activeCity={activeCity}
-      sortType={sortType}
-      listClass={listClass}
-      cardClass={cardClass}
-      wrapperClass={wrapperClass}
-      onPlaceCardClick={() => {}}
-      onPlaceCardMouseOver={() => {}}
-      onPlaceCardMouseLeave={() => {}}
-    />)
+    .create(
+        <Router
+          history={history}
+        >
+          <PlacesList
+            offers={offers}
+            activeCity={activeCity}
+            sortType={sortType}
+            listClass={listClass}
+            cardClass={cardClass}
+            wrapperClass={wrapperClass}
+            imageSizeHeight={imageSizeHeight}
+            imageSizeWidth={imageSizeWidth}
+            onPlaceCardClick={() => {}}
+            onPlaceCardMouseOver={() => {}}
+            onPlaceCardMouseLeave={() => {}}
+          />
+        </Router>
+    )
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

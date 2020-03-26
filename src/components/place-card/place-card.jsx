@@ -1,13 +1,33 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
-import {capitalizeString} from '../../utils.js';
 import Rating from '../rating/rating.jsx';
+import {capitalizeString} from '../../utils.js';
+import {AppRoute} from '../../const.js';
 
 const PlaceCard = (props) => {
-  const {id, isPremium, price, isBookmarked, rating, title, features, previewImage} = props.offer;
-  const {onPlaceCardMouseOver, onPlaceCardMouseLeave, onPlaceCardClick} = props;
-  const {cardClass, wrapperClass} = props;
-  const placeImage = previewImage ? <img className="place-card__image" src={previewImage} width="260" height="200" alt="Place image" /> : null;
+  const {
+    id,
+    isPremium,
+    price,
+    isBookmarked,
+    rating,
+    title,
+    features,
+    previewImage
+  } = props.offer;
+
+  const {
+    cardClass,
+    wrapperClass,
+    imageSizeWidth,
+    imageSizeHeight,
+    onPlaceCardMouseOver,
+    onPlaceCardMouseLeave,
+    onPlaceCardClick
+  } = props;
+
+  const placeImage = previewImage ? <img className="place-card__image" src={previewImage} width={imageSizeWidth} height={imageSizeHeight} alt="Place image" /> : null;
   const placeIsPremium = isPremium ?
     (<div className="place-card__mark">
       <span>Premium</span>
@@ -45,7 +65,10 @@ const PlaceCard = (props) => {
           type="place-card"
         />
         <h2 className="place-card__name" onClick={() => onPlaceCardClick(id)}>
-          <a href="#">{title}</a>
+          <Link to={`${AppRoute.ROOM}/${id}`}>
+            {title}
+          </Link>
+          {/* <a href="#">{title}</a> */}
         </h2>
         <p className="place-card__type">{capitalizeString(features.entire)}</p>
       </div>
@@ -68,7 +91,9 @@ PlaceCard.propTypes = {
   onPlaceCardMouseLeave: PropTypes.func.isRequired,
   onPlaceCardClick: PropTypes.func.isRequired,
   cardClass: PropTypes.string.isRequired,
-  wrapperClass: PropTypes.string.isRequired
+  wrapperClass: PropTypes.string.isRequired,
+  imageSizeHeight: PropTypes.number.isRequired,
+  imageSizeWidth: PropTypes.number.isRequired
 };
 
 export default PlaceCard;

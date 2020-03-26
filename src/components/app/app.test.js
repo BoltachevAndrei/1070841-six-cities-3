@@ -299,7 +299,7 @@ describe(`App renders correctly`, () => {
             <Router history={history}>
               <App
                 offers={offers}
-                offer={offers[0].id}
+                offersByCity={offers}
                 city={activeCity}
                 citiesList={citiesList}
                 card={card}
@@ -312,6 +312,8 @@ describe(`App renders correctly`, () => {
                 comments={comments}
                 offersNearby={offersNearby}
                 isPostingComment={false}
+                authorizationStatus='AUTH'
+                isRequestSuccess={true}
               />
             </Router>
           </Provider>, {
@@ -337,7 +339,7 @@ describe(`App renders correctly`, () => {
             <Router history={history}>
               <App
                 offers={offers}
-                offer={0}
+                offersByCity={offers}
                 city={activeCity}
                 citiesList={citiesList}
                 card={card}
@@ -350,6 +352,128 @@ describe(`App renders correctly`, () => {
                 comments={comments}
                 offersNearby={offersNearby}
                 isPostingComment={false}
+                authorizationStatus='AUTH'
+                isRequestSuccess={true}
+              />
+            </Router>
+          </Provider>, {
+            createNodeMock: () => {
+              return {};
+            }
+          })
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`Error renders correctly`, () => {
+    const store = mockStore({
+      APP_STATE: {
+        sortType,
+        isSortListOpened: false
+      }
+    });
+
+    const tree = renderer
+      .create(
+          <Provider store={store}>
+            <Router history={history}>
+              <App
+                offers={offers}
+                offersByCity={offers}
+                city={activeCity}
+                citiesList={citiesList}
+                card={card}
+                sortType={sortType}
+                user={null}
+                onPlaceCardClick={() => {}}
+                onCityClick={() => {}}
+                onPlaceCardMouseOver={() => {}}
+                onPlaceCardMouseLeave={() => {}}
+                comments={comments}
+                offersNearby={offersNearby}
+                isPostingComment={false}
+                authorizationStatus='AUTH'
+                isRequestSuccess={false}
+              />
+            </Router>
+          </Provider>, {
+            createNodeMock: () => {
+              return {};
+            }
+          })
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`NoFavorites renders correctly`, () => {
+    const store = mockStore({
+      APP_STATE: {
+        sortType,
+        isSortListOpened: false
+      }
+    });
+
+    const tree = renderer
+      .create(
+          <Provider store={store}>
+            <Router history={history}>
+              <App
+                offers={[offers[1], offers[2]]}
+                offersByCity={offers}
+                city={activeCity}
+                citiesList={citiesList}
+                card={card}
+                sortType={sortType}
+                user={user}
+                onPlaceCardClick={() => {}}
+                onCityClick={() => {}}
+                onPlaceCardMouseOver={() => {}}
+                onPlaceCardMouseLeave={() => {}}
+                comments={comments}
+                offersNearby={offersNearby}
+                isPostingComment={false}
+                authorizationStatus='AUTH'
+                isRequestSuccess={true}
+              />
+            </Router>
+          </Provider>, {
+            createNodeMock: () => {
+              return {};
+            }
+          })
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`Favorites renders correctly`, () => {
+    const store = mockStore({
+      APP_STATE: {
+        sortType,
+        isSortListOpened: false
+      }
+    });
+
+    const tree = renderer
+      .create(
+          <Provider store={store}>
+            <Router history={history}>
+              <App
+                offers={offers}
+                offersByCity={offers}
+                city={activeCity}
+                citiesList={citiesList}
+                card={card}
+                sortType={sortType}
+                user={user}
+                onPlaceCardClick={() => {}}
+                onCityClick={() => {}}
+                onPlaceCardMouseOver={() => {}}
+                onPlaceCardMouseLeave={() => {}}
+                comments={comments}
+                offersNearby={offersNearby}
+                isPostingComment={false}
+                authorizationStatus='AUTH'
+                isRequestSuccess={true}
               />
             </Router>
           </Provider>, {

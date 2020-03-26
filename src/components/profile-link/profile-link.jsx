@@ -6,6 +6,7 @@ import {AppRoute} from '../../const.js';
 
 const ProfileLink = (props) => {
   const {user} = props;
+
   return (
     <Link
       className="header__nav-link header__nav-link--profile"
