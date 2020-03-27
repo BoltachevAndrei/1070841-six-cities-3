@@ -66,11 +66,10 @@ const App = (props) => {
                 onPlaceCardMouseLeave={onPlaceCardMouseLeave}
               />
             );
-          } else {
-            return (
-              <Error />
-            );
           }
+          return (
+            <Error />
+          );
         }}
       />
       <Route
@@ -105,15 +104,14 @@ const App = (props) => {
                 user={user}
               />
             );
-          } else {
-            return (
-              <Favorites
-                user={user}
-                favorites={favorites}
-                onPlaceCardClick={onPlaceCardClick}
-              />
-            );
           }
+          return (
+            <Favorites
+              user={user}
+              favorites={favorites}
+              onPlaceCardClick={onPlaceCardClick}
+            />
+          );
         }}
       />
       <Route
@@ -126,11 +124,10 @@ const App = (props) => {
                 onSubmit={onLoginSubmit}
               />
             );
-          } else {
-            return (
-              <Redirect to={AppRoute.FAVORITES} />
-            );
           }
+          return (
+            <Redirect to={AppRoute.FAVORITES} />
+          );
         }}
       />
     </Switch>
