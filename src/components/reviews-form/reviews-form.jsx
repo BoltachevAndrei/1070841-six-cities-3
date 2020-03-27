@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
-import {Rating} from '../../const.js';
+import {RATINGS} from '../../const.js';
 
 const ReviewsForm = (props) => {
   const {
@@ -12,8 +12,6 @@ const ReviewsForm = (props) => {
     onSubmit
   } = props;
 
-  const ratingKeys = Object.keys(Rating).sort((prev, next) => next - prev);
-
   return (
     <form
       className="reviews__form form"
@@ -23,20 +21,20 @@ const ReviewsForm = (props) => {
     >
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating">
-        {ratingKeys.map((element) => {
+        {RATINGS.map((element, index, array) => {
           return (
-            <Fragment key={element}>
+            <Fragment key={element.id}>
               <input
                 className="form__rating-input visually-hidden"
                 name="rating"
-                value={element}
-                id={Rating[element].id}
+                value={array.length - index}
+                id={element.id}
                 type="radio"
                 onChange={onChange}
                 disabled={isPostingComment}
-                checked={rating === element}
+                checked={rating === (array.length - index)}
               />
-              <label htmlFor={Rating[element].id} className="reviews__rating-label form__rating-label" title={Rating[element].title}>
+              <label htmlFor={element.id} className="reviews__rating-label form__rating-label" title={element.title}>
                 <svg className="form__star-image" width="37" height="33">
                   <use xlinkHref="#icon-star"></use>
                 </svg>

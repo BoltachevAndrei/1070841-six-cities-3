@@ -17,13 +17,13 @@ exports[`ReviewsForm renders correctly 1`] = `
     className="reviews__rating-form form__rating"
   >
     <input
-      checked={false}
+      checked={true}
       className="form__rating-input visually-hidden"
       disabled={false}
       id="5-stars"
       name="rating"
       type="radio"
-      value="5"
+      value={5}
     />
     <label
       className="reviews__rating-label form__rating-label"
@@ -47,7 +47,7 @@ exports[`ReviewsForm renders correctly 1`] = `
       id="4-stars"
       name="rating"
       type="radio"
-      value="4"
+      value={4}
     />
     <label
       className="reviews__rating-label form__rating-label"
@@ -71,7 +71,7 @@ exports[`ReviewsForm renders correctly 1`] = `
       id="3-stars"
       name="rating"
       type="radio"
-      value="3"
+      value={3}
     />
     <label
       className="reviews__rating-label form__rating-label"
@@ -95,7 +95,7 @@ exports[`ReviewsForm renders correctly 1`] = `
       id="2-stars"
       name="rating"
       type="radio"
-      value="2"
+      value={2}
     />
     <label
       className="reviews__rating-label form__rating-label"
@@ -119,7 +119,7 @@ exports[`ReviewsForm renders correctly 1`] = `
       id="1-star"
       name="rating"
       type="radio"
-      value="1"
+      value={1}
     />
     <label
       className="reviews__rating-label form__rating-label"
