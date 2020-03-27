@@ -10,6 +10,9 @@ import withSubmitForm from '../../hocs/with-submit-form/with-submit-form.js';
 import ProfileLink from '../profile-link/profile-link.jsx';
 import HomeLink from '../home-link/home-link.jsx';
 
+const imageSizeHeight = 200;
+const imageSizeWidth = 260;
+
 export default class Offer extends PureComponent {
   constructor(props) {
     super(props);
@@ -59,8 +62,7 @@ export default class Offer extends PureComponent {
       </div>) : ``;
     const hostIsSuperClass = host.isSuper ? `property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper` : `property__avatar-wrapper user__avatar-wrapper`;
     const placeIsBookmarkedClass = isBookmarked ? `property__bookmark-button property__bookmark-button--active button` : `property__bookmark-button button`;
-    const imageSizeHeight = 200;
-    const imageSizeWidth = 260;
+
     return (
       <div className="page">
         <header className="header">

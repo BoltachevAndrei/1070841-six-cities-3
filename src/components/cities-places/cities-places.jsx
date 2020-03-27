@@ -4,6 +4,9 @@ import PlacesSorting from '../places-sorting/places-sorting.jsx';
 import PlacesList from '../places-list/places-list.jsx';
 import Map from '../map/map.jsx';
 
+const imageSizeHeight = 200;
+const imageSizeWidth = 260;
+
 const CitiesPlaces = memo(function CitiesPlaces(props) {
   const {
     offers,
@@ -15,9 +18,6 @@ const CitiesPlaces = memo(function CitiesPlaces(props) {
     onPlaceCardMouseOver,
     onPlaceCardMouseLeave
   } = props;
-
-  const imageSizeHeight = 200;
-  const imageSizeWidth = 260;
 
   return (
     <div className="cities__places-container container">

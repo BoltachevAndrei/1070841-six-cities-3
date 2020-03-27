@@ -5,6 +5,9 @@ import ProfileLink from '../profile-link/profile-link.jsx';
 import PlaceCard from '../place-card/place-card.jsx';
 import {getCitiesList} from '../../utils.js';
 
+const imageSizeHeight = 110;
+const imageSizeWidth = 150;
+
 const Favorites = (props) => {
   const {
     favorites,
@@ -13,8 +16,6 @@ const Favorites = (props) => {
   } = props;
 
   const favoritesByCity = getCitiesList(favorites).map((element) => ({city: element, offers: favorites.filter((element2) => element.name === element2.city.name)}));
-  const imageSizeHeight = 110;
-  const imageSizeWidth = 150;
 
   return (
     <div className="page">
