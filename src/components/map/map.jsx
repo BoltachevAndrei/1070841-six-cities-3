@@ -39,11 +39,11 @@ export default class Map extends PureComponent {
       return null;
     }
     const icon = leaflet.icon({
-      iconUrl: `img/pin.svg`,
+      iconUrl: `/img/pin.svg`,
       iconSize: [30, 30]
     });
     const activeIcon = leaflet.icon({
-      iconUrl: `img/active-pin.svg`,
+      iconUrl: `/img/active-pin.svg`,
       iconSize: [30, 30]
     });
     return (

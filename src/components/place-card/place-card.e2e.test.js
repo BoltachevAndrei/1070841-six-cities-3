@@ -26,6 +26,9 @@ const offer = {
   previewImage: `img/amsterdam.jpg`
 };
 
+const imageSizeHeight = 200;
+const imageSizeWidth = 260;
+
 it(`Should mouse over card event be registered`, () => {
   const onPlaceCardMouseOver = jest.fn();
   const placeCard = shallow(
@@ -33,6 +36,8 @@ it(`Should mouse over card event be registered`, () => {
         offer={offer}
         cardClass={cardClass}
         wrapperClass={wrapperClass}
+        imageSizeHeight={imageSizeHeight}
+        imageSizeWidth={imageSizeWidth}
         onPlaceCardMouseOver={onPlaceCardMouseOver}
         onPlaceCardMouseLeave={() => {}}
         onPlaceCardClick={() => {}}
@@ -50,6 +55,8 @@ it(`Should mouse click on place-card header be registered`, () => {
         offer={offer}
         cardClass={cardClass}
         wrapperClass={wrapperClass}
+        imageSizeHeight={imageSizeHeight}
+        imageSizeWidth={imageSizeWidth}
         onPlaceCardMouseOver={() => {}}
         onPlaceCardMouseLeave={() => {}}
         onPlaceCardClick={onPlaceCardMouseClick}

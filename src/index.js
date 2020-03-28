@@ -15,7 +15,9 @@ import App from './components/app/app.jsx';
 
 const onUnauthorized = () => store.dispatch(UserActionCreator.changeAutorizationStatus(AuthorizationStatus.NO_AUTH));
 
-const api = createAPI(onUnauthorized, history);
+const setFalseRequestStatus = () => store.dispatch(AppActionCreator.changeRequestStatus(false));
+
+const api = createAPI(onUnauthorized, history, setFalseRequestStatus);
 
 const store = createStore(
     reducer,
@@ -27,9 +29,9 @@ const store = createStore(
 
 store.dispatch(DataOperation.loadOffers())
   .then(() => store.dispatch(AppActionCreator.changeCity(store.getState().DATA.offers[0].city)))
-  // .then(() => store.dispatch(UserOperation.login({email: `Oliver.conner@gmail.com`, password: 2})))
   .then(() => store.dispatch(UserOperation.checkAuth()))
-  .then(() => store.dispatch(DataOperation.loadFavorites()));
+  .then(() => store.dispatch(DataOperation.loadFavorites()))
+  .then(() => store.dispatch(AppActionCreator.changeRequestStatus(true)));
 
 ReactDOM.render(
     <Provider store={store}>

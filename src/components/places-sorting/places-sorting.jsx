@@ -6,7 +6,13 @@ import {ActionCreator} from '../../reducer/app-state/app-state.js';
 import {SortTypeList} from '../../utils.js';
 
 const PlacesSorting = (props) => {
-  const {isSortListOpened, sortType, toggleSortList, changeSortType} = props;
+  const {
+    isSortListOpened,
+    sortType,
+    toggleSortList,
+    changeSortType
+  } = props;
+
   const isOpenedClass = isSortListOpened ? `places__options--opened` : ``;
 
   return (

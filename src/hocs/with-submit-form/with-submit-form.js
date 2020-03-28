@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {ReviewLength} from '../../utils.js';
+import {ReviewLength} from '../../const.js';
 
 const withSubmitForm = (Component) => {
   class WithSubmitForm extends PureComponent {

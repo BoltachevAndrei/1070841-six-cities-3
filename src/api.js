@@ -5,7 +5,7 @@ const Error = {
   UNAUTHORIZED: 401
 };
 
-export const createAPI = (dispatch, history) => {
+export const createAPI = (dispatch, history, setFalseRequestStatus) => {
   const api = axios.create({
     baseURL: `https://htmlacademy-react-3.appspot.com/six-cities`,
     timeout: 5000,
@@ -20,8 +20,11 @@ export const createAPI = (dispatch, history) => {
       dispatch();
       history.push(AppRoute.SIGN_IN);
       throw err;
+    } else {
+      setFalseRequestStatus();
+      history.push(AppRoute.MAIN);
+      throw err;
     }
-    throw err;
   };
 
   api.interceptors.response.use(onSuccess, onFail);

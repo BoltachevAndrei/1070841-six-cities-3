@@ -1,5 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import {Router} from 'react-router-dom';
+import history from '../../history.js';
 import CitiesPlaces from './cities-places.jsx';
 
 import {Provider} from 'react-redux';
@@ -67,18 +69,22 @@ it(`CitiesPlaces renders correctly`, () => {
   });
   const tree = renderer
     .create(
-        <Provider store={store}>
-          <CitiesPlaces
-            offers={offers}
-            activeCity={activeCity}
-            placesCount={placesCount}
-            card={card}
-            sortType={sortType}
-            onPlaceCardClick={() => {}}
-            onPlaceCardMouseOver={() => {}}
-            onPlaceCardMouseLeave={() => {}}
-          />
-        </Provider>
+        <Router
+          history={history}
+        >
+          <Provider store={store}>
+            <CitiesPlaces
+              offers={offers}
+              activeCity={activeCity}
+              placesCount={placesCount}
+              card={card}
+              sortType={sortType}
+              onPlaceCardClick={() => {}}
+              onPlaceCardMouseOver={() => {}}
+              onPlaceCardMouseLeave={() => {}}
+            />
+          </Provider>
+        </Router>
     )
   .toJSON();
   expect(tree).toMatchSnapshot();

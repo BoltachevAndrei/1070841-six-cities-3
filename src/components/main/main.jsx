@@ -7,7 +7,20 @@ import CitiesNoPlaces from '../cities-no-places/cities-no-places.jsx';
 import ProfileLink from '../profile-link/profile-link.jsx';
 
 const Main = (props) => {
-  const {placesCount, offers, activeCity, citiesList, card, sortType, user, onPlaceCardClick, onCityClick, onPlaceCardMouseOver, onPlaceCardMouseLeave} = props;
+  const {
+    placesCount,
+    offers,
+    activeCity,
+    citiesList,
+    card,
+    sortType,
+    user,
+    onPlaceCardClick,
+    onCityClick,
+    onPlaceCardMouseOver,
+    onPlaceCardMouseLeave
+  } = props;
+
   return (
     <React.Fragment>
       <div style={{display: `none`}}>

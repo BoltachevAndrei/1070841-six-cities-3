@@ -1,13 +1,15 @@
 import {createSelector} from 'reselect';
 import NameSpace from '../name-space.js';
 
-export const getOffers = (state) => {
-  return state[NameSpace.DATA].offers;
-};
+export const getOffers = (state) => state[NameSpace.DATA].offers;
 
-export const getCity = (state) => {
-  return state[NameSpace.APP_STATE].city;
-};
+export const getCity = (state) => state[NameSpace.APP_STATE].city;
+
+export const getOffersNearby = (state) => state[NameSpace.DATA].offersNearby;
+
+export const getComments = (state) => state[NameSpace.DATA].comments;
+
+export const getPostingCommentStatus = (state) => state[NameSpace.DATA].isPostingComment;
 
 export const getCitiesList = createSelector(
     getOffers,
@@ -26,3 +28,4 @@ export const getOffersByCity = createSelector(
       return offers.filter((offer) => offer.city.name === city.name);
     }
 );
+

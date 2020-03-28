@@ -21,6 +21,8 @@ const user = {
   'name': `Oliver.conner`
 };
 
+const id = 777;
+
 const offer = {
   id: 777,
   city: {
@@ -172,6 +174,7 @@ it(`Offer renders correctly`, () => {
     .create(
         <Router history={history}>
           <Offer
+            id={id}
             offer={offer}
             offersNearby={offers}
             card={card}
@@ -182,6 +185,7 @@ it(`Offer renders correctly`, () => {
             wrapperClass="near-places__image-wrapper place-card__image-wrapper"
             isPostingComment={true}
             comments={comments}
+            onPlaceCardClick={() => {}}
           />
         </Router>
     )

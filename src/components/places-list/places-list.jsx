@@ -5,7 +5,18 @@ import PlaceCard from '../place-card/place-card.jsx';
 import {sortOffers} from '../../utils.js';
 
 const PlacesList = memo(function PlacesList(props) {
-  const {offers, sortType, listClass, cardClass, wrapperClass, onPlaceCardClick, onPlaceCardMouseOver, onPlaceCardMouseLeave} = props;
+  const {
+    offers,
+    sortType,
+    listClass,
+    cardClass,
+    wrapperClass,
+    imageSizeHeight,
+    imageSizeWidth,
+    onPlaceCardClick,
+    onPlaceCardMouseOver,
+    onPlaceCardMouseLeave
+  } = props;
 
   const sortedOffers = sortOffers(offers, sortType);
 
@@ -19,6 +30,8 @@ const PlacesList = memo(function PlacesList(props) {
             offers={sortedOffers}
             cardClass={cardClass}
             wrapperClass={wrapperClass}
+            imageSizeHeight={imageSizeHeight}
+            imageSizeWidth={imageSizeWidth}
             onPlaceCardClick={onPlaceCardClick}
             onPlaceCardMouseOver={onPlaceCardMouseOver}
             onPlaceCardMouseLeave={onPlaceCardMouseLeave}
@@ -41,7 +54,9 @@ PlacesList.propTypes = {
   wrapperClass: PropTypes.string.isRequired,
   onPlaceCardClick: PropTypes.func.isRequired,
   onPlaceCardMouseOver: PropTypes.func,
-  onPlaceCardMouseLeave: PropTypes.func
+  onPlaceCardMouseLeave: PropTypes.func,
+  imageSizeHeight: PropTypes.number.isRequired,
+  imageSizeWidth: PropTypes.number.isRequired
 };
 
 export default PlacesList;
