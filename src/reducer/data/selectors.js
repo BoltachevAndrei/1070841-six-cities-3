@@ -1,5 +1,5 @@
 import {createSelector} from 'reselect';
-import NameSpace from '../name-space.js';
+import NameSpace from '../name-space';
 
 export const getOffers = (state) => state[NameSpace.DATA].offers;
 
@@ -28,4 +28,3 @@ export const getOffersByCity = createSelector(
       return offers.filter((offer) => offer.city.name === city.name);
     }
 );
-

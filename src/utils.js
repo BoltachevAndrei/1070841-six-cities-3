@@ -1,9 +1,4 @@
-export const SortTypeList = {
-  POPULAR: `Popular`,
-  LOW_TO_HIGH: `Price: low to high`,
-  HIGH_TO_LOW: `Price: high to low`,
-  TOP_RATED_FIRST: `Top rated first`
-};
+import {SortTypeList} from './types';
 
 export const capitalizeString = (str) => str[0].toUpperCase() + str.slice(1);
 
@@ -30,4 +25,8 @@ export const getCitiesList = (offers) => {
   const citiesData = Array.from(offers.values()).map((offer) => offer.city);
   const result = citiesNames.map((name) => citiesData.filter((city) => city.name === name)[0]);
   return result;
+};
+
+export const doNothing = () => {
+  // do nothing
 };

@@ -1,4 +1,5 @@
-import {extend, SortTypeList} from '../../utils.js';
+import {extend} from '../../utils';
+import {SortTypeList} from '../../types';
 
 const initialState = {
   city: {},
