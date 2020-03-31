@@ -10,8 +10,9 @@ import ProfileLink from '../profile-link/profile-link';
 import HomeLink from '../home-link/home-link';
 import {Offer as OfferType, SortTypeList, User, Comment} from '../../types';
 
-const imageSizeHeight = 200;
-const imageSizeWidth = 260;
+const IMAGE_SIZE_HEIGHT = 200;
+const IMAGE_SIZE_WIDTH = 260;
+const IMAGES_TO_SHOW_LIMIT = 6;
 
 interface Props {
   id: number;
@@ -63,6 +64,7 @@ export default class Offer extends React.PureComponent<Props, {}> {
       card,
       sortType,
       user,
+      offer,
       offersNearby,
       comments,
       isPostingComment,
@@ -76,6 +78,8 @@ export default class Offer extends React.PureComponent<Props, {}> {
       </div>) : ``;
     const hostIsSuperClass = host.isSuper ? `property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper` : `property__avatar-wrapper user__avatar-wrapper`;
     const placeIsBookmarkedClass = isBookmarked ? `property__bookmark-button property__bookmark-button--active button` : `property__bookmark-button button`;
+    const imagesToShow = images.slice(0, IMAGES_TO_SHOW_LIMIT);
+    const currentOfferWithNearby = [].concat(offersNearby).concat(offer);
 
     return (
       <div className="page">
@@ -102,7 +106,7 @@ export default class Offer extends React.PureComponent<Props, {}> {
           <section className="property">
             <div className="property__gallery-container container">
               <div className="property__gallery">
-                {images.map((image, index) => {
+                {imagesToShow.map((image, index) => {
                   return (
                     <div key={`${image}-${index}`} className="property__image-wrapper">
                       <img className="property__image" src={image} alt="Photo studio" />
@@ -186,7 +190,7 @@ export default class Offer extends React.PureComponent<Props, {}> {
             </div>
             <section className="property__map map">
               <Map
-                offers={offersNearby}
+                offers={currentOfferWithNearby}
                 card={card}
                 activeCity={city}
               />
@@ -201,8 +205,8 @@ export default class Offer extends React.PureComponent<Props, {}> {
                 listClass="near-places__list places__list"
                 cardClass="near-places__card place-card"
                 wrapperClass="near-places__image-wrapper place-card__image-wrapper"
-                imageSizeHeight={imageSizeHeight}
-                imageSizeWidth={imageSizeWidth}
+                imageSizeHeight={IMAGE_SIZE_HEIGHT}
+                imageSizeWidth={IMAGE_SIZE_WIDTH}
               />
             </section>
           </div>

@@ -5,8 +5,8 @@ import PlaceCard from '../place-card/place-card';
 import {getCitiesList} from '../../utils';
 import {Offer, User} from '../../types';
 
-const imageSizeHeight = 110;
-const imageSizeWidth = 150;
+const IMAGE_SIZE_HEIGHT = 110;
+const IMAGE_SIZE_WIDTH = 150;
 
 interface Props {
   favorites: Array<Offer>;
@@ -67,8 +67,8 @@ const Favorites: React.FunctionComponent<Props> = (props: Props) => {
                             offer={offer}
                             cardClass="favorites__card place-card"
                             wrapperClass="favorites__image-wrapper place-card__image-wrapper"
-                            imageSizeHeight={imageSizeHeight}
-                            imageSizeWidth={imageSizeWidth}
+                            imageSizeHeight={IMAGE_SIZE_HEIGHT}
+                            imageSizeWidth={IMAGE_SIZE_WIDTH}
                             onPlaceCardClick={onPlaceCardClick}
                           />
                         );

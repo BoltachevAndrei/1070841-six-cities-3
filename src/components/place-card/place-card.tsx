@@ -72,7 +72,7 @@ const PlaceCard: React.FunctionComponent<Props> = (props: Props) => {
           </button>
         </div>
         <Rating
-          rating={rating}
+          rating={Math.round(rating)}
           type="place-card"
         />
         <h2

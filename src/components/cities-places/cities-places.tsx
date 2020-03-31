@@ -4,8 +4,8 @@ import PlacesList from '../places-list/places-list';
 import Map from '../map/map';
 import {Offer, City, SortTypeList} from '../../types';
 
-const imageSizeHeight = 200;
-const imageSizeWidth = 260;
+const IMAGE_SIZE_HEIGHT = 200;
+const IMAGE_SIZE_WIDTH = 260;
 
 interface Props {
   offers: Array<Offer>;
@@ -42,8 +42,8 @@ const CitiesPlaces: React.FunctionComponent<Props> = React.memo(function CitiesP
           listClass="cities__places-list places__list tabs__content"
           cardClass="cities__place-card place-card"
           wrapperClass="cities__image-wrapper place-card__image-wrapper"
-          imageSizeHeight={imageSizeHeight}
-          imageSizeWidth={imageSizeWidth}
+          imageSizeHeight={IMAGE_SIZE_HEIGHT}
+          imageSizeWidth={IMAGE_SIZE_WIDTH}
           onPlaceCardClick={onPlaceCardClick}
           onPlaceCardMouseOver={onPlaceCardMouseOver}
           onPlaceCardMouseLeave={onPlaceCardMouseLeave}
