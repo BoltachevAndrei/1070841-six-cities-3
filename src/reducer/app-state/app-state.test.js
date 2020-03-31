@@ -1,4 +1,4 @@
-import {reducer, ActionType} from './app-state.js';
+import {reducer, ActionType} from './app-state';
 
 const initialCity = `Test city`;
 

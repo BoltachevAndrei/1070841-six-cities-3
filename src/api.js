@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {AppRoute} from './const.js';
+import {AppRoute} from './const';
 
 const Error = {
   UNAUTHORIZED: 401
