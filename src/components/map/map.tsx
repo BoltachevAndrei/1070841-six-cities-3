@@ -2,6 +2,11 @@ import * as React from 'react';
 import * as leaflet from 'leaflet';
 import {City, Offer} from '../../types';
 
+enum Icon {
+  HEIGHT = 39,
+  WIDTH = 27
+}
+
 interface Props {
   activeCity: City;
   card: number;
@@ -51,11 +56,11 @@ export default class Map extends React.PureComponent<Props, {}> {
     }
     const notActiveIcon = leaflet.icon({
       iconUrl: `/img/pin.svg`,
-      iconSize: [27, 39]
+      iconSize: [Icon.WIDTH, Icon.HEIGHT]
     });
     const activeIcon = leaflet.icon({
       iconUrl: `/img/pin-active.svg`,
-      iconSize: [27, 39]
+      iconSize: [Icon.WIDTH, Icon.HEIGHT]
     });
     return (
       offers.map((offer) => {
