@@ -30,11 +30,11 @@ const withSubmitForm = (Component) => {
         rating: ``,
         isFormdataValid: false
       };
-      this.handleSubmit = this.handleSubmit.bind(this);
-      this.handleChange = this.handleChange.bind(this);
+      this.handleFormSubmit = this.handleFormSubmit.bind(this);
+      this.handleInputChange = this.handleInputChange.bind(this);
     }
 
-    handleSubmit(evt) {
+    handleFormSubmit(evt) {
       const {id, onSubmit} = this.props;
       evt.preventDefault();
       onSubmit(id, {
@@ -44,7 +44,7 @@ const withSubmitForm = (Component) => {
       this._resetForm();
     }
 
-    handleChange(evt) {
+    handleInputChange(evt) {
       this.setState({
         [evt.target.name]: evt.target.value
       } as State, () => this._validateFormdata());
@@ -58,8 +58,8 @@ const withSubmitForm = (Component) => {
           review={review}
           rating={rating}
           isFormdataValid={isFormdataValid}
-          onSubmit={this.handleSubmit}
-          onChange={this.handleChange}
+          onSubmit={this.handleFormSubmit}
+          onChange={this.handleInputChange}
         />
       );
     }

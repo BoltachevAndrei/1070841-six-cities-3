@@ -14,10 +14,10 @@ export default class SignIn extends React.PureComponent<Props, {}> {
     super(props);
     this.emailRef = React.createRef();
     this.passwordRef = React.createRef();
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
-  handleSubmit(evt) {
+  handleFormSubmit(evt) {
     const {onSubmit} = this.props;
     evt.preventDefault();
     onSubmit({
@@ -53,7 +53,7 @@ export default class SignIn extends React.PureComponent<Props, {}> {
                 className="login__form form"
                 action="#"
                 method="post"
-                onSubmit={this.handleSubmit}
+                onSubmit={this.handleFormSubmit}
               >
                 <div className="login__input-wrapper form__input-wrapper">
                   <label className="visually-hidden">E-mail</label>
