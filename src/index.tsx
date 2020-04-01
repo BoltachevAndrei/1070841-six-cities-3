@@ -14,7 +14,10 @@ import history from './history';
 import NameSpace from './reducer/name-space';
 import App from './components/app/app';
 
-const onUnauthorized = () => store.dispatch(UserActionCreator.changeAutorizationStatus(AuthorizationStatus.NO_AUTH));
+const onUnauthorized = () => {
+  store.dispatch(UserActionCreator.changeAutorizationStatus(AuthorizationStatus.NO_AUTH));
+  store.dispatch(UserActionCreator.changeUserData(null));
+};
 
 const setFalseRequestStatus = () => store.dispatch(AppActionCreator.changeRequestStatus(false));
 
