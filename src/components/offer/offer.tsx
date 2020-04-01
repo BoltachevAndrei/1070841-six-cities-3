@@ -123,7 +123,7 @@ export default class Offer extends React.PureComponent<Props, {}> {
                     {title}
                   </h1>
                   <button className={placeIsBookmarkedClass} type="button" onClick={() => toggleIsBookmarked(id, isBookmarked)}>
-                    <svg className="property__bookmark-icon" width="31" height="33">
+                    <svg className="place-card__bookmark-icon" width="31" height="33">
                       <use xlinkHref="#icon-bookmark"></use>
                     </svg>
                     <span className="visually-hidden">To bookmarks</span>

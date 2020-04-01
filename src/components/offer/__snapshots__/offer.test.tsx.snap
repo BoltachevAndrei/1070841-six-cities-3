@@ -109,7 +109,7 @@ exports[`Offer renders correctly 1`] = `
               type="button"
             >
               <svg
-                className="property__bookmark-icon"
+                className="place-card__bookmark-icon"
                 height="33"
                 width="31"
               >

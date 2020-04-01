@@ -49,26 +49,26 @@ export default class Map extends React.PureComponent<Props, {}> {
     if (offers.length === 0 && Array.isArray(offers)) {
       return null;
     }
-    const icon = leaflet.icon({
+    const notActiveIcon = leaflet.icon({
       iconUrl: `/img/pin.svg`,
-      iconSize: [30, 30]
+      iconSize: [27, 39]
     });
     const activeIcon = leaflet.icon({
-      iconUrl: `/img/active-pin.svg`,
-      iconSize: [30, 30]
+      iconUrl: `/img/pin-active.svg`,
+      iconSize: [27, 39]
     });
     return (
       offers.map((offer) => {
         if (offer.id !== card) {
           return (
             leaflet
-              .marker(offer.coordinates, {icon})
+              .marker(offer.coordinates, {icon: notActiveIcon})
               .addTo(this._map)
           );
         } else {
           return (
             leaflet
-              .marker(offer.coordinates, {activeIcon})
+              .marker(offer.coordinates, {icon: activeIcon})
               .addTo(this._map)
           );
         }

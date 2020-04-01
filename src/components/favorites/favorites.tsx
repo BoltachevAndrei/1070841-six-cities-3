@@ -83,9 +83,11 @@ const Favorites: React.FunctionComponent<Props> = (props: Props) => {
       </main>
 
       <footer className="footer container">
-        <a className="footer__logo-link" href="main.html">
-          <img className="footer__logo" src="img/logo.svg" alt="6 cities logo" width="64" height="33" />
-        </a>
+        <HomeLink
+          homeLinkClass="footer"
+          height="33"
+          width="64"
+        />
       </footer>
     </div>
   );
