@@ -50,20 +50,6 @@ const withSubmitForm = (Component) => {
       } as State, () => this._validateFormdata());
     }
 
-    render() {
-      const {isFormdataValid, review, rating} = this.state;
-      return (
-        <Component
-          {...this.props}
-          review={review}
-          rating={rating}
-          isFormdataValid={isFormdataValid}
-          onSubmit={this.handleFormSubmit}
-          onChange={this.handleInputChange}
-        />
-      );
-    }
-
     _resetForm() {
       this.setState({
         review: ``,
@@ -82,6 +68,20 @@ const withSubmitForm = (Component) => {
           isFormdataValid: false
         });
       }
+    }
+
+    render() {
+      const {isFormdataValid, review, rating} = this.state;
+      return (
+        <Component
+          {...this.props}
+          review={review}
+          rating={rating}
+          isFormdataValid={isFormdataValid}
+          onSubmit={this.handleFormSubmit}
+          onChange={this.handleInputChange}
+        />
+      );
     }
   }
 

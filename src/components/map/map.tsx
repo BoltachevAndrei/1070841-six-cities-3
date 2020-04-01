@@ -46,10 +46,6 @@ export default class Map extends React.PureComponent<Props, {}> {
     this._removeMap();
   }
 
-  render() {
-    return <div id="map" style={{height: `100%`}}></div>;
-  }
-
   _createMarkers(offers, card) {
     if (offers.length === 0 && Array.isArray(offers)) {
       return null;
@@ -106,6 +102,10 @@ export default class Map extends React.PureComponent<Props, {}> {
   _removeMap() {
     this._map.remove();
     this._map = null;
+  }
+
+  render() {
+    return <div id="map" style={{height: `100%`}}></div>;
   }
 }
 
