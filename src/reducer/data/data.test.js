@@ -60,7 +60,7 @@ const offersToState = [
       'bedrooms': `2`,
       'adults': `2`
     },
-    'inside': [
+    'goodsInside': [
       `Test inside 2`
     ],
     'host': {
@@ -97,7 +97,7 @@ const offerWithFavoritesToState = {
     'bedrooms': `2`,
     'adults': `2`
   },
-  'inside': [
+  'goodsInside': [
     `Test inside 2`
   ],
   'host': {
@@ -134,7 +134,7 @@ const offersWithFavoritesToState = [
       'bedrooms': `2`,
       'adults': `2`
     },
-    'inside': [
+    'goodsInside': [
       `Test inside 2`
     ],
     'host': {

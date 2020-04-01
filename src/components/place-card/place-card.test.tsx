@@ -32,7 +32,7 @@ const offer = {
     bedrooms: `33`,
     adults: `55`
   },
-  inside: [
+  goodsInside: [
     `MiniBar`
   ],
   host: {

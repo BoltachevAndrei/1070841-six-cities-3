@@ -42,7 +42,7 @@ export type Offer = {
     bedrooms: string,
     adults: string
   },
-  inside: Array<string>,
+  goodsInside: Array<string>,
   host: User,
   coordinates: Array<number>,
   zoom: number,

@@ -56,7 +56,7 @@ export default class Offer extends React.PureComponent<Props, {}> {
       title,
       description,
       features,
-      inside,
+      goodsInside,
       host
     } = this.props.offer;
 
@@ -79,7 +79,7 @@ export default class Offer extends React.PureComponent<Props, {}> {
     const hostIsSuperClass = host.isSuper ? `property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper` : `property__avatar-wrapper user__avatar-wrapper`;
     const placeIsBookmarkedClass = isBookmarked ? `property__bookmark-button property__bookmark-button--active button` : `property__bookmark-button button`;
     const imagesToShow = images.slice(0, IMAGES_TO_SHOW_LIMIT);
-    const currentOfferWithNearby = [].concat(offersNearby).concat(offer);
+    const offersNearbyWithCurrentOffer = [].concat(offersNearby).concat(offer);
 
     return (
       <div className="page">
@@ -151,7 +151,7 @@ export default class Offer extends React.PureComponent<Props, {}> {
                 <div className="property__inside">
                   <h2 className="property__inside-title">What&apos;s inside</h2>
                   <ul className="property__inside-list">
-                    {inside.map((element, index) => {
+                    {goodsInside.map((element, index) => {
                       return (
                         <li key={`${element}-${index}`} className="property__inside-item">
                           {element}
@@ -190,7 +190,7 @@ export default class Offer extends React.PureComponent<Props, {}> {
             </div>
             <section className="property__map map">
               <Map
-                offers={currentOfferWithNearby}
+                offers={offersNearbyWithCurrentOffer}
                 card={card}
                 activeCity={city}
               />

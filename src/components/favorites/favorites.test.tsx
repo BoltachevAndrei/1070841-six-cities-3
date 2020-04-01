@@ -38,7 +38,7 @@ const favorites = [
       bedrooms: `33`,
       adults: `55`
     },
-    inside: [
+    goodsInside: [
       `MiniBar`
     ],
     host: {
@@ -78,7 +78,7 @@ const favorites = [
       bedrooms: `33`,
       adults: `55`
     },
-    inside: [
+    goodsInside: [
       `MiniBar`
     ],
     host: {
@@ -118,7 +118,7 @@ const favorites = [
       bedrooms: `33`,
       adults: `55`
     },
-    inside: [
+    goodsInside: [
       `MiniBar`
     ],
     host: {

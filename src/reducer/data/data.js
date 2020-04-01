@@ -15,7 +15,7 @@ const convertOfferToState = (response) => ({
     bedrooms: response.bedrooms.toString(),
     adults: response.max_adults.toString()
   },
-  inside: response.goods,
+  goodsInside: response.goods,
   host: {
     id: response.id,
     name: response.host.name,
