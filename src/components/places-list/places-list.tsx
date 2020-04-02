@@ -11,7 +11,7 @@ interface Props {
   wrapperClass: string;
   imageSizeHeight: number;
   imageSizeWidth: number;
-  onPlaceCardClick?: () => void;
+  onPlaceCardClick: () => void;
   onPlaceCardMouseOver?: () => void;
   onPlaceCardMouseLeave?: () => void;
 }

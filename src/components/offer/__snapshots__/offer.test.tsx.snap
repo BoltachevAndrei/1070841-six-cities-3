@@ -598,7 +598,7 @@ exports[`Offer renders correctly 1`] = `
               </div>
               <h2
                 className="place-card__name"
-                onClick={null}
+                onClick={[Function]}
               >
                 <a
                   href="/offer/778"
@@ -697,7 +697,7 @@ exports[`Offer renders correctly 1`] = `
               </div>
               <h2
                 className="place-card__name"
-                onClick={null}
+                onClick={[Function]}
               >
                 <a
                   href="/offer/779"
@@ -796,7 +796,7 @@ exports[`Offer renders correctly 1`] = `
               </div>
               <h2
                 className="place-card__name"
-                onClick={null}
+                onClick={[Function]}
               >
                 <a
                   href="/offer/780"

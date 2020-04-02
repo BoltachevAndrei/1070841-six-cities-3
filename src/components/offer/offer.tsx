@@ -24,7 +24,7 @@ interface Props {
   comments: Array<Comment>;
   isPostingComment: boolean;
   onCommentSubmit: () => void;
-  onPlaceCardClick: (id: number) => void;
+  onPlaceCardClick: (id?: number) => void;
   toggleIsBookmarked: (id: number, isBookmarked: boolean) => void;
   onHomeLinkClick: () => void;
 }
@@ -37,6 +37,10 @@ export default class Offer extends React.PureComponent<Props, {}> {
   componentDidMount() {
     const {id, onPlaceCardClick} = this.props;
     onPlaceCardClick(id);
+  }
+
+  componentDidUpdate() {
+    window.scrollTo(0, 0);
   }
 
   render() {
@@ -71,7 +75,8 @@ export default class Offer extends React.PureComponent<Props, {}> {
       isPostingComment,
       onCommentSubmit,
       toggleIsBookmarked,
-      onHomeLinkClick
+      onHomeLinkClick,
+      onPlaceCardClick
     } = this.props;
 
     const placeIsPremium = isPremium ?
@@ -211,6 +216,7 @@ export default class Offer extends React.PureComponent<Props, {}> {
                 wrapperClass="near-places__image-wrapper place-card__image-wrapper"
                 imageSizeHeight={IMAGE_SIZE_HEIGHT}
                 imageSizeWidth={IMAGE_SIZE_WIDTH}
+                onPlaceCardClick={onPlaceCardClick}
               />
             </section>
           </div>

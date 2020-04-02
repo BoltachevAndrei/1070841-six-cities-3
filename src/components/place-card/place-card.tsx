@@ -77,7 +77,7 @@ const PlaceCard: React.FunctionComponent<Props> = (props: Props) => {
         />
         <h2
           className="place-card__name"
-          onClick={onPlaceCardClick ? () => onPlaceCardClick(id) : null}
+          onClick={() => onPlaceCardClick(id)}
         >
           <Link to={`${AppRoute.ROOM}/${id}`}>
             {title}
