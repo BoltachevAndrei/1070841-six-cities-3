@@ -3,7 +3,7 @@ import {SortTypeList} from '../../types';
 
 const initialState = {
   city: {},
-  card: 0,
+  card: null,
   isSortListOpened: false,
   sortType: SortTypeList.POPULAR,
   isRequestSuccess: true

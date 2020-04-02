@@ -346,6 +346,7 @@ describe(`App renders correctly`, () => {
                 onCommentSubmit={doNothing}
                 onLoginSubmit={doNothing}
                 toggleIsBookmarked={doNothing}
+                onHomeLinkClick={doNothing}
               />
             </Router>
           </Provider>, {
@@ -389,6 +390,7 @@ describe(`App renders correctly`, () => {
                 onCommentSubmit={doNothing}
                 onLoginSubmit={doNothing}
                 toggleIsBookmarked={doNothing}
+                onHomeLinkClick={doNothing}
               />
             </Router>
           </Provider>, {
@@ -432,6 +434,7 @@ describe(`App renders correctly`, () => {
                 onCommentSubmit={doNothing}
                 onLoginSubmit={doNothing}
                 toggleIsBookmarked={doNothing}
+                onHomeLinkClick={doNothing}
               />
             </Router>
           </Provider>, {
@@ -475,6 +478,7 @@ describe(`App renders correctly`, () => {
                 onCommentSubmit={doNothing}
                 onLoginSubmit={doNothing}
                 toggleIsBookmarked={doNothing}
+                onHomeLinkClick={doNothing}
               />
             </Router>
           </Provider>, {
@@ -518,6 +522,7 @@ describe(`App renders correctly`, () => {
                 onCommentSubmit={doNothing}
                 onLoginSubmit={doNothing}
                 toggleIsBookmarked={doNothing}
+                onHomeLinkClick={doNothing}
               />
             </Router>
           </Provider>, {

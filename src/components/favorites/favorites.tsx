@@ -12,13 +12,15 @@ interface Props {
   favorites: Array<Offer>;
   user: User;
   onPlaceCardClick: () => void;
+  onHomeLinkClick: () => void;
 }
 
 const Favorites: React.FunctionComponent<Props> = (props: Props) => {
   const {
     favorites,
     user,
-    onPlaceCardClick
+    onPlaceCardClick,
+    onHomeLinkClick
   } = props;
 
   const favoritesByCity = getCitiesList(favorites).map((element) => ({city: element, offers: favorites.filter((element2) => element.name === element2.city.name)}));
@@ -29,7 +31,9 @@ const Favorites: React.FunctionComponent<Props> = (props: Props) => {
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
-              <HomeLink />
+              <HomeLink
+                onHomeLinkClick={onHomeLinkClick}
+              />
             </div>
             <nav className="header__nav">
               <ul className="header__nav-list">
@@ -87,6 +91,7 @@ const Favorites: React.FunctionComponent<Props> = (props: Props) => {
           homeLinkClass="footer"
           height="33"
           width="64"
+          onHomeLinkClick={onHomeLinkClick}
         />
       </footer>
     </div>

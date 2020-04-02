@@ -2,14 +2,21 @@ import * as React from 'react';
 import HomeLink from '../home-link/home-link';
 import ProfileLink from '../profile-link/profile-link';
 
-const Error: React.FunctionComponent = () => {
+interface Props {
+  onHomeLinkClick: () => void;
+}
+
+const Error: React.FunctionComponent<Props> = (props: Props) => {
+  const {onHomeLinkClick} = props;
   return (
     <React.Fragment>
       <header className="header">
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
-              <HomeLink />
+              <HomeLink
+                onHomeLinkClick={onHomeLinkClick}
+              />
             </div>
             <nav className="header__nav">
               <ul className="header__nav-list">

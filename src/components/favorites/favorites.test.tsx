@@ -146,6 +146,7 @@ it(`Favorites renders correctly`, () => {
             user={user}
             favorites={favorites}
             onPlaceCardClick={doNothing}
+            onHomeLinkClick={doNothing}
           />
         </Router>
     )

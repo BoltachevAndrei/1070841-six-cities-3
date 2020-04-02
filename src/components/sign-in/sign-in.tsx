@@ -4,6 +4,7 @@ import ProfileLink from '../profile-link/profile-link';
 
 interface Props {
   onSubmit: ({}) => void;
+  onHomeLinkClick: () => void;
 }
 
 export default class SignIn extends React.PureComponent<Props, {}> {
@@ -27,13 +28,16 @@ export default class SignIn extends React.PureComponent<Props, {}> {
   }
 
   render() {
+    const {onHomeLinkClick} = this.props;
     return (
       <div className="page page--gray page--login">
         <header className="header">
           <div className="container">
             <div className="header__wrapper">
               <div className="header__left">
-                <HomeLink />
+                <HomeLink
+                  onHomeLinkClick={onHomeLinkClick}
+                />
               </div>
               <nav className="header__nav">
                 <ul className="header__nav-list">

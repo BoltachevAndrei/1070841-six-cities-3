@@ -17,6 +17,7 @@ import App from './components/app/app';
 const onUnauthorized = () => {
   store.dispatch(UserActionCreator.changeAutorizationStatus(AuthorizationStatus.NO_AUTH));
   store.dispatch(UserActionCreator.changeUserData(null));
+  store.dispatch(AppActionCreator.changeCard(null));
 };
 
 const setFalseRequestStatus = () => store.dispatch(AppActionCreator.changeRequestStatus(false));

@@ -205,6 +205,7 @@ it(`Offer renders correctly`, () => {
             onPlaceCardClick={doNothing}
             onCommentSubmit={doNothing}
             toggleIsBookmarked={doNothing}
+            onHomeLinkClick={doNothing}
           />
         </Router>
     )

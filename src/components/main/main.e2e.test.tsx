@@ -181,6 +181,7 @@ it(`Should locations item be pressed`, () => {
         onCityClick={doNothing}
         onPlaceCardMouseOver={doNothing}
         onPlaceCardMouseLeave={doNothing}
+        onHomeLinkClick={doNothing}
       />
   );
   const locationsItems = main.find(`.place-card__name`);

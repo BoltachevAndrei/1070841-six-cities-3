@@ -26,6 +26,7 @@ interface Props {
   onCommentSubmit: () => void;
   onPlaceCardClick: (id: number) => void;
   toggleIsBookmarked: (id: number, isBookmarked: boolean) => void;
+  onHomeLinkClick: () => void;
 }
 
 export default class Offer extends React.PureComponent<Props, {}> {
@@ -69,7 +70,8 @@ export default class Offer extends React.PureComponent<Props, {}> {
       comments,
       isPostingComment,
       onCommentSubmit,
-      toggleIsBookmarked
+      toggleIsBookmarked,
+      onHomeLinkClick
     } = this.props;
 
     const placeIsPremium = isPremium ?
@@ -87,7 +89,9 @@ export default class Offer extends React.PureComponent<Props, {}> {
           <div className="container">
             <div className="header__wrapper">
               <div className="header__left">
-                <HomeLink />
+                <HomeLink
+                  onHomeLinkClick={onHomeLinkClick}
+                />
               </div>
               <nav className="header__nav">
                 <ul className="header__nav-list">

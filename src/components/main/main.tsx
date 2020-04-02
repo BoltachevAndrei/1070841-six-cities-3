@@ -18,6 +18,7 @@ interface Props {
   onCityClick: () => void;
   onPlaceCardMouseOver: () => void;
   onPlaceCardMouseLeave: () => void;
+  onHomeLinkClick: () => void;
 }
 
 const Main: React.FunctionComponent<Props> = (props: Props) => {
@@ -32,7 +33,8 @@ const Main: React.FunctionComponent<Props> = (props: Props) => {
     onPlaceCardClick,
     onCityClick,
     onPlaceCardMouseOver,
-    onPlaceCardMouseLeave
+    onPlaceCardMouseLeave,
+    onHomeLinkClick
   } = props;
 
   return (
@@ -46,7 +48,9 @@ const Main: React.FunctionComponent<Props> = (props: Props) => {
           <div className="container">
             <div className="header__wrapper">
               <div className="header__left">
-                <HomeLink />
+                <HomeLink
+                  onHomeLinkClick={onHomeLinkClick}
+                />
               </div>
               <nav className="header__nav">
                 <ul className="header__nav-list">

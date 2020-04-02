@@ -37,6 +37,7 @@ interface Props {
   onCommentSubmit: () => void;
   onLoginSubmit: () => void;
   toggleIsBookmarked: () => void;
+  onHomeLinkClick: () => void;
 }
 
 const App: React.FunctionComponent<Props> = (props: Props) => {
@@ -59,7 +60,8 @@ const App: React.FunctionComponent<Props> = (props: Props) => {
     onPlaceCardMouseLeave,
     onCommentSubmit,
     onLoginSubmit,
-    toggleIsBookmarked
+    toggleIsBookmarked,
+    onHomeLinkClick
   } = props;
 
   const numberOfPlacesToStay = offers.filter((element) => element.city.name === city.name).length;
@@ -85,11 +87,14 @@ const App: React.FunctionComponent<Props> = (props: Props) => {
                 onCityClick={onCityClick}
                 onPlaceCardMouseOver={onPlaceCardMouseOver}
                 onPlaceCardMouseLeave={onPlaceCardMouseLeave}
+                onHomeLinkClick={onHomeLinkClick}
               />
             );
           }
           return (
-            <Error />
+            <Error
+              onHomeLinkClick={onHomeLinkClick}
+            />
           );
         }}
       />
@@ -111,6 +116,7 @@ const App: React.FunctionComponent<Props> = (props: Props) => {
               isPostingComment={isPostingComment}
               toggleIsBookmarked={toggleIsBookmarked}
               onPlaceCardClick={onPlaceCardClick}
+              onHomeLinkClick={onHomeLinkClick}
             />
           );
         }}
@@ -123,6 +129,7 @@ const App: React.FunctionComponent<Props> = (props: Props) => {
             return (
               <NoFavorites
                 user={user}
+                onHomeLinkClick={onHomeLinkClick}
               />
             );
           }
@@ -131,6 +138,7 @@ const App: React.FunctionComponent<Props> = (props: Props) => {
               user={user}
               favorites={favorites}
               onPlaceCardClick={onPlaceCardClick}
+              onHomeLinkClick={onHomeLinkClick}
             />
           );
         }}
@@ -143,6 +151,7 @@ const App: React.FunctionComponent<Props> = (props: Props) => {
             return (
               <SignIn
                 onSubmit={onLoginSubmit}
+                onHomeLinkClick={onHomeLinkClick}
               />
             );
           }
@@ -174,7 +183,8 @@ const mapDispatchToProps = (dispatch) => ({
   onPlaceCardClick(id) {
     dispatch(DataOperation.loadOffersNearby(id))
     .then(() => dispatch(DataOperation.loadComments(id)))
-    .then(() => dispatch(ActionCreator.changeRequestStatus(true)));
+    .then(() => dispatch(ActionCreator.changeRequestStatus(true)))
+    .then(() => dispatch(ActionCreator.changeCard(id)));
   },
   onCityClick(city) {
     dispatch(ActionCreator.changeCity(city));
@@ -183,7 +193,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreator.changeCard(id));
   },
   onPlaceCardMouseLeave() {
-    dispatch(ActionCreator.changeCard(0));
+    dispatch(ActionCreator.changeCard(null));
   },
   onCommentSubmit(id, comment) {
     dispatch(DataOperation.postComment(id, comment))
@@ -200,6 +210,9 @@ const mapDispatchToProps = (dispatch) => ({
     }))
     .then(() => dispatch(DataOperation.loadFavorites()))
     .then(() => dispatch(ActionCreator.changeRequestStatus(true)));
+  },
+  onHomeLinkClick() {
+    dispatch(ActionCreator.changeCard(null));
   }
 });
 

@@ -160,6 +160,7 @@ it(`Main renders correctly`, () => {
               onCityClick={doNothing}
               onPlaceCardMouseOver={doNothing}
               onPlaceCardMouseLeave={doNothing}
+              onHomeLinkClick={doNothing}
             />)
           </Router>
         </Provider>, {

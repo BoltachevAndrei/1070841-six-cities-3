@@ -11,6 +11,7 @@ it(`SignIn renders correctly`, () => {
         <Router history={history}>
           <SignIn
             onSubmit={doNothing}
+            onHomeLinkClick={doNothing}
           />
         </Router>
     )

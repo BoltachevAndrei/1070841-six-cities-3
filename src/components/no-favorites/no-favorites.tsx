@@ -5,10 +5,14 @@ import {User} from '../../types';
 
 interface Props {
   user: User;
+  onHomeLinkClick: () => void;
 }
 
 const NoFavorites: React.FunctionComponent<Props> = (props: Props) => {
-  const {user} = props;
+  const {
+    user,
+    onHomeLinkClick
+  } = props;
 
   return (
     <div className="page page--favorites-empty">
@@ -16,7 +20,9 @@ const NoFavorites: React.FunctionComponent<Props> = (props: Props) => {
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
-              <HomeLink />
+              <HomeLink
+                onHomeLinkClick={onHomeLinkClick}
+              />
             </div>
             <nav className="header__nav">
               <ul className="header__nav-list">
@@ -47,6 +53,7 @@ const NoFavorites: React.FunctionComponent<Props> = (props: Props) => {
           homeLinkClass="footer"
           height="33"
           width="64"
+          onHomeLinkClick={onHomeLinkClick}
         />
       </footer>
     </div>
