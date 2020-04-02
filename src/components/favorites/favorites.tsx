@@ -8,6 +8,9 @@ import {Offer, User} from '../../types';
 const IMAGE_SIZE_HEIGHT = 110;
 const IMAGE_SIZE_WIDTH = 150;
 
+const HOME_LINK_HEIGHT = 33;
+const HOME_LINK_WIDTH = 64;
+
 interface Props {
   favorites: Array<Offer>;
   user: User;
@@ -89,8 +92,8 @@ const Favorites: React.FunctionComponent<Props> = (props: Props) => {
       <footer className="footer container">
         <HomeLink
           homeLinkClass="footer"
-          height="33"
-          width="64"
+          homeLinkHeight={HOME_LINK_HEIGHT}
+          homeLinkWidth={HOME_LINK_WIDTH}
           onHomeLinkClick={onHomeLinkClick}
         />
       </footer>

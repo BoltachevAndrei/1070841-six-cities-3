@@ -3,6 +3,9 @@ import HomeLink from '../home-link/home-link';
 import ProfileLink from '../profile-link/profile-link';
 import {User} from '../../types';
 
+const HOME_LINK_HEIGHT = 33;
+const HOME_LINK_WIDTH = 64;
+
 interface Props {
   user: User;
   onHomeLinkClick: () => void;
@@ -51,8 +54,8 @@ const NoFavorites: React.FunctionComponent<Props> = (props: Props) => {
       <footer className="footer">
         <HomeLink
           homeLinkClass="footer"
-          height="33"
-          width="64"
+          homeLinkHeight={HOME_LINK_HEIGHT}
+          homeLinkWidth={HOME_LINK_WIDTH}
           onHomeLinkClick={onHomeLinkClick}
         />
       </footer>

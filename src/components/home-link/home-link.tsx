@@ -4,16 +4,16 @@ import {AppRoute} from '../../const';
 
 interface Props {
   homeLinkClass?: string;
-  height?: string;
-  width?: string;
+  homeLinkHeight?: number;
+  homeLinkWidth?: number;
   onHomeLinkClick: () => void;
 }
 
 const HomeLink: React.FunctionComponent<Props> = (props: Props) => {
   const {
     homeLinkClass,
-    height,
-    width,
+    homeLinkHeight,
+    homeLinkWidth,
     onHomeLinkClick
   } = props;
   return (
@@ -22,7 +22,7 @@ const HomeLink: React.FunctionComponent<Props> = (props: Props) => {
       to={AppRoute.MAIN}
       onClick={onHomeLinkClick}
     >
-      <img className={`${homeLinkClass ? homeLinkClass : `header`}__logo`} src="/img/logo.svg" alt="6 cities logo" width={`${width ? width : `81`}`} height={`${height ? height : `41`}`} />
+      <img className={`${homeLinkClass ? homeLinkClass : `header`}__logo`} src="/img/logo.svg" alt="6 cities logo" width={`${homeLinkWidth ? homeLinkWidth : `81`}`} height={`${homeLinkHeight ? homeLinkHeight : `41`}`} />
     </Link>
   );
 };
